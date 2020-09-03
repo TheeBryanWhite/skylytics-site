@@ -1,0 +1,81 @@
+@import '../sass/mixins.scss';
+
+.hamburger {
+	right: 25px;
+	position: absolute;
+	top: 10px;
+
+	@include respond-to(medium) {
+		display: none;
+	}
+
+	&.active-button {
+
+		button {
+
+			&:after,
+			&:before,
+			i {
+				background-color: color(black);
+			}
+
+			&:after {
+				bottom: 11px;
+				transform: rotate(45deg);
+			}
+
+			&:before {
+				top: 11px;
+				transform: rotate(-45deg);
+			}
+
+			i {
+				opacity: 0;
+			}
+		}
+	}
+
+	button {
+		background-color: transparent;
+		border: 0;
+		height: 25px;
+		position: relative;
+		width: 30px;
+
+		&:after,
+		&:before {
+			background-color: color(white);
+			content: '';
+			height: 3px;
+			left: 0;
+			position: absolute;
+			transition: all .2s linear;
+			width: 100%;
+		}
+
+		&:after {
+			bottom: 0;
+		}
+
+		&:before {
+			top: 0;
+		}
+
+		&:focus {
+			outline: 0;
+		}
+
+		i {
+			@include center;
+			background-color: color(white);
+			height: 3px;
+			opacity: 1;
+			transition: opacity .2s linear;
+			width: 100%;
+		}
+	}
+
+	span {
+		@include screen-reader-text;
+	}
+}

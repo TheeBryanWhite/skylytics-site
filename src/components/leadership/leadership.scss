@@ -1,0 +1,86 @@
+@import '../sass/mixins.scss';
+
+.leadership-team {
+	color: color(white);
+	padding: 100px 0;
+	position: relative;
+	z-index: 90;
+
+	@include respond-to(large) {
+		margin-top: 25px;
+	}
+
+	h2 {
+		font-size: toRem(32);
+	}
+
+	.bgnull {
+		bottom: 0;
+		left: 0;
+		position: absolute !important;
+		right: 0;
+		top: 0;
+		width: 100%;
+
+		@include respond-to(large) {
+			clip-path: polygon(0 0, 66% 0, 84% 76%, 0 100%);
+		}
+	}
+
+	.leaders {
+		align-items: stretch;
+		display: flex;
+		flex-wrap: wrap;
+		padding: toRem(50) 0;
+
+		@include respond-to(large) {
+			flex-wrap: nowrap;
+		}
+	}
+
+	.leader {
+		flex: 1 1 50%;
+		margin-bottom: toRem(16);
+		padding: 0 toRem(32);
+
+		@include respond-to(large) {
+			flex: 1 1 25%;
+		}
+
+		p {
+			font-size: toRem(14);
+			font-weight: 500;
+			margin: 0;
+
+			&.leader-name {
+				font-weight: 700;
+			}
+		}
+
+		a {
+			color: color(biolink);
+			font-weight: 700;
+
+			&:after {
+				content: '\2192';
+				font-size: 24px;
+				left: 0;
+				margin-left: 25px;
+				position: relative;
+				transition: all 0.2s linear;
+			}
+
+			&:hover {
+				color: color(white);
+
+				&:after {
+					left: 5px;
+				}
+			}
+		}
+	}
+
+	.gatsby-image-wrapper {
+		margin-bottom: 10px;
+	}
+}

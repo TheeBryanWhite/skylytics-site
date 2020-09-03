@@ -1,3 +1,111 @@
 @import "../sass/mixins.scss";
 
-footer {}
+footer {
+	background-color: color(blue);
+	color: color(white);
+
+	.super-footer {
+		padding: 25px 0;
+
+		h1,
+		p {
+			margin: 0;
+		}
+
+		h1 {
+			margin: 0 auto toRem(8);
+			width: toRem(70);
+
+			@include respond-to(large) {
+				margin: 0;
+			}
+
+			span {
+				@include screen-reader-text;
+			}
+		}
+
+		p {
+			color: color(footertag);
+			text-transform: uppercase;
+		}
+
+		.container {
+			text-align: center;
+
+			@include respond-to(large) {
+				align-items: center;
+				display: flex;
+				justify-content: space-between;
+			}
+		}		
+	}
+
+	.footer-links {
+		border-bottom: 1px solid color(white);
+		border-top: 1px solid color(white);
+		display: flex;
+		justify-items: flex-end;
+		padding: toRem(16) 0;
+
+		h2 {
+			font-size: toRem(14);
+		}
+
+		ul {
+			list-style: none;
+			font-size: toRem(12);
+		}
+
+		li {
+			margin-top: toRem(10);
+		}
+
+		a {
+			color: color(white);
+		}
+
+		p {
+			font-size: toRem(12);
+		}
+	}
+
+	.links-container {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+	}
+
+	.links-col {
+		width: 20%;
+	}
+
+	.subfooter {
+		display: flex;
+		font-size: toRem(10);
+		font-weight: 700;
+		margin: 0 toRem(32);
+		padding: 10px 0 35px;
+		text-transform: uppercase;
+
+		@include respond-to(large) {
+			margin: 0 auto;
+		}
+
+		a {
+			color: color(white);
+		}
+
+		div {
+			flex: 1 1 100%;
+
+			@include respond-to(large) {
+				flex: 1 1 38%;
+			}
+		}
+
+		p {
+			flex: 1 1 18%
+		}
+	}
+}

@@ -1,3 +1,81 @@
 @import '../sass/mixins.scss';
 
-nav {}
+nav {
+	background-color: rgba(color(black), .3);
+	height: toRem(47);
+	position: relative;
+	z-index: 1000;
+
+	.container {
+		position: relative;
+	}
+
+	a {
+		color: color(black);	
+		display: block;
+		padding: toRem(10) toRem(15);
+
+		@include respond-to(medium) {
+			color: color(white);
+			padding: toRem(5) toRem(20);
+		}
+	}
+
+	ul {
+		align-items: center;
+		background-color: color(white);
+		box-shadow: -4px 0px 5px 0px rgba(color(black),0.4);
+		height: 100vh;
+		justify-content: flex-start;
+		list-style: none;
+		padding: toRem(15) 0;
+		position: fixed;
+		right: -120%;
+		text-transform: uppercase;
+		transition: right 0.4s ease(in-out-quart);
+		width: toRem(325);
+
+		@include respond-to(medium) {
+			background-color: transparent;
+			box-shadow: none;
+			display: flex;
+			font-size: toRem(14);
+			height: auto;
+			max-width: toRem(996);
+			padding: toRem(10.5) 0;
+			position: static;
+			right: auto;
+			width: auto;
+		}
+
+		&.active-menu {
+			right: 0;
+		}
+	}
+
+	li {
+		padding: 0 toRem(10);
+
+		@include respond-to(medium) {
+			padding: 0;
+		}
+
+		&.login {
+			padding-left: toRem(25);
+
+			@include respond-to(medium) {
+				text-transform: lowercase;
+			}
+
+			@include respond-to(large) {
+				position: absolute;
+				right: toRem(32);
+			}
+
+			a {
+				border: 2px solid color(login);
+				display: inline-block;
+			}
+		}
+	}
+}

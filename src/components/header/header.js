@@ -1,12 +1,13 @@
 import React from 'react'
+import SuperHeader from './super-header/super-header'
+import Nav from '../nav/nav'
 
 import './header.scss'
 
-const Header = () => (
+const Header = ({ siteTitle }) => (
   <header>
-    <div className="logo">
-      
-    </div>
+    <SuperHeader title={siteTitle} />
+    <Nav />
   </header>
 )
 

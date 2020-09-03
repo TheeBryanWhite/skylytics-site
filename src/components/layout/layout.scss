@@ -499,22 +499,12 @@ th {
 ul {
   margin: 0;
 }
-ol li {
-  padding-left: 0;
-}
-ul li {
-  padding-left: 0;
-}
-li > ol {
+ol {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
 }
-li > ul {
-  margin-left: 1.45rem;
-  margin-bottom: calc(1.45rem / 2);
-  margin-top: calc(1.45rem / 2);
-}
+
 blockquote *:last-child {
   margin-bottom: 0;
 }
@@ -609,13 +599,12 @@ pre tt:after {
   }
 }
 
-html {
-  overflow: hidden;
-  width: 100vw;
-}
-
 body {
   color: color(black);
+
+  &.locked {
+    overflow: hidden;
+  }
 }
 
 a {

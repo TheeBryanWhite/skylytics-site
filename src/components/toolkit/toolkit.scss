@@ -1,0 +1,151 @@
+@import '../sass/mixins.scss';
+
+.toolkit {
+	color: color(white);
+	position: relative;
+	z-index: 90;
+
+	@include respond-to(large) {
+		margin-top: -325px;
+	}
+
+	h2 {
+		font-size: toRem(32);
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	.bgcontainer {
+		background-color: color(blue);
+
+		@include respond-to(large) {
+			clip-path: polygon(0 0, 100% 49.5%, 100% 100%, 0 100%);
+			padding-top: 160px;
+		}
+	}
+
+	@include respond-to(large) {
+		.columns {
+			display: flex;
+		}
+	}
+
+	.column {
+		flex: 1 1 50%;
+	}
+
+	.toolkit-content {
+		flex: 1 1 49%;
+		padding: toRem(80) toRem(32) 0;
+
+		@include respond-to(large) {
+			padding: toRem(50) 0 toRem(50) 10%;
+		}
+	}
+
+	.tab-indicator {
+		display: none;
+		left: -60px;
+		position: absolute;
+		top: 17px;
+		width: 85px;
+
+		@include respond-to(large) {
+			display: block;
+		}
+
+		svg {
+			fill: color(indicator);
+		}
+	}
+
+	.toolkit-options {
+		display: flex;
+		position: relative;
+	}
+
+	.tabs {
+		flex: 1 1 50%;
+		font-size: toRem(13);
+		font-weight: 700;
+		padding-right: 20px;
+		position: relative;
+
+		&:after {
+			background-color: rgba(color(white), 0.6);
+			content: '';
+			height: 2px;
+			position: absolute;
+			right: -40px;
+			top: 0;
+			width: 60px;
+		}
+
+		li {
+			background-color: color(tooltabs);
+			margin-bottom: toRem(32);
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			color: color(white);
+			display: block;
+			height: 50px;
+			position: relative;
+		}
+
+		span {
+			@include center;
+			padding: 0 10px;
+			width: 100%;
+		}
+	}
+
+	.solution {
+		background-color: rgba(color(white), 0.6);
+		color: color(blue);
+		flex: 1 1 50%;
+		font-size: toRem(13);
+		margin-left: 40px;
+		padding: 15px;
+
+		a {
+			color: color(white);
+		}
+	}
+
+	.descriptors {
+		font-size: toRem(12);
+	}
+
+	.tool-logos {
+		ul {
+			align-items: center;
+			display: flex;
+		}
+
+		li {
+			flex: 1 1 auto;
+			padding: 20px;
+		}
+	}
+
+	.toolkit-images {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 32% 100%);
+	}
+
+	.tk-images {
+		position: relative;
+	}
+
+	.tk-img {
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}

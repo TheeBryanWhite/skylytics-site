@@ -3,6 +3,4 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
-exports.onInitialClientRender = () => {
-    require("typeface-raleway");
-};
+export { default as wrapRootElement } from './src/redux/store/store';

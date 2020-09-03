@@ -1,20 +1,86 @@
 module.exports = {
   siteMetadata: {
     author: 'ThreePoint Collective',
-    description: 'Boilerplate starter project for ThreePoint Collective web projects',
+    description: 'The primary website for Skylytics Data, LLC',
     menuLinks: [
       {
-        class: '',
-        name: '',
-        link: ''
+        class: 'home',
+        name: 'Home',
+        link: '/#top'
+      },
+      {
+        class: 'about-us',
+        name: 'About Us',
+        link: '/#about-us'
+      },
+      {
+        class: 'case-stories',
+        name: 'Case Stories',
+        link: '/#case-stories'
+      },
+      {
+        class: 'tool-kit',
+        name: 'Toolkit',
+        link: '/#toolkit'
+      },
+      {
+        class: 'leadership',
+        name: 'Leadership',
+        link: '/#leadership'
+      },
+      {
+        class: 'news',
+        name: 'news',
+        link: '/#news'
+      },
+      {
+        class: 'contact-us',
+        name: 'Contact Us',
+        link: '/#contact-us'
+      },
+      {
+        class: 'login',
+        name: 'Login',
+        link: '/'
+      },
+    ],
+    address: {
+      address1: '402 Amherst St.',
+      address2: 'Suite 303',
+      city: 'Nashua',
+      state: 'NH',
+      zip: '03063',
+      phone: '(603) 460-4496',
+      contact: 'info@safercontact.com',
+    },
+    socialMedia: [
+      {
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/company/skylytics-data-llc/'
+      },
+      {
+        name: 'Facebook',
+        url: 'https://www.facebook.com/Skylytics-Data-LLC-101495944931186'
+      },
+      {
+        name: 'Twitter',
+        url: 'https://twitter.com/SkyLyticsD8a'
       }
     ],
-    phone: '(555) 555-5555',
     siteUrl: 'https://localhost:3000',
-    title: 'ThreePoint Gatsby Starter',
+    title: 'Skylytics Data, LLC',
   },
   plugins: [
     'gatsby-background-image',
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Avenir"],
+          urls: ["/fonts/fonts.css"],
+        },
+      },
+    },
     // Uncomment when Prismic repo is setup
     // {
     //   resolve: 'gatsby-source-prismic-graphql',
@@ -47,7 +113,7 @@ module.exports = {
     //   },
     // },
     // 'gatsby-plugin-offline',
-    // 'gatsby-plugin-react-helmet',
+    'gatsby-plugin-react-helmet',
     // {
     //   resolve: 'gatsby-plugin-sitemap',
     //   options: {
@@ -71,13 +137,16 @@ module.exports = {
     // },    
     'gatsby-plugin-sass',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-transition-link',
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: "gatsby-plugin-react-svg",
       options: {
-        pathToConfigModule: 'src/utils/typography',
-      },
+        rule: {
+          include: /svg/ // See below to configure properly
+        }
+      }
     },
+    'gatsby-plugin-transition-link',
+    'gatsby-transformer-json',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

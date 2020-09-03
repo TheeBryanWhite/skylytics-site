@@ -1,3 +1,53 @@
 @import "../sass/mixins.scss";
 
-header {}
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+.super-header {
+	background-color: color(superheaderbg);
+	padding-bottom: 15px;
+	padding-top: 15px;
+	text-align: center;
+	text-transform: uppercase;
+
+	@include respond-to(medium) {
+		.container {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	h1 {
+		margin: 0 auto;
+		max-height: 100px;
+		max-width: 400px;
+
+		@include respond-to(medium) {
+			flex: 1 0 auto;
+			margin: 0;
+			max-width: 150px;
+		}
+
+		span {
+			@include screen-reader-text;
+		}
+	}
+
+	p {
+		color: color(superheadercopy);
+		margin: 0;
+
+		b {
+			font-weight: 700;
+		}
+	}
+
+	svg {
+		fill: color(white);
+	}
+}

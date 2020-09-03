@@ -1,0 +1,51 @@
+@import '../sass/mixins.scss';
+
+.elevator-pitch {
+	background-color: color(black);
+	margin-top: -200px;
+	position: relative;
+
+	h2 {
+		color: color(white);
+		font-size: toRem(32);
+		margin-bottom: toRem(50);
+		font-style: italic;
+	}
+
+	.bgnull {
+		bottom: 0;
+		left: 0;
+		position: absolute !important;
+		right: 0;
+		top: 0;
+
+		@include respond-to(large) {
+			clip-path: polygon(13% 25%, 100% 0, 100% 100%, 31% 100%);
+		}
+	}
+
+	.epcopy {
+		padding: toRem(309.5) 0 toRem(189.5);
+	}
+
+	.cta {
+
+		&:hover {
+
+			&:after {
+				transform: translateX(5px);
+			}
+		}
+
+		&:after {
+			content: '\2192';
+			font-size: 24px;
+			margin-left: 25px;
+			transition: all 0.2s linear;
+		}
+	}
+
+	.container {
+		max-width: toRem(880);
+	}
+}

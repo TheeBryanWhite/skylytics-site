@@ -1,0 +1,76 @@
+@import '../sass/mixins.scss';
+
+.hero {
+	background-color: color(herobg);
+	color: color(white);
+	margin-top: toRem(65);
+	overflow: hidden;
+	position: relative;
+	z-index: 90;
+
+	@include respond-to(large) {
+		clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%, 0 53%);
+	}
+
+	a {
+		color: color(white);
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		padding: toRem(202) toRem(32);
+	}
+
+	@include respond-to(large) {
+		.slide {
+			clip-path: polygon(0 0, 100% 0, 100% 76%, 13% 100%, 0 53%);
+		}
+	}
+
+	.hero-copy {
+		align-self: flex-end;
+		font-size: toRem(24);
+		font-weight: 600;
+		text-align: right;
+
+		@include respond-to(large) {
+			margin-bottom: toRem(100);
+			width: 60%;
+		}
+
+		h2 {
+			font-size: toRem(32);
+		}
+	}
+
+	.hero-cta {
+		align-self: flex-start;
+		font-weight: 700;
+		padding-left: 50px;
+
+		ul {
+			list-style: none;
+		}
+
+		li {
+			margin: toRem(16) 0;
+
+			span {
+				display: inline-block;
+				font-size: toRem(8);
+				transform: translateY(-5px);
+			}
+		}
+
+		.cta {
+
+			&:after {
+				content: '\2192';
+				font-size: 24px;
+				margin-left: 25px;
+				transition: all 0.2s linear;
+			}
+		}
+	}
+}

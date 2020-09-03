@@ -1,34 +1,5 @@
 //     /*
 //         ========================================
-//             ::Table of Contents
-//
-//            1. Function to convert px to em
-//            2. Centering Mixins
-//            3. Maintain Aspect Ratio Mixin
-//            4. Clearfix Hack
-//            5. Covering Mixin
-//            6. Triangle Mixin
-//            7. Custom Scroll Bars
-//            8. Font Smoothing
-//            9. Custom Scroll Bars
-//            10. Positioning Mixins
-//            11. Simple Asset Helper Functions
-//            12. Simplify Events Mixin
-//            13. Sticky Header Mixin
-//            14. Margin Center
-//            15. Screen Reader Text
-//            16. Flex Styles Wrapper
-//            17. Webkit Tap Highlight
-//            18. Photoshop Letter Spacing
-//            19. Square Sizing
-//            20. Form Placeholder
-//
-//         ========================================
-// */
-
-
-//     /*
-//         ========================================
 //             ::Function to convert px to rem
 //         ========================================
 //     */
@@ -366,31 +337,6 @@ $asset-base-path: './' !default;
 //                 text-decoration: underline;
 //             }
 //         }
-
-//    /*
-//        ========================================
-//            ::Sticky Header Mixin
-//        ========================================
-//    */
-
-@mixin admin-sticky-fix($offset: 0) {
-    $narrow-offset: 46px;
-    $wide-offset: 32px;
-
-    @if $offset != 0 and type-of($offset) == 'number' {
-        $narrow-offset: $narrow-offset + $offset;
-        $wide-offset: $wide-offset + $offset;
-    }
-
-    .admin-bar & {
-        top: $narrow-offset;
-
-        @media screen and (min-width: 783px) {
-            top: $wide-offset;
-        }
-    }
-}
-
 //    /*
 //        ========================================
 //            ::Margin Center
@@ -510,18 +456,31 @@ $asset-base-path: './' !default;
 
 $white: #fff;
 $black: #000;
-$gray: #767676;
-$blue: #00aaec;
+$gray: #cccccc;
+$blue: #0510a0;
+$lightblue: #0356fc;
+$teal: #0bd3cd;
+$red: #a00000;
 
 //scss-lint:disable ColorVariable
 $colors: (
     white: $white,
     black: $black,
     gray: $gray,
-    validation-color: #d9534f,
-    fileupload-border: #ddd,
-    fileupload-color: #aaa,
-    input-border: #ccc
+    blue: $blue,
+    lightblue: $lightblue,
+    teal: $teal,
+    login: $blue,
+    superheaderbg: $blue,
+    superheadercopy: $teal,
+    herobg: $blue,
+    cta: $teal,
+    ctahover: $blue,
+    indicator: $lightblue,
+    tooltabs: $teal,
+    biolink: $teal,
+    footertag: $teal,
+    validation-color: $red
 );
 
 @function color($key) {
@@ -605,7 +564,7 @@ $z-index: (
 }
 
 
-$base-stack: "Raleway", Helvetica, Arial, sans-serif;
+$base-stack: "Avenir", Helvetica, Arial, sans-serif;
 
 $fonts: (
     base: $base-stack
@@ -627,13 +586,10 @@ $fonts: (
 //  */
 
 $weights: (
-    light: 300,
     normal: 400,
     medium: 500,
-    semibold: 600,
+    demi: 600,
     bold: 700,
-    xbold: 800,
-    black: 900
 );
 
 @function fw($key) {
@@ -684,6 +640,7 @@ html {
 }
 
 body {
+    background-color: color(black);
     font-family: family(base);
     font-style: normal;
     font-weight: 400;
@@ -702,6 +659,24 @@ a {
     @include screen-reader-text;
 }
 
-main {
-    padding: 0 2rem;
+.container {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    position: relative;
+}
+
+.cta {
+    background-color: color(cta);
+    color: color(white);
+    display: inline-block;
+    font-weight: 700;
+    line-height: toRem(10);
+    padding: toRem(15) toRem(10);
+    transition: background-color 0.2s linear;
+
+    &:hover {
+        background-color: color(ctahover);
+    }
 }

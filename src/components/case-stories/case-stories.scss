@@ -1,0 +1,130 @@
+@import '../sass/mixins.scss';
+
+.casestories {
+	color: color(white);
+
+	@include respond-to(large) {
+		padding-top: 25px;
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 56%);
+	}
+
+	h2 {
+		font-size: toRem(32);
+	}
+
+	h3 {
+		margin-top: toRem(28);
+	}
+
+	a {
+		color: color(lightblue);
+		font-weight: bold;
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	li {
+		margin-top: toRem(16);
+	}
+
+	.columns {
+		background-color: color(blue);
+
+		@include respond-to(large) {
+			display: flex;
+		}
+	}
+
+	.column {
+		flex: 1 1 50%;
+	}
+
+	.story-options {
+		display: flex;
+
+		@include respond-to(large) {
+			clip-path: polygon(0 0, 63% 0, 109% 100%, 0 100%);
+			display: block;
+		}
+	}
+
+	.story {
+		padding-top: toRem(40);
+
+		@include respond-to(large) {
+			padding-top: toRem(75);
+		}
+	}
+
+	.story-img {
+		background-color: color(blue);
+		flex: 1 1 33%;		
+		overflow: hidden;
+		position: relative;
+
+		@include respond-to(large) {
+			max-height: 300px;
+			overflow: visible;
+		}
+
+		img,
+		picture {
+			mix-blend-mode: overlay;
+		}
+
+		&:nth-of-type(1) {
+			z-index: 3;
+
+			@include respond-to(large) {
+				clip-path: polygon(0 0, 79% 0, 100% 44%, 0 85%);
+			}
+
+			img,
+			picture {
+				mix-blend-mode: normal;
+			}
+		}
+
+		&:nth-of-type(2) {			
+			z-index: 2;
+
+			@include respond-to(large) {
+				clip-path: polygon(0 0, 100% 0, 100% 28%, 28% 100%, 0 100%);
+				margin-top: -135px;
+			}
+		}
+
+		&:nth-of-type(3) {
+			position: relative;
+			z-index: 1;
+
+			@include respond-to(large) {
+				margin-bottom: 175px;
+				margin-top: -175px;
+				padding-left: 25%;
+			}
+		}
+	}
+
+	.story-container {
+		margin: 0 toRem(32);
+
+		@include respond-to(large) {
+			margin: 0;
+		}
+	}
+
+	.cta {
+		color: color(white);
+		margin-top: toRem(24);
+
+		&:after {
+			content: '\2192';
+			font-size: 24px;
+			margin-left: 25px;
+			transition: all 0.2s linear;
+		}
+	}
+}

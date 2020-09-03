@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 
-import '../sass/contact.scss'
+import MailSvg from '../svg/mail_icon.svg'
+
+import '../contact.scss'
 
 export default class ContactForm extends React.Component {
 
@@ -132,85 +134,87 @@ export default class ContactForm extends React.Component {
 
     render () {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="row">
-                    <label htmlFor="name">Name</label>
-                    <input 
-                        id="name"
-                        name="name"
-                        onChange={this.handleInputChange}
-                        placeholder="Name"
-                        type="text"
-                        value={this.state.name.value}
-                    />
-                    <p className="validation-message">{this.validationMessage()}</p>
-                </div>
-                <div className="row">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        name="email"
-                        onChange={this.handleInputChange}
-                        placeholder="Email"
-                        type="text"
-                        value={this.state.email.value}
-                    />
-                    <p className="validation-message">{this.validationMessage()}</p>
-                    <p className="validation-email">This doesn't seem to be a valid email address.</p>
-                </div>
-                <div className="row">
-                    <label htmlFor="phone">Phone</label>
-                    <input
-                        id="phone" 
-                        name="phone"
-                        onChange={this.handleInputChange}
-                        placeholder="Phone"
-                        type="text"
-                        value={this.state.phone.value}
-                    />
-                    <p className="validation-message">{this.validationMessage()}</p>
-                </div>
-                <div className="row">
-                    <label htmlFor="company">Company</label>
-                    <input
-                        id="company"
-                        name="company"
-                        onChange={this.handleInputChange}
-                        placeholder="Company"
-                        type="text"
-                        value={this.state.company.value}
-                    />
-                    <p className="validation-message">{this.validationMessage()}</p>
-                </div>
-                <div className="row">
-                    <label htmlFor="message">Message</label>
-                    <textarea
-                        id="message" 
-                        name="message"
-                        onChange={this.handleInputChange}
-                        placeholder="Message"
-                        rows="5"
-                        value={this.state.message.value}
-                    />
-                    <p className="validation-message">{this.validationMessage()}</p>
-                </div>
-                <div className="row">
-                    <label htmlFor="postnobills">postnobills</label>
-                    <input
-                        className="postnobills"
-                        id="postnobills"
-                        name="postnobills"
-                        onChange={this.handleInputChange}
-                        placeholder="postnobills"
-                        type="text"
-                        value={this.state.postnobills.value}
-                    />
-                </div>
-                <div className="row submit-container">
-                    <span className="mask">Send</span>
-                    <button type="submit">Send</button>
-                </div>
-            </form>
+            <div className="cf-container">
+                <h2><MailSvg />Contact Us</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="row">
+                        <label htmlFor="name">Name</label>
+                        <input 
+                            id="name"
+                            name="name"
+                            onChange={this.handleInputChange}
+                            placeholder="Name"
+                            type="text"
+                            value={this.state.name.value}
+                        />
+                        <p className="validation-message">{this.validationMessage()}</p>
+                    </div>
+                    <div className="row">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            id="email"
+                            name="email"
+                            onChange={this.handleInputChange}
+                            placeholder="Email"
+                            type="text"
+                            value={this.state.email.value}
+                        />
+                        <p className="validation-message">{this.validationMessage()}</p>
+                        <p className="validation-email">This doesn't seem to be a valid email address.</p>
+                    </div>
+                    <div className="row">
+                        <label htmlFor="phone">Phone</label>
+                        <input
+                            id="phone" 
+                            name="phone"
+                            onChange={this.handleInputChange}
+                            placeholder="Phone"
+                            type="text"
+                            value={this.state.phone.value}
+                        />
+                        <p className="validation-message">{this.validationMessage()}</p>
+                    </div>
+                    <div className="row">
+                        <label htmlFor="company">Company</label>
+                        <input
+                            id="company"
+                            name="company"
+                            onChange={this.handleInputChange}
+                            placeholder="Company"
+                            type="text"
+                            value={this.state.company.value}
+                        />
+                        <p className="validation-message">{this.validationMessage()}</p>
+                    </div>
+                    <div className="row">
+                        <label htmlFor="message">Message</label>
+                        <textarea
+                            id="message" 
+                            name="message"
+                            onChange={this.handleInputChange}
+                            placeholder="Message"
+                            rows="5"
+                            value={this.state.message.value}
+                        />
+                        <p className="validation-message">{this.validationMessage()}</p>
+                    </div>
+                    <div className="row">
+                        <label htmlFor="postnobills">postnobills</label>
+                        <input
+                            className="postnobills"
+                            id="postnobills"
+                            name="postnobills"
+                            onChange={this.handleInputChange}
+                            placeholder="postnobills"
+                            type="text"
+                            value={this.state.postnobills.value}
+                        />
+                    </div>
+                    <div className="row submit-container">
+                        <button className="cta" type="submit">We Want To Hear Your Story</button>
+                    </div>
+                </form>
+            </div>
             )
         }
     }
