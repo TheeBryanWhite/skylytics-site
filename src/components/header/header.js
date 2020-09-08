@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import SuperHeader from './super-header/super-header'
 import Nav from '../nav/nav'
 
