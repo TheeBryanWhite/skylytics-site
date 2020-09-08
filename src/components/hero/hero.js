@@ -18,7 +18,7 @@ const Hero = () => {
 				body
 				src {
 					childImageSharp {
-						fluid(maxWidth: 300) {
+						fluid(maxWidth: 1920) {
 							...GatsbyImageSharpFluid
 						}
 					}
