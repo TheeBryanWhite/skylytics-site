@@ -37,8 +37,6 @@ const FooterLinks = () => {
 	const address = FooterLinksData.site.siteMetadata.address
 	const social = FooterLinksData.site.siteMetadata.socialMedia
 
-	console.log(FooterLinksData.site.siteMetadata);
-
 	return(
 		<div className="footer-links">
           <div className="links-container container">

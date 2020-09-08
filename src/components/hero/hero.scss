@@ -22,10 +22,97 @@
 		padding: toRem(202) toRem(32);
 	}
 
-	@include respond-to(large) {
-		.slide {
+	@include respond-to(large) { 
+		.slides {
 			clip-path: polygon(0 0, 100% 0, 100% 76%, 13% 100%, 0 53%);
+			position: relative;
 		}
+	}
+
+	.slidemask {
+		height: 822px;
+		position: relative;
+	}
+
+	.slidecontainer {
+		left: 0;
+		position: absolute;
+		top: 0;
+		transition: all 0.6s ease(in-out-quart);
+		width: 100%;
+	}
+
+	.slide {
+		left: 50%;
+		position: absolute !important;
+		top: 50%;
+	}
+
+	.slidecontent {
+		position: relative;
+	}
+
+	#slide0 {
+		z-index: 1;
+
+		.slide {
+			animation: spin 600s linear infinite;
+			height: 1639px;
+			width: 1639px;
+		}
+	}
+
+	#slide1 {
+		transform: translateX(-100%);
+		
+		.slide {
+			height: 825px;
+			transform: translate(-60%, -50%);
+			width: 1639px;
+		}
+
+		&.active {
+			transform: translateX(0);
+			z-index: 2;
+
+			.slide {
+				animation: panover 30s 1;
+			}
+		}
+	}
+
+	#slide2 {
+		transform:  translateX(-100%);
+		
+		.slide {
+			height: 1280px;
+			transform: translate(-50%, -65%);
+			width: 1920px;
+		}
+
+		&.active {
+			transform: translateX(0);
+			z-index: 3;
+
+			.slide {
+				animation: panup 30s linear 1;
+			}
+		}
+	}
+
+	@keyframes spin {
+		from { transform: translate(-50%, -50%) rotate(360deg) }
+		to { transform: translate(-50%, -50%) rotate(0deg) }	
+	}
+
+	@keyframes panover {
+		from { transform: translate(-50%, -50%) }
+		to { transform: translate(-60%, -50%) }	
+	}
+
+	@keyframes panup {
+		from { transform: translate(-50%, -50%) }
+		to { transform: translate(-50%, -65%) }	
 	}
 
 	.hero-copy {
@@ -46,8 +133,11 @@
 
 	.hero-cta {
 		align-self: flex-start;
+		bottom: toRem(250);
 		font-weight: 700;
-		padding-left: 50px;
+		left: 15%;
+		position: absolute;
+		z-index: 50;
 
 		ul {
 			list-style: none;

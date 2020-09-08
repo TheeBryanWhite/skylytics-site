@@ -1,0 +1,17 @@
+[
+	{
+	   "title":"2.5 Quintillion",
+	   "body":["bytes of data are created every day that must be processed, analyzed, and potentially acted upon."],
+	   "src":"../img/hero-slide-0.jpg"
+	},
+	{
+	   "title":"By 2022 50% of Business",
+	   "body":["will incorporate continuous intelligence using real-time context data to improve decisions."],
+	   "src":"../img/hero-slide-1.jpg"
+	},
+	{
+	   "title":"How are you using CI?",
+	   "body":["Are you protecting the health and safety of your employees with an IoT solution?  Maybe your streamlining operational efficiencies or improving your products’ shelf life?", "If you need answers, we can help..."],
+	   "src":"../img/hero-slide-2.jpg"
+	}
+ ]

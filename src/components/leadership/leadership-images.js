@@ -29,7 +29,7 @@ const LeadershipImages = () => {
 		<div className="leaders">
 			{LeadershipData.allLeadershipJson.nodes.map(leader => 
 				(
-				<div className="leader">
+				<div className="leader" key={leader.name}>
 					<Img fluid={leader.src.childImageSharp.fluid} />
 					<p className="leader-name">{leader.name}</p>
 					<p className="leader-position">{leader.position}</p>
