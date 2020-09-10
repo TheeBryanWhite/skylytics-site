@@ -13,6 +13,26 @@ class Layout extends Component {
   constructor(props) {
     super(props)
 
+    if (typeof window !== "undefined") {
+      require("smooth-scroll")('a[href*="#"]', {
+        offset: (anchor) => {
+          switch(anchor.getAttribute('id')) {
+            case 'case-stories':
+              return 150;
+
+            case 'leadership':
+              return 100;
+
+              case 'contact-us':
+                return -100;
+
+            default:
+              return 0;
+          }
+        }
+      })
+    }
+
     this.children = props.children
     this.findActiveSection = this.findActiveSection.bind(this)
     this.getSections = this.getSections.bind(this)

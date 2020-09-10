@@ -2,6 +2,7 @@
 
 .casestories {
 	color: color(white);
+	position: relative;
 
 	@include respond-to(large) {
 		padding-top: 25px;

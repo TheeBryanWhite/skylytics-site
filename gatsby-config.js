@@ -21,7 +21,7 @@ module.exports = {
       {
         class: 'tool-kit',
         name: 'Toolkit',
-        link: '/#toolkit'
+        link: '/#tool-kit'
       },
       {
         class: 'leadership',
