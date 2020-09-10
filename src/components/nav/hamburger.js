@@ -1,6 +1,6 @@
 import React from "react"
-import { connect } from "react-redux";
-import { setMenu } from "../../redux/actions/actions";
+import { connect } from "react-redux"
+import { setMenu } from "../../redux/actions/actions"
 
 import './hamburger.scss';
 

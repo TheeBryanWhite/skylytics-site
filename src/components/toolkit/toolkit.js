@@ -23,7 +23,7 @@ class Toolkit extends Component {
 
 	render() {
 		return (
-			<section className="toolkit" id="toolkit">
+			<section className="toolkit" id="tool-kit">
 				<div className="bgcontainer">
 					<div className="columns">
 						<div className="column toolkit-content">

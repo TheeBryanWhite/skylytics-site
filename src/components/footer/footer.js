@@ -6,8 +6,8 @@ import Subfooter from './subfooter'
 
 import "./footer.scss"
 
-const Footer = ({ siteTitle, footerClass }) => (
-    <footer className={footerClass}>
+const Footer = () => (
+    <footer>
       <SuperFooter />
       <FooterLinks />
       <Subfooter />

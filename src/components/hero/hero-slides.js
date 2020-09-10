@@ -67,4 +67,4 @@ const mapStateToProps = state => ({
     heroSlide: state.app.heroSlide
 })
 
-export default connect(mapStateToProps, { setHeroSlide })( HeroSlides)
+export default connect(mapStateToProps, { setHeroSlide })(HeroSlides)

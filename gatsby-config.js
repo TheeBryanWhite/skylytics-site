@@ -146,6 +146,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-transition-link',
+    'gatsby-plugin-styled-components',
     'gatsby-transformer-json',
     {
       resolve: 'gatsby-source-filesystem',

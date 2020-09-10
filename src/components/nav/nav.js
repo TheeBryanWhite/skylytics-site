@@ -1,65 +1,100 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
-import { connect } from 'react-redux'
-import { setMenu } from '../../redux/actions/actions'
+import React, { Component } from 'react'
+import { connect } from "react-redux"
+import { 
+  setSelectorPosition,
+  setSelectorWidth
+} from "../../redux/actions/actions"
 
 import Hamburger from './hamburger'
-import './nav.scss';
+import NavItems from './nav-items'
+import './nav.scss'
 
-const Nav = (props) => {
+class Nav extends Component {
+  constructor(props) {
+    super(props)
 
-  let menu = useStaticQuery(graphql`
-    query SiteNavQuery {
-      site {
-        siteMetadata {
-          menuLinks {
-            class
-            name
-            link
-          }
-        }
+    this.getActiveLinkPosition = this.getActiveLinkPosition.bind(this)
+    this.getActiveLinkWidth = this.getActiveLinkWidth.bind(this)
+    this.getLinksLocs = this.getLinksLocs.bind(this)
+    this.getNavLinks = this.getNavLinks.bind(this)
+    this.scrollHandler = this.scrollHandler.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
+    this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
+    this.scrollHandler();
+  }
+
+  getLinksLocs = () => {
+    const links = this.getNavLinks()
+    const linkArray = Array.prototype.slice.call(links)
+    
+    const linkData = linkArray.map(section => {
+      return {
+        'id': section.getAttribute('class'),
+        'position': section.getBoundingClientRect().left,
+        'width': section.offsetWidth
       }
-    }
-  `);
+    })
+    
+    return linkData
+  }
 
-  menu = menu.site.siteMetadata.menuLinks
+  getActiveLinkPosition = linkObj => {
+    let activeLinkPosition = null
 
-  return (
-    <nav>
-      <div className="container">
-        <ul className={`${props.menuState ? 'active-menu' : ''}`}>
-        {
-          menu.map((navItem)=> (
-          <li key={navItem.name} className={navItem.class}>
-            <Link 
-              onClick={() => props.setMenu(props.menuState)}
-              to={navItem.link}
-            >
-              <span>{navItem.name}</span>
-            </Link>
-          </li>
-          ))
-        }
-        </ul>
+    linkObj.forEach(link => {
+      if (link.id === this.props.activeSection) {
+        activeLinkPosition = link.position
+      }
+    })
 
-        <Hamburger />
-      </div>
-    </nav>
-  )
-}
+    return activeLinkPosition
+  }
 
-Nav.propTypes = {
-    menu: PropTypes.string,
-}
-  
-Nav.defaultProps = {
-    menu: ``,
+  getActiveLinkWidth = linkObj => {
+    let activeLinkWidth = 0
+
+    linkObj.forEach(link => {
+      if (link.id === this.props.activeSection) {
+        activeLinkWidth = link.width
+      }
+    })
+
+    return activeLinkWidth
+  }
+
+  getNavLinks = () => {
+    const navMenu = document.querySelectorAll('nav')
+    const navLinks = navMenu[0].querySelectorAll('li')
+    
+    return navLinks
+  }
+
+  scrollHandler = () => {
+    window.addEventListener('scroll', () => {
+      this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
+      this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
+    })
+  }
+
+  render() {
+    return (
+      <nav>
+        <div className="container">
+          <NavItems />
+          <div className="link-selector" style={{left: this.props.selectorPosition + 16, width: this.props.selectorWidth - 30}}>&nbsp;</div>
+          <Hamburger />
+        </div>
+      </nav>
+    ) 
+  }
 }
 
 const mapStateToProps = state => ({
-  menuState: state.app.menuState
+  selectorPosition: state.app.selectorPosition,
+  selectorWidth: state.app.selectorWidth
 })
 
-export default connect(mapStateToProps, { setMenu })(Nav)
+export default connect(mapStateToProps, { setSelectorPosition, setSelectorWidth })(Nav)
