@@ -13,21 +13,27 @@ class CaseStories extends Component {
 	}
 
 	componentDidMount() {
-		this.swapState()
+		this.swapState(this.props.activeStory)
 	}
 
-	swapState() {
-		let index = 1;
+	swapState(story) {
+		let index = story + 1;
 
-		setInterval(() => {
-			if (index <= 2) {
-				this.props.setActiveStory(index)
-			} else {
-				this.props.setActiveStory(0)
-				index = 0
-			}
-			index += 1;
-		}, 10000)
+		if (this.props.caseStoryCycle && this.props.selectedStory === null) {
+			setInterval(() => {
+				if (this.props.selectedStory === null) {
+					this.props.setActiveStory(index)
+					// Won't lie. This math has me scratching my head
+					if (index <= 1) {
+						index += 1;
+					} else {
+						index = 0
+					}
+				} else {
+					clearInterval()
+				}
+			}, 10000)
+		}
 	}
 
 	render() {
@@ -63,7 +69,9 @@ class CaseStories extends Component {
 }
 
 const mapStateToProps = state => ({
-    activeStory: state.app.activeStory
+	activeStory: state.app.activeStory,
+	caseStoryCycle: state.app.caseStoryCycle,
+	selectedStory: state.app.selectedStory
 })
 
 export default connect(mapStateToProps, { setActiveStory })(CaseStories)
