@@ -9,14 +9,11 @@ class HeroSlides extends Component {
 	constructor(props) {
 		super(props)
 
-		this.slidecontainer = []
-
 		this.swapState = this.swapState.bind(this)
 	}
 
 	componentDidMount() {
-		this.slidecontainer[0].classList.add('active');
-		// this.swapState()
+		this.swapState()
 	}
 
 	swapState() {
@@ -25,7 +22,6 @@ class HeroSlides extends Component {
 		setInterval(() => {
 			if (index <= 2) {
 				this.props.setHeroSlide(index)
-				this.slidecontainer[index].classList.add('active')
 			} else {
 				clearInterval()
 			}
@@ -36,10 +32,9 @@ class HeroSlides extends Component {
 	render() {
 		return (
 			this.props.slideData.allHeroJson.nodes.map((hero, index) => (
-			<div className="slidecontainer"
+			<div className={`slidecontainer ${(this.props.heroSlide === index ? 'active' : '')}`} 
 				 id={`slide${index}`}
 				 key={index}
-				 ref={slidecontainer => this.slidecontainer[index] = slidecontainer}
 			>
 				<BackgroundImage
 					className="slide"
