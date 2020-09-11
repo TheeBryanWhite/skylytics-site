@@ -7,7 +7,7 @@ import Img from "gatsby-image"
 import { connect } from "react-redux"
 import { 
 	caseStoryCycle,
-	selectedStory,
+	setSelectedStory,
 	setActiveStory
 } from "../../redux/actions/actions"
 
@@ -38,9 +38,9 @@ const Images = props => {
 	const imageClassHandler = story => {
 		let classOutput = null
 
-		if (props.chosenStory === null && props.activeStory === story) {
+		if (props.selectedStory === null && props.activeStory === story) {
 			classOutput = 'story-img active-image'
-		} else if (props.chosenStory === story) {
+		} else if (props.selectedStory === story) {
 			classOutput = 'story-img active-image'
 		} else {
 			classOutput = 'story-img'
@@ -49,20 +49,22 @@ const Images = props => {
 		return classOutput
 	}
 
+	const clickHandler = story => {
+		props.setSelectedStory(story)
+	}
+
 	const mouseEnterHandler = story => {
 		if (props.selectedStory === null) {
-			props.caseStoryCycle({'animate': false, 'activeStory': story})
+			props.caseStoryCycle(false)
+			props.setActiveStory(story)
 		}
 	}
 	
 	const mouseLeaveHandler = story => {
 		if (props.selectedStory === null) {
-			props.caseStoryCycle({'animate': true, 'activeStory': story})
+			props.caseStoryCycle(true)
+			props.setActiveStory(story)
 		}
-	}
-
-	const setSelectedStory = story => {
-		props.selectedStory({'activeStory': story, 'animate': false, 'selectedStory': story})
 	}
 	
 	return(
@@ -73,7 +75,7 @@ const Images = props => {
 					className={imageClassHandler(index)} 
 					id={`story-${index}`} 
 					key={index}
-					onClick={() => { setSelectedStory(index) }}
+					onClick={() => { clickHandler(index) }}
 					onMouseEnter={() => { mouseEnterHandler(index) }}
 					onMouseLeave={() => {mouseLeaveHandler(index) }}
 					role="presentation"
@@ -89,14 +91,14 @@ const Images = props => {
 const mapStateToProps = state => ({
 	activeStory: state.app.activeStory,
 	caseStoryCycle: state.app.caseStoryCycle,
-	chosenStory: state.app.selectedStory
+	selectedStory: state.app.selectedStory
 
 })
 
 export default connect(
 	mapStateToProps,
 	{ 
-		selectedStory,
 		setActiveStory,
+		setSelectedStory,
 		caseStoryCycle
 	})(Images)

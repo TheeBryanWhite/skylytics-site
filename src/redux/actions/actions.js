@@ -43,9 +43,9 @@ export const setSelectorWidth = (data) => (dispatch) => {
 }
 
 // selectedStory sets the user-chosen case story to be expanded and read
-export const selectedStory = (data) => (dispatch) => {
+export const setSelectedStory = (data) => (dispatch) => {
   dispatch({
-    type: types.SELECTED_STORY,
+    type: types.SET_SELECTED_STORY,
     payload: data,
   })
 }

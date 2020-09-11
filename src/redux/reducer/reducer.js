@@ -15,16 +15,13 @@ export default (state = initialState, action) => {
     case types.CASE_STORY_CYCLE:
       return { 
         ...state, 
-        activeStory: action.payload.activeStory,
-        caseStoryCycle: action.payload.animate
+        caseStoryCycle: action.payload
       }
 
-      case types.SELECTED_STORY:
+      case types.SET_SELECTED_STORY:
         return { 
           ...state, 
-          activeStory: action.payload.activeStory,
-          caseStoryCycle: action.payload.animate,
-          selectedStory: action.payload.selectedStory, 
+          selectedStory: action.payload
         }
 
     case types.SET_MENU:

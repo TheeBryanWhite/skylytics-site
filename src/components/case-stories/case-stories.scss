@@ -3,6 +3,7 @@
 .casestories {
 	color: color(white);
 	position: relative;
+	z-index: 100;
 
 	@include respond-to(large) {
 		padding-top: 25px;
@@ -123,14 +124,18 @@
 		}
 	}
 
-	.story-content {
+	.story-meta,
+	.story-body {
 		opacity: 0;
 		position: absolute;
 		top: 0;
 		transition: all 0.5s linear;
 		width: 100%;
+	}
 
-		&.active-story {
+	.active-story {
+	
+		.story-meta {
 			opacity: 1;
 		}
 	}
