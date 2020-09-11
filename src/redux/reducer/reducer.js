@@ -3,6 +3,7 @@ const initialState = {
   activeSection: "home",
   activeStory: 0,
   caseStoryCycle: true,
+  expandedStory: null,
   heroSlide: 0,
   menuState: false,
   selectedStory: null,
@@ -18,11 +19,17 @@ export default (state = initialState, action) => {
         caseStoryCycle: action.payload
       }
 
-      case types.SET_SELECTED_STORY:
-        return { 
-          ...state, 
-          selectedStory: action.payload
-        }
+    case types.SET_SELECTED_STORY:
+      return { 
+        ...state, 
+        selectedStory: action.payload
+      }
+
+    case types.SET_EXPANDED_STORY:
+      return { 
+        ...state, 
+        expandedStory: action.payload
+      }
 
     case types.SET_MENU:
       return { 

@@ -58,6 +58,7 @@
 
 	.story {
 		padding-top: toRem(40);
+		position: relative;
 
 		@include respond-to(large) {
 			padding-top: toRem(75);
@@ -66,6 +67,7 @@
 
 	.story-img {
 		background-color: color(blue);
+		cursor: pointer;
 		flex: 1 1 33%;		
 		overflow: hidden;
 		position: relative;
@@ -117,10 +119,53 @@
 
 	.story-container {
 		margin: 0 toRem(32);
-		position: relative;
+		transition: opacity 0.5s linear, transform 0.5s ease(ease-in-out);
 
 		@include respond-to(large) {
 			margin: 0;
+		}
+
+		&.expanded {
+			opacity: 1;
+			position: absolute;
+			transform: translateY(-200px);
+			transition: opacity 0.1s linear, transform 0.5s ease(ease-in-out) 0.5s;
+			width: 100%;
+		}
+	}
+
+	.story-head {
+		opacity: 1;
+		transition: opacity 0.5s linear 0.5s;
+
+		&.expanded {
+			opacity: 0;
+			transition: opacity 0.5s linear;
+		}
+	}
+
+	.story-shift {
+		position: relative;
+		
+		&:nth-of-type(1) {
+			z-index: 3;
+		}
+
+		&:nth-of-type(2) {
+			z-index: 2;
+		}
+
+		&:nth-of-type(3) {
+			z-index: 1;
+		}
+
+		&.active-story {
+
+			&:nth-of-type(1),
+			&:nth-of-type(2),	
+			&:nth-of-type(3) {
+				z-index: 5;
+			}
 		}
 	}
 
@@ -129,14 +174,37 @@
 		opacity: 0;
 		position: absolute;
 		top: 0;
-		transition: all 0.5s linear;
 		width: 100%;
+	}
+
+	.story-meta {
+		transition: opacity 0.5s linear;
+		z-index: 1;
+	}
+
+	.story-body {
+		transition: opacity 0.5s linear;
+		z-index: 0;
 	}
 
 	.active-story {
 	
 		.story-meta {
 			opacity: 1;
+		}
+	}
+
+	.expanded-story {
+		opacity: 1;
+
+		.story-meta {
+			opacity: 0;
+			transition: opacity 0.5s linear;
+		}
+
+		.story-body {
+			opacity: 1;
+			transition: opacity 0.5s linear 0.5s;
 		}
 	}
 

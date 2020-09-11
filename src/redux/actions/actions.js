@@ -50,6 +50,13 @@ export const setSelectedStory = (data) => (dispatch) => {
   })
 }
 
+export const setExpandedStory = (data) => (dispatch) => {
+  dispatch({
+    type: types.SET_EXPANDED_STORY,
+    payload: data
+  })
+}
+
 // setActiveStory sets the story highlighted by the case story automatically by the cycle
 export const setActiveStory = (data) => (dispatch) => {
   dispatch({

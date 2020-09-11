@@ -3,7 +3,9 @@ import Images from './images'
 import { connect } from "react-redux";
 import { 
 	caseStoryCycle,
-	setActiveStory
+	setActiveStory,
+	setExpandedStory,
+	setSelectedStory
 } from "../../redux/actions/actions";
 
 import './case-stories.scss'
@@ -12,6 +14,7 @@ class CaseStories extends Component {
 	constructor(props) {
 		super(props)
 
+		this.clickHandler = this.clickHandler.bind(this)
 		this.storyClassHandler = this.storyClassHandler.bind(this)
 		this.swapState = this.swapState.bind(this)
 	}
@@ -24,15 +27,24 @@ class CaseStories extends Component {
 	storyClassHandler(story) {
 		let classOutput = null
 
-		if (this.props.selectedStory === null && this.props.activeStory === story) {
+		if (this.props.expandedStory === story) {
+			classOutput = 'story-shift active-story expanded-story'
+		} else if (this.props.selectedStory === story && this.props.activeStory === story) {
 			classOutput = 'story-shift active-story'
-		} else if (this.props.selectedStory === story) {
-			classOutput = 'story-shift active-story selected-story'
+		} else if (this.props.selectedStory === null && this.props.activeStory === story) {
+				classOutput = 'story-shift active-story'
 		} else {
 			classOutput = 'story-shift'
 		}
 
 		return classOutput
+	}
+
+	clickHandler(story) {
+		this.props.caseStoryCycle(false)
+		this.props.setActiveStory(story)
+		this.props.setSelectedStory(story)
+		this.props.setExpandedStory(story)
 	}
 
 	swapState(story) {
@@ -61,18 +73,21 @@ class CaseStories extends Component {
 				<div className="columns">
 					<Images />
 					<div className="column story">
-						<div className="story-head">
+						<div className={(this.props.expandedStory !== null ? 'story-head expanded' : 'story-head')}>
 							<h2>What's your story?</h2>
 							<p>Every day we make business decisions off the information available to us; Let us show you how to leverage the power of continuous intelligence to your advantage.</p>
 						</div>
-						<div className="story-container">
+						<div className={(this.props.expandedStory !== null ? 'story-container expanded' : 'story-container')}>
 							{this.props.storyData.map((story, index) => (
 							<div className={this.storyClassHandler(index)}  key={index}>
 								<div className="story-meta">
 									<h3>{story.node.content.title}</h3>
 									<p>{story.node.content.excerpt}</p>
 									<ul>
-										<li><button className="cta" href="#">Read More</button></li>
+										<li><button 
+												className="cta"
+												onClick={() => {this.clickHandler(index)}}
+											>Read More</button></li>
 										{(story.node.content.link !== null ? <li><a href={`http://${story.node.content.link}`} target="_blank" rel="noreferrer">Learn more about our Tracing software, safercontact<span>&reg;</span></a></li> : '')}
 									</ul>
 								</div>
@@ -95,7 +110,8 @@ class CaseStories extends Component {
 const mapStateToProps = state => ({
 	activeStory: state.app.activeStory,
 	caseStoryCycle: state.app.caseStoryCycle,
+	expandedStory: state.app.expandedStory,
 	selectedStory: state.app.selectedStory
 })
 
-export default connect(mapStateToProps, { caseStoryCycle, setActiveStory })(CaseStories)
+export default connect(mapStateToProps, { caseStoryCycle, setActiveStory, setExpandedStory, setSelectedStory })(CaseStories)

@@ -8,6 +8,7 @@ import { connect } from "react-redux"
 import { 
 	caseStoryCycle,
 	setSelectedStory,
+	setExpandedStory,
 	setActiveStory
 } from "../../redux/actions/actions"
 
@@ -51,6 +52,8 @@ const Images = props => {
 
 	const clickHandler = story => {
 		props.setSelectedStory(story)
+		props.setActiveStory(story)
+		props.setExpandedStory(null)
 	}
 
 	const mouseEnterHandler = story => {
@@ -91,6 +94,7 @@ const Images = props => {
 const mapStateToProps = state => ({
 	activeStory: state.app.activeStory,
 	caseStoryCycle: state.app.caseStoryCycle,
+	expandedStory: state.app.expandedStory,
 	selectedStory: state.app.selectedStory
 
 })
@@ -99,6 +103,7 @@ export default connect(
 	mapStateToProps,
 	{ 
 		setActiveStory,
+		setExpandedStory,
 		setSelectedStory,
 		caseStoryCycle
 	})(Images)
