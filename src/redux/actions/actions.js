@@ -34,3 +34,10 @@ export const setSelectorWidth = (data) => (dispatch) => {
     payload: data
   })
 }
+
+export const setActiveStory = (data) => (dispatch) => {
+  dispatch({
+    type: types.SET_ACTIVE_STORY,
+    payload: data
+  })
+}

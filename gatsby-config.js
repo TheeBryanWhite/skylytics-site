@@ -147,6 +147,7 @@ module.exports = {
     },
     'gatsby-plugin-transition-link',
     'gatsby-transformer-json',
+    'gatsby-transformer-yaml',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

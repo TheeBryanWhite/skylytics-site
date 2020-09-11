@@ -16,7 +16,7 @@ class HeroSlides extends Component {
 
 	componentDidMount() {
 		this.slidecontainer[0].classList.add('active');
-		this.swapState()
+		// this.swapState()
 	}
 
 	swapState() {

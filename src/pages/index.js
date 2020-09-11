@@ -10,18 +10,36 @@ import Contact from '../components/contact/contact'
 import SEO from '../components/seo'
 
 const IndexPage = ({data}) => {
-
   return (
     <Layout>
       <SEO title="Home" description="Site description" />
       <Hero />
       <ElevatorPitch />
-      <CaseStories />
+      <CaseStories storyData={data.allCaseStoriesYaml.edges} />
       <Toolkit />
       <Leadership />
       <Contact />
     </Layout>
   )
 }
+
+export const theBigQuery = graphql`
+  query csCopyQuery {
+    allCaseStoriesYaml {
+      edges {
+        node {
+          content {
+            title
+            excerpt
+            body {
+              paragraph
+            }
+            link
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
