@@ -22,9 +22,16 @@ const Images = props => {
 					node {
 						content {
 							title
-							src {
+							bw {
 								childImageSharp {
-									fluid(maxWidth: 600) {
+									fluid(maxWidth: 900) {
+										...GatsbyImageSharpFluid
+									}
+								}
+							}
+							color {
+								childImageSharp {
+									fluid(maxWidth: 900) {
 										...GatsbyImageSharpFluid
 									}
 								}
@@ -37,15 +44,41 @@ const Images = props => {
 	`)
 
 	const imageClassHandler = story => {
-		let classOutput = null
+		let classArr = ['story-img']
 
 		if (props.selectedStory === null && props.activeStory === story) {
-			classOutput = 'story-img active-image'
-		} else if (props.selectedStory === story) {
-			classOutput = 'story-img active-image'
-		} else {
-			classOutput = 'story-img'
+			classArr.push('active-image')
 		}
+		
+		if (props.selectedStory === story) {
+			classArr.push('active-image')
+		}
+		
+		if (props.expandedStory === story) {
+			classArr.push('expanded-image')
+		}
+
+		const classOutput = classArr.join(' ')
+
+		return classOutput
+	}
+
+	const colorClassHandler = story => {
+		let classArr = ['color-image']
+
+		if (props.selectedStory === null && props.activeStory === story) {
+			classArr.push('active-image')
+		}
+		
+		if (props.selectedStory === story) {
+			classArr.push('active-image')
+		}
+		
+		if (props.expandedStory === story) {
+			classArr.push('expanded-image')
+		}
+
+		const classOutput = classArr.join(' ')
 
 		return classOutput
 	}
@@ -72,8 +105,7 @@ const Images = props => {
 	
 	return(
 		<div className="column story-options">
-			{
-				csImgData.allCaseStoriesYaml.edges.map((story, index) => (
+			{csImgData.allCaseStoriesYaml.edges.map((story, index) => (
 				<div
 					className={imageClassHandler(index)} 
 					id={`story-${index}`} 
@@ -83,10 +115,22 @@ const Images = props => {
 					onMouseLeave={() => {mouseLeaveHandler(index) }}
 					role="presentation"
 				>
-					<Img fluid={story.node.content.src.childImageSharp.fluid} alt={story.node.content.title} />
+					<Img fluid={story.node.content.bw.childImageSharp.fluid} alt={story.node.content.title} />
 				</div>
-				))
-			}
+			))}
+			<div class="color-images">
+			{csImgData.allCaseStoriesYaml.edges.map((story, index) => (
+				<div
+					className={colorClassHandler(index)}
+					id={`story-${index}`} 
+					key={index}
+					onClick={() => { clickHandler(index) }}
+					role="presentation"
+				>
+					<Img fluid={story.node.content.color.childImageSharp.fluid} alt={story.node.content.title} />
+				</div>
+			))}
+			</div>
 		</div>
 	)
 }

@@ -1,6 +1,7 @@
 - story:
   content:
-    src: ../img/covid_tracing_bw.jpg
+    bw: ../img/covid_tracing_bw.jpg
+    color: ../img/covid_tracing_color.jpg
     title: Contact Tracing for a Safer Working Environment
     excerpt: How do you safely monitor each worker’s person-to-person contact while adhering to state and federal guidelines?
     body:
@@ -11,7 +12,8 @@
     link: www.safercontact.com
 - story:
   content:
-    src: ../img/data_bw.jpg
+    bw: ../img/data_bw.jpg
+    color: ../img/data_color.jpg
     title: A New Approach to Data
     excerpt: Providing customized solutions in creating incentive programs that encourage consumers to choose newer and more efficient energy technologies.
     body:
@@ -21,7 +23,8 @@
       - paragraph: The Azure® Data Pipeline makes it easier for utility companies to access and analyze all their data to develop impactful incentive programs. As more customers choose to go green, the industry continues to lead the way to a cleaner, brighter future.
 - story:
   content:
-    src: ../img/farmtofork_bw.jpg
+    bw: ../img/farmtofork_bw.jpg
+    color: ../img/farmtofork_color.jpg
     title: A Sustainable Catch
     excerpt: As our world's population continues to grow at a considerable rate, so does our demand for nutritious food. Maximizing efficiencies with predictive analytics is the key to sustainability.
     body:
