@@ -64,3 +64,17 @@ export const setActiveStory = (data) => (dispatch) => {
     payload: data
   })
 }
+
+export const setActiveSolution = (data) => (dispatch) => {
+  dispatch({
+    type: types.SET_ACTIVE_SOLUTION,
+    payload: data
+  })
+}
+
+export const setActiveSubtab = (data) => (dispatch) => {
+  dispatch({
+    type: types.SET_ACTIVE_SUBTAB,
+    payload: data
+  })
+}

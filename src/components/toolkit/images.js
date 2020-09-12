@@ -4,21 +4,21 @@ import {
 	useStaticQuery
 } from 'gatsby'
 import Img from "gatsby-image"
+import { connect } from "react-redux"
 
-const Images = () => {
+const Images = props => {
 	const tkImgData = useStaticQuery(graphql`
 		query tkImgQuery {
-			allFile(filter: {extension: {regex: "/(jpg)/"}, relativeDirectory: {eq: "components/toolkit/img"}}) {
+			allToolkitYaml {
 				edges {
 					node {
-						base
-						childImageSharp {
-							fluid {
-								aspectRatio
-								base64
-								src
-								srcSet
-								sizes
+						content {
+							src {
+								childImageSharp {
+									fluid(maxWidth: 600) {
+										...GatsbyImageSharpFluid
+									}
+								}
 							}
 						}
 					}
@@ -27,12 +27,28 @@ const Images = () => {
 		}
 	`)
 
+	const classBuilder = index => {
+		let classArr = ['tk-img']
+
+		if (props.activeSolution === index) {
+			classArr.push('active-image')
+		}
+
+		const classes = classArr.join(' ')
+
+		return classes
+	}
+
 	return (
 		<div className="tk-images">
-			{tkImgData.allFile.edges.map(({node}, index) => 
+			{tkImgData.allToolkitYaml.edges.map((user, index) =>
 				(
-				<div className="tk-img" id={`tk-${index}`} key={index}>
-					<Img fluid={node.childImageSharp.fluid} />
+				<div 
+					className={classBuilder(index)}
+					id={`tk-${index}`}
+					key={index}
+				>
+					<Img fluid={user.node.content.src.childImageSharp.fluid} />
 				</div>
 				))
 			}
@@ -40,4 +56,8 @@ const Images = () => {
 	)
 }
 
-export default Images
+const mapStateToProps = state => ({
+	activeSolution: state.app.activeSolution
+})
+
+export default connect(mapStateToProps, {})(Images)

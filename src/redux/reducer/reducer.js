@@ -1,6 +1,8 @@
 import { types } from "../constants/types";
 const initialState = {
   activeSection: "home",
+  activeSolution: 0,
+  activeSubtab: 0,
   activeStory: 0,
   caseStoryCycle: true,
   expandedStory: null,
@@ -59,6 +61,18 @@ export default (state = initialState, action) => {
       return { 
         ...state, 
         selectorWidth: action.payload 
+      }
+
+    case types.SET_ACTIVE_SOLUTION:
+      return { 
+        ...state, 
+        activeSolution: action.payload 
+      }
+
+    case types.SET_ACTIVE_SUBTAB:
+      return { 
+        ...state, 
+        activeSubtab: action.payload 
       }
 
     case types.SET_ACTIVE_STORY:

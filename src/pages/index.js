@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { graphql } from 'gatsby'
 import Layout from '../components/layout/layout'
 import Hero from '../components/hero/hero'
 import ElevatorPitch from '../components/elevator-pitch/elevatorpitch'
@@ -16,7 +16,7 @@ const IndexPage = ({data}) => {
       <Hero />
       <ElevatorPitch />
       <CaseStories storyData={data.allCaseStoriesYaml.edges} />
-      <Toolkit />
+      <Toolkit solutionsData={data.allToolkitYaml.edges} />
       <Leadership />
       <Contact />
     </Layout>
@@ -35,6 +35,21 @@ export const theBigQuery = graphql`
               paragraph
             }
             link
+          }
+        }
+      }
+    }
+    allToolkitYaml {
+      edges {
+        node {
+          content {
+            title
+            options {
+              option {
+                body
+                name
+              }
+            }
           }
         }
       }

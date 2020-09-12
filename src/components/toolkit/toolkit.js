@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { connect } from "react-redux";
+import { setActiveSolution, setActiveSubtab } from "../../redux/actions/actions";
 import Images from './images.js'
 
 import './toolkit.scss'
@@ -6,19 +8,22 @@ import './toolkit.scss'
 import AzureSvg from './svg/azure_logo_wht.svg'
 import LosantSvg from './svg/losant_logo_wht.svg'
 import MicrosoftSvg from './svg/microsoft_logo_wht.svg'
-import SkylyticsSvg from './svg/skylytics-logo.svg'
 import TableauSvg from './svg/tableau_logo_wht.svg'
 
 class Toolkit extends Component {
 	constructor(props) {
-		super(props);
+		super(props)
 
-		this.tabs = React.createRef();
-		this.solution = React.createRef();
+		this.solutionClickHandler = this.solutionClickHandler.bind(this)
+		this.subtabClickHandler = this.subtabClickHandler.bind(this)
 	}
 
-	componentDidMount() {
-		this.solution.current.style.height = this.tabs.current.offsetHeight
+	solutionClickHandler(index) {
+		this.props.setActiveSolution(index)
+	}
+
+	subtabClickHandler(index) {
+		this.props.setActiveSubtab(index)
 	}
 
 	render() {
@@ -31,30 +36,53 @@ class Toolkit extends Component {
 							<p>Let’s build a toolkit for a successful business.</p>
 	
 							<div className="toolkit-options">
-								<div className="tab-indicator">
-									<SkylyticsSvg />
-								</div>
-								<ul className="tabs" ref={this.tabs}>
-									<li><a href="/"><span>Professional &amp; Managed Services</span></a></li>
-									<li><a href="/"><span>Development Operations</span></a></li>
-									<li><a href="/"><span>Solutions Strategy &amp; Development</span></a></li>
+								<ul className="tabs">
+									{this.props.solutionsData.map((solution, index) => (
+									<li id={`solution-tab-${index}`} key={index}>
+										<button onClick={() => { this.solutionClickHandler(index) }}>
+											<span>{solution.node.content.title}</span>
+										</button>
+									</li>
+									))}
 								</ul>
 	
-								<ul className="solution" ref={this.solution}>
-									<li>
-										<ul className="subtabs">
-											<li><a href="#analytics">Analytics</a></li>
-											<li><a href="#data-science">Full-Stack Data Science</a></li>
-											<li><a href="#data-engineering">Data Engineering</a></li>
-											<li><a href="#solution-development">Solutions Development</a></li>
-										</ul>
-									</li>
-									<li>
-										<ul className="descriptors">
-											<li className="analytics">Well developed descriptive, prescriptive, and predictive analytics can be a game changer for organizations of any size as they seek to become better producers and consumers of insight derived from internal and external data.  We work side by side with clients to develop analytics that align with their business strategies to identify opportunities for top line revenue growth and expense optimizations.</li>
-										</ul>
-									</li>
-								</ul>
+								<div className="solutions-container">
+									{this.props.solutionsData.map((solution, index) => (
+									<ul 
+										className={(this.props.activeSolution === index ? 'solution active-solution' : 'solution')}
+										id={`solution-${index}`} 
+										key={index}
+									>
+										<li>
+											<ul className="subtabs">
+												{solution.node.content.options.map((node, index) => (
+													<li 
+														className={(this.props.activeSubtab === index ? 'subtab active-subtab' : 'subtab')}
+														id={`solution-subtab-${index}`} 
+														key={index}
+													>
+															<button onClick={() => { this.subtabClickHandler(index) }}>
+																{node.option.name}
+															</button>
+													</li>
+												))}
+											</ul>
+										</li>
+										<li>
+											<ul className="descriptors">
+												{solution.node.content.options.map((node, index) => (
+												<li 
+													className={(this.props.activeSubtab === index ? 'descriptor active-descriptor' : 'descriptor')}
+													key={index}
+												>
+													{node.option.body}
+												</li>
+												))}
+											</ul>
+										</li>
+									</ul>
+									))}
+								</div>
 							</div>
 	
 							<div className="tool-logos">
@@ -76,4 +104,9 @@ class Toolkit extends Component {
 	}
 }
 
-export default Toolkit
+const mapStateToProps = state => ({
+	activeSolution: state.app.activeSolution,
+	activeSubtab: state.app.activeSubtab
+})
+
+export default connect(mapStateToProps, { setActiveSolution, setActiveSubtab })(Toolkit)

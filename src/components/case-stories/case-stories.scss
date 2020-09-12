@@ -119,7 +119,7 @@
 
 	.story-container {
 		margin: 0 toRem(32);
-		transition: opacity 0.5s linear, transform 0.5s ease(ease-in-out);
+		transition: opacity 0.5s linear, transform 0.5s ease(in-out-quart);
 
 		@include respond-to(large) {
 			margin: 0;
@@ -129,7 +129,7 @@
 			opacity: 1;
 			position: absolute;
 			transform: translateY(-200px);
-			transition: opacity 0.1s linear, transform 0.5s ease(ease-in-out) 0.5s;
+			transition: opacity 0.1s linear, transform 0.5s ease(in-out-quart) 0.5s;
 			width: 100%;
 		}
 	}
