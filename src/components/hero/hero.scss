@@ -19,7 +19,15 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		padding: toRem(202) toRem(32);
+		padding: toRem(100) toRem(32);
+
+		@include respond-to(small) {
+			padding: toRem(140) toRem(32);
+		}
+
+		@include respond-to(large) {
+			padding: toRem(202) toRem(32);
+		}
 	}
 
 	@include respond-to(large) { 
@@ -30,8 +38,12 @@
 	}
 
 	.slidemask {
-		height: 822px;
+		height: 693px;
 		position: relative;
+
+		@include respond-to(large) {
+			height: 822px;
+		}
 	}
 
 	.slidecontainer {
@@ -66,9 +78,13 @@
 		transform: translateX(-100%);
 		
 		.slide {
-			height: 825px;
+			height: 1639px;
 			transform: translate(-60%, -50%);
 			width: 1639px;
+
+			@include respond-to(large) {
+				height: 825px;
+			}
 		}
 
 		&.active {
@@ -86,8 +102,12 @@
 		
 		.slide {
 			height: 1280px;
-			transform: translate(-50%, -65%);
+			transform: translate(-50%, -55%);
 			width: 1920px;
+
+			@include respond-to(large) {
+				transform: translate(-50%, -65%);
+			}
 		}
 
 		&.active {
@@ -112,32 +132,51 @@
 
 	@keyframes panup {
 		from { transform: translate(-50%, -50%) }
-		to { transform: translate(-50%, -65%) }	
+		to { transform: translate(-50%, -55%) }	
+	}
+
+	@include respond-to(large) {
+		@keyframes panup {
+			from { transform: translate(-50%, -50%) }
+			to { transform: translate(-50%, -65%) }	
+		}
 	}
 
 	.hero-copy {
+		background-color: rgba(color(black), 0.4);
 		align-self: flex-end;
-		font-size: toRem(24);
+		font-size: toRem(18);
 		font-weight: 600;
+		padding: toRem(16);
 		text-align: right;
 
 		@include respond-to(large) {
+			background: transparent;
+			font-size: toRem(24);
 			margin-bottom: toRem(100);
 			width: 60%;
 		}
 
 		h2 {
-			font-size: toRem(32);
+			font-size: toRem(24);
+
+			@include respond-to(large) {
+				font-size: toRem(32);
+			}
 		}
 	}
 
 	.hero-cta {
 		align-self: flex-start;
-		bottom: toRem(250);
+		bottom: toRem(95);
 		font-weight: 700;
 		left: 15%;
 		position: absolute;
 		z-index: 50;
+
+		@include respond-to(large) {
+			bottom: toRem(250);
+		}
 
 		ul {
 			list-style: none;

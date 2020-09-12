@@ -118,7 +118,7 @@ const Images = props => {
 					<Img fluid={story.node.content.bw.childImageSharp.fluid} alt={story.node.content.title} />
 				</div>
 			))}
-			<div class="color-images">
+			<div className="color-images">
 			{csImgData.allCaseStoriesYaml.edges.map((story, index) => (
 				<div
 					className={colorClassHandler(index)}
