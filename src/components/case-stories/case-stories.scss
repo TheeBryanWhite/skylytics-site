@@ -88,7 +88,7 @@
 		transition: clip-path 0.5s linear, all 0.5s linear;
 
 		@include respond-to(large) {
-			max-height: 300px;
+			max-height: 310px;
 			overflow: visible;
 		}
 
@@ -114,7 +114,13 @@
 
 				img,
 				picture {
-					transform: translateY(-360px);
+					transform: translateY(-170px);
+				}
+			}
+
+			@include respond-to(xlarge) {
+				img {
+					transform:  translateY(-250px);
 				}
 			}
 
@@ -125,11 +131,18 @@
 
 			@include respond-to(large) {
 				clip-path: polygon(0 0, 100% 0, 100% 28%, 28% 100%, 0 100%);
-				margin-top: -135px;
+				margin-top: -157px;
 
 				img,
 				picture {
-					transform: translateY(-180px);
+					transform: translateY(20px);
+				}
+			}
+
+			@include respond-to(epic) {
+				img,
+				picture {
+					transform: translateY(-80px);
 				}
 			}
 		}
@@ -140,12 +153,18 @@
 
 			@include respond-to(large) {
 				margin-bottom: 175px;
-				margin-top: -175px;
+				margin-top: -179px;
 				padding-left: 25%;
 
 				img,
 				picture {
-					transform: translateY(-140px);
+					transform: translateY(15px);
+				}
+			}
+
+			@include respond-to(xlarge) {
+				img {
+					transform:  translateY(-45px);
 				}
 			}
 		}
