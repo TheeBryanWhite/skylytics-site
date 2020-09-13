@@ -36,7 +36,7 @@ const Leadership = () => {
 					<h2>skylytics<span>&reg;</span> Leadership Team</h2>
 					<p>Our inspiration to make better business decisions starts with our leaders; the human bridge between continuous intelligence technology and you.</p>
 					<LeadershipImages />
-					<p><Link className="cta" to="/">Technical Team Members</Link></p>
+					<p><Link className="cta" to="/leadership">Technical Team Members</Link></p>
 				</div>
 			</div>
 		</section>
