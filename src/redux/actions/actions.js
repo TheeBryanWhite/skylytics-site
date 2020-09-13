@@ -14,6 +14,13 @@ export const setMenu = (data) => (dispatch) => {
   })
 }
 
+export const setMobileCaseState = (data) => (dispatch) => {
+  dispatch({
+    type: types.SET_MOBILE_CASE,
+    payload: data,
+  })
+}
+
 export const setHeroSlide = (data) => (dispatch) => {
   dispatch({
     type: types.SET_HERO_SLIDE,

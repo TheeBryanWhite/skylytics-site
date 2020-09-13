@@ -48,6 +48,7 @@
 	}
 
 	.story-options {
+		align-items: stretch;
 		display: flex;
 		position: relative;
 
@@ -59,17 +60,29 @@
 	}
 
 	.story {
+		min-height: 300px;
 		padding-top: toRem(40);
 		position: relative;
 
 		@include respond-to(large) {
 			padding-top: toRem(75);
 		}
+
+		&.expanded {
+			position: absolute;
+			top: 0;
+			z-index: 1000;
+
+			@include respond-to(large) {
+				position: static;
+			}
+		}
 	}
 
 	.story-img {
 		background-color: color(blue);
-		cursor: pointer;		
+		cursor: pointer;
+		flex: 1 0 33%;		
 		overflow: hidden;
 		position: relative;
 		transition: clip-path 0.5s linear, all 0.5s linear;
@@ -79,12 +92,16 @@
 			overflow: visible;
 		}
 
+		.gatsby-image-wrapper {
+			height: 100%;
+		}
+
 		img,
 		picture {
 			mix-blend-mode: overlay;
+			object-fit: cover;
 		}
 		
-
 		&.active-image {
 			background-color: transparent;
 		}
@@ -94,12 +111,13 @@
 
 			@include respond-to(large) {
 				clip-path: polygon(0 0, 79% 0, 100% 44%, 0 85%);
+
+				img,
+				picture {
+					transform: translateY(-360px);
+				}
 			}
 
-			img,
-			picture {
-				transform: translateY(-200px);
-			}
 		}
 
 		&:nth-of-type(2) {			
@@ -108,6 +126,11 @@
 			@include respond-to(large) {
 				clip-path: polygon(0 0, 100% 0, 100% 28%, 28% 100%, 0 100%);
 				margin-top: -135px;
+
+				img,
+				picture {
+					transform: translateY(-180px);
+				}
 			}
 		}
 
@@ -119,29 +142,41 @@
 				margin-bottom: 175px;
 				margin-top: -175px;
 				padding-left: 25%;
+
+				img,
+				picture {
+					transform: translateY(-140px);
+				}
 			}
 		}
 	}
 
 	.story-container {
-		margin: 0 toRem(32);
+		flex-wrap: wrap;
+		min-height: 300px;
+		position: relative;
 		transition: opacity 0.5s linear, transform 0.5s ease(in-out-quart);
 
 		@include respond-to(large) {
+			display: flex;
 			margin: 0;
 		}
 
 		&.expanded {
-			opacity: 1;
-			position: absolute;
-			transform: translateY(-200px);
+			margin: 0;
+			max-height: none;
 			transition: opacity 0.1s linear, transform 0.5s ease(in-out-quart) 0.5s;
 			width: 100%;
+
+			@include respond-to(large) {
+				transform: translateY(-200px);
+			}
 		}
 	}
 
 	.story-head {
 		opacity: 1;
+		padding: 0 toRem(32);
 		transition: opacity 0.5s linear 0.5s;
 
 		&.expanded {
@@ -151,7 +186,14 @@
 	}
 
 	.story-shift {
-		position: relative;
+		min-height: 300px;
+		position: absolute;
+
+		@include respond-to(large) {
+			flex: 1 1 100%;
+			top: 0;
+			width: 100%;
+		}
 		
 		&:nth-of-type(1) {
 			z-index: 3;
@@ -165,38 +207,42 @@
 			z-index: 1;
 		}
 
-		&.active-story {
-
-			&:nth-of-type(1),
-			&:nth-of-type(2),	
-			&:nth-of-type(3) {
-				z-index: 5;
-			}
-		}
+		
 	}
 
 	.story-meta,
 	.story-body {
+		
 		opacity: 0;
-		position: absolute;
-		top: 0;
+		padding: 0 toRem(32);
 		width: 100%;
+
+		@include respond-to(large) {
+			position: absolute;
+		}
 	}
 
 	.story-meta {
+		min-height: 300px;
+		position: absolute;
+		top: 0;
 		transition: opacity 0.5s linear;
+		left: 0;
 		z-index: 1;
 	}
 
 	.story-body {
 		transition: opacity 0.5s linear;
-		z-index: 0;
 	}
 
 	.active-story {
+		.story-shift {
+			z-index: 10;
+		}
 	
 		.story-meta {
 			opacity: 1;
+			z-index: 5;
 		}
 	}
 
@@ -209,8 +255,28 @@
 		}
 
 		.story-body {
+			background: rgba(color(black), 0.6);
+			height: 100%;
+			max-height: 1500px;
 			opacity: 1;
+			overflow-y: scroll;
+			position: fixed;
+			top: 142px;
 			transition: opacity 0.5s linear 0.5s;
+			z-index: 100;
+
+			@include respond-to(medium) {
+				top: 112px;
+			}
+
+			@include respond-to(large) {
+				background-color: transparent;
+				position: static;
+			}
+		}
+
+		.cta {
+			margin-bottom: 32px;
 		}
 	}
 
@@ -222,6 +288,18 @@
 			content: '\2192';
 			font-size: 24px;
 			margin-left: 25px;
+			transition: all 0.2s linear;
+		}
+
+		&.back:after {
+			margin-left: 0;
+			content: '';
+		}
+
+		&.back:before {
+			content: '\2190';
+			font-size: 24px;
+			margin-right: 25px;
 			transition: all 0.2s linear;
 		}
 	}
@@ -242,15 +320,34 @@
 		width: 100%;
 		z-index: 100;
 
-		&:nth-of-type(1) {
-			img,
-			picture {
-				transform: translateY(-200px);
+		@include respond-to(large) {
+			&:nth-of-type(1) {
+				img,
+				picture {
+					transform: translateY(-200px);
+				}
 			}
 		}
 
 		&.expanded-image {
 			left: 0;
+		}
+	}
+
+	.color-images {
+		bottom: 0;
+		height: 1000px;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 1000px;
+
+		.gatsby-image-wrapper,
+		img,
+		picture {
+			height: 1000px !important;
+			width: 1000px !important;
 		}
 	}
 }

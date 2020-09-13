@@ -9,6 +9,7 @@ import {
 	caseStoryCycle,
 	setSelectedStory,
 	setExpandedStory,
+	setMobileCaseState,
 	setActiveStory
 } from "../../redux/actions/actions"
 
@@ -89,6 +90,13 @@ const Images = props => {
 		props.setExpandedStory(null)
 	}
 
+	const storyCloser = (story) => {
+		props.setActiveStory(story)
+		props.setSelectedStory(story)
+		props.setExpandedStory(null)
+		props.setMobileCaseState(props.caseState)
+	}
+
 	const mouseEnterHandler = story => {
 		if (props.selectedStory === null) {
 			props.caseStoryCycle(false)
@@ -124,7 +132,7 @@ const Images = props => {
 					className={colorClassHandler(index)}
 					id={`story-${index}`} 
 					key={index}
-					onClick={() => { clickHandler(index) }}
+					onClick={() => { storyCloser(index) }}
 					role="presentation"
 				>
 					<Img fluid={story.node.content.color.childImageSharp.fluid} alt={story.node.content.title} />
@@ -137,6 +145,7 @@ const Images = props => {
 
 const mapStateToProps = state => ({
 	activeStory: state.app.activeStory,
+	caseState: state.app.mobileCaseState,
 	caseStoryCycle: state.app.caseStoryCycle,
 	expandedStory: state.app.expandedStory,
 	selectedStory: state.app.selectedStory
@@ -149,5 +158,6 @@ export default connect(
 		setActiveStory,
 		setExpandedStory,
 		setSelectedStory,
+		setMobileCaseState,
 		caseStoryCycle
 	})(Images)

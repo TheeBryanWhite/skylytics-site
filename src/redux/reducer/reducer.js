@@ -8,6 +8,7 @@ const initialState = {
   expandedStory: null,
   heroSlide: 0,
   menuState: false,
+  mobileCaseState: false,
   selectedStory: null,
   selectorPosition: 0,
   selectorWidth: 0
@@ -37,6 +38,12 @@ export default (state = initialState, action) => {
       return { 
         ...state, 
         menuState: !action.payload 
+      }
+
+    case types.SET_MOBILE_CASE:
+      return { 
+        ...state, 
+        mobileCaseState: !action.payload 
       }
 
     case types.SET_HERO_SLIDE:

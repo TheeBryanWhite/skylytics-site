@@ -84,7 +84,7 @@ class Layout extends Component {
     return (
       <>
         <Helmet>
-          <body className={`${this.props.menuState ? 'locked' : ''}`} />
+          <html className={`${this.props.menuState || this.props.mobileCase ? 'locked' : ''}`} lang="en" />
         </Helmet>
         <Header />
         <main>
@@ -113,7 +113,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => ({
   activeSection: state.app.activeSection,
-  menuState: state.app.menuState
+  menuState: state.app.menuState,
+  mobileCase: state.app.mobileCaseState
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout)

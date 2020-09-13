@@ -599,12 +599,16 @@ pre tt:after {
   }
 }
 
+html.locked {
+  overflow: hidden;
+
+  @media only screen and (min-width: 1024px) {
+    overflow: visible;
+  }
+}
+
 body {
   color: color(black);
-
-  &.locked {
-    overflow: hidden;
-  }
 }
 
 a {

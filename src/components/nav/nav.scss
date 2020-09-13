@@ -16,7 +16,7 @@ nav {
 		padding: toRem(10) toRem(15);
 		position: relative;
 
-		@include respond-to(medium) {
+		@include respond-to(large) {
 			color: color(white);
 			padding: toRem(5) toRem(20);
 		}
@@ -54,7 +54,7 @@ nav {
 		transition: right 0.4s ease(in-out-quart);
 		width: toRem(325);
 
-		@include respond-to(medium) {
+		@include respond-to(large) {
 			background-color: transparent;
 			box-shadow: none;
 			display: flex;
@@ -75,14 +75,14 @@ nav {
 	li {
 		padding: 0 toRem(10);
 
-		@include respond-to(medium) {
+		@include respond-to(large) {
 			padding: 0;
 		}
 
 		&.login {
 			padding-left: toRem(25);
 
-			@include respond-to(medium) {
+			@include respond-to(large) {
 				text-transform: lowercase;
 			}
 

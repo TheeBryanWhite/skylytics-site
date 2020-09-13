@@ -5,6 +5,7 @@ import {
 	caseStoryCycle,
 	setActiveStory,
 	setExpandedStory,
+	setMobileCaseState,
 	setSelectedStory
 } from "../../redux/actions/actions";
 
@@ -14,9 +15,36 @@ class CaseStories extends Component {
 	constructor(props) {
 		super(props)
 
+		this.storyMeta = []
+
 		this.clickHandler = this.clickHandler.bind(this)
 		this.storyClassHandler = this.storyClassHandler.bind(this)
+		this.storyCloser = this.storyCloser.bind(this)
+		this.storyOpener = this.storyOpener.bind(this)
 		this.swapState = this.swapState.bind(this)
+	}
+
+	clickHandler(story) {
+		this.props.caseStoryCycle(false)
+		this.props.setActiveStory(story)
+		this.props.setSelectedStory(story)
+		this.props.setExpandedStory(story)
+	}
+
+	storyCloser() {
+		this.props.caseStoryCycle(true)
+		this.props.setActiveStory(0)
+		this.props.setSelectedStory(null)
+		this.props.setExpandedStory(null)
+		this.props.setMobileCaseState(this.props.mobileCaseState)
+	}
+
+	storyOpener(story) {
+		this.props.caseStoryCycle(false)
+		this.props.setActiveStory(story)
+		this.props.setSelectedStory(story)
+		this.props.setExpandedStory(story)
+		this.props.setMobileCaseState(this.props.mobileCaseState)
 	}
 
 	componentDidMount() {
@@ -38,13 +66,6 @@ class CaseStories extends Component {
 		}
 
 		return classOutput
-	}
-
-	clickHandler(story) {
-		this.props.caseStoryCycle(false)
-		this.props.setActiveStory(story)
-		this.props.setSelectedStory(story)
-		this.props.setExpandedStory(story)
 	}
 
 	swapState(story) {
@@ -72,21 +93,28 @@ class CaseStories extends Component {
 			<section className="casestories" id="case-stories">
 				<div className="columns">
 					<Images />
-					<div className="column story">
+					<div className={(this.props.expandedStory !== null ? 'column story expanded' : 'column story')}>
 						<div className={(this.props.expandedStory !== null ? 'story-head expanded' : 'story-head')}>
 							<h2>What's your story?</h2>
 							<p>Every day we make business decisions off the information available to us; Let us show you how to leverage the power of continuous intelligence to your advantage.</p>
 						</div>
-						<div className={(this.props.expandedStory !== null ? 'story-container expanded' : 'story-container')}>
+						<div 
+							className={(this.props.expandedStory !== null ? 'story-container expanded' : 'story-container')}
+						>
 							{this.props.storyData.map((story, index) => (
-							<div className={this.storyClassHandler(index)}  key={index}>
-								<div className="story-meta">
+							<div className={this.storyClassHandler(index)}  
+								 key={index}
+							>
+								<div 
+									className="story-meta" 
+									ref={storyMeta => this.storyMeta[index] = storyMeta}
+								>
 									<h3>{story.node.content.title}</h3>
 									<p>{story.node.content.excerpt}</p>
 									<ul>
 										<li><button 
 												className="cta"
-												onClick={() => {this.clickHandler(index)}}
+												onClick={() => {this.storyOpener(index)}}
 											>Read More</button></li>
 										{(story.node.content.link !== null ? <li><a href={`http://${story.node.content.link}`} target="_blank" rel="noreferrer">Learn more about our Tracing software, safercontact<span>&reg;</span></a></li> : '')}
 									</ul>
@@ -96,6 +124,7 @@ class CaseStories extends Component {
 									{story.node.content.body.map((body, index) => (
 										<p key={index}>{body.paragraph}</p>
 									))}
+									<button onClick={() => { this.storyCloser() }} className="cta back">Back</button>
 								</div>
 							</div>
 							))}
@@ -111,7 +140,17 @@ const mapStateToProps = state => ({
 	activeStory: state.app.activeStory,
 	caseStoryCycle: state.app.caseStoryCycle,
 	expandedStory: state.app.expandedStory,
+	mobileCaseState: state.app.mobileCaseState,
 	selectedStory: state.app.selectedStory
 })
 
-export default connect(mapStateToProps, { caseStoryCycle, setActiveStory, setExpandedStory, setSelectedStory })(CaseStories)
+export default connect(
+					mapStateToProps,
+					{ 
+						caseStoryCycle,
+						setActiveStory, 
+						setExpandedStory, 
+						setMobileCaseState,
+						setSelectedStory 
+					})
+					(CaseStories)

@@ -2,14 +2,25 @@
 
 .elevator-pitch {
 	background-color: color(black);
-	margin-top: -200px;
 	position: relative;
+
+	@include respond-to(large) {
+		margin-top: -200px;
+	}
 
 	h2 {
 		color: color(white);
 		font-size: toRem(32);
-		margin-bottom: toRem(50);
+		margin-bottom: toRem(25);
 		font-style: italic;
+
+		@include respond-to(large) {
+			margin-bottom: toRem(50);
+		}
+	}
+
+	p {
+		margin: 0;
 	}
 
 	.bgnull {
@@ -25,7 +36,15 @@
 	}
 
 	.epcopy {
-		padding: toRem(309.5) 0 toRem(189.5);
+		padding: toRem(100) toRem(32);
+
+		@include respond-to(medium) {
+			padding: toRem(200) toRem(32);
+		}
+
+		@include respond-to(large) {
+			padding: toRem(309.5) 0 toRem(189.5);
+		}
 	}
 
 	.cta {
