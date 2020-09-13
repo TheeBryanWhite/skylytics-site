@@ -8,31 +8,33 @@ import Img from "gatsby-image"
 
 const LeadershipImages = () => {
 	const LeadershipData = useStaticQuery(graphql`
-		query leadershipImgQuery {
-			allLeadershipJson {
-				nodes {
-					name
-					position
-					src {
-						childImageSharp {
-							fluid(maxWidth: 300) {
-								...GatsbyImageSharpFluid
+		query MyQuery {
+			allLeadershipJson(filter: {homepage: {eq: true}}) {
+		  		edges {
+					node {
+			  			name
+			  			image {
+							childImageSharp {
+								fluid(maxWidth: 300) {
+									...GatsbyImageSharpFluid
+								}
 							}
-						}
+			  			}
+			  			position
 					}
-				}
+		  		}
 			}
-		}
+	  	}
 	`)
 
 	return (
 		<div className="leaders">
-			{LeadershipData.allLeadershipJson.nodes.map(leader => 
+			{LeadershipData.allLeadershipJson.edges.map(leader => 
 				(
-				<div className="leader" key={leader.name}>
-					<Img fluid={leader.src.childImageSharp.fluid} />
-					<p className="leader-name">{leader.name}</p>
-					<p className="leader-position">{leader.position}</p>
+				<div className="leader" key={leader.node.name}>
+					<Img fluid={leader.node.image.childImageSharp.fluid} />
+					<p className="leader-name">{leader.node.name}</p>
+					<p className="leader-position">{leader.node.position}</p>
 					<p className="read-more"><Link to="/">Full Bio</Link></p>
 				</div>
 				))

@@ -1,26 +1,47 @@
 [
 	{
-	   "name":"Mike Ormerod",
-	   "position":"President & Founder",
-	   "bio":"A growth-oriented technologist with global experience ranging from start-up to corporate enterprise. Previous positions include CTO, VP Product Management & Chief Architect. Co-Inventor of Application Platform as a Service (aPaaS).",
-	   "src":"../img/MikeO_bw_low.jpg"
+		"bio": "A growth-oriented technologist with global experience ranging from start-up to corporate enterprise. Previous positions include CTO, VP Product Management & Chief Architect. Co-Inventor of Application Platform as a Service (aPaaS).",
+		"name": "Mike Ormerod",
+		"homepage": true,
+		"linkedin": "https://www.linkedin.com/in/dmormerod/",
+		"position": "President & Founder",
+		"image": "../img/Mike O_21_crop.jpg",
+		"twitter": "https://twitter.com/mikeormerod"
 	},
 	{
-	   "name":"Mike Hickey",
-	   "position":"Founder",
-	   "bio":"IT Executive with Fortune 500 experience. Holds an MBA with a concentration in data analytics. Has help Positions including VP and Manager, at Accenture, Ernst & Young, and Wellington Management.",
-	   "src":"../img/MikeH_bw_low.jpg"
+		"bio": "IT Executive with Fortune 500 experience. Holds an MBA with a concentration in data analytics. Has help Positions including VP and Manager, at Accenture, Ernst & Young, and Wellington Management.",
+		"homepage": true,
+		"linkedin": "https://www.linkedin.com/in/michaelhickey/",
+		"name": "Mike Hickey",
+	   	"position": "Founder",
+		"image": "../img/Mike H_10_crop.jpg",
+		"twitter": "https://twitter.com/SkyLyticsD8a"   
 	},
 	{
-	   "name":"Dan Bergeron",
-	   "position":"Co-Founder",
-	   "bio":"A passionate leader with a focused vision for a client-first centric culture. Founding partner of SkyTerra, a leading cloud IT advisory & Microsoft Gold Partner solutions company.",
-	   "src":"../img/DanB_bw_low.jpg"
+		"bio":"A passionate leader with a focused vision for a client-first centric culture. Founding partner of SkyTerra, a leading cloud IT advisory & Microsoft Gold Partner solutions company.",
+		"homepage":true,
+		"linkedin": "https://www.linkedin.com/in/dan-bergeron-536a011/",
+	   	"name":"Dan Bergeron",
+	   	"position":"Co-Founder",
+	   	"image":"../img/Dan_6_crop.jpg",
+	   	"twitter": ""
 	},
 	{
-	   "name":"Darren Schriever",
-	   "position":"Co-Founder",
-	   "bio":"A strategic leader focused on systems engineering and infrastructure delivery. Founding partner of SkyTerra, a leading IT advisory & Microsoft Gold Partner solutions company.",
-	   "src":"../img/DarrenS_bw_low.jpg"
-	}
+		"bio": "A strategic leader focused on systems engineering and infrastructure delivery. Founding partner of SkyTerra, a leading IT advisory & Microsoft Gold Partner solutions company.",
+		"homepage": true,
+		"linkedin": "https://www.linkedin.com/in/dschriever/",
+	   	"name": "Darren Schriever",
+	   	"position": "Co-Founder",
+		"image": "../img/Darren_15_crop.jpg",
+		"twitter": ""
+	},
+	{
+		"bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mi diam, porta vitae lectus quis, dictum tristique neque. Nulla finibus magna in odio gravida condimentum. Aenean venenatis sem eget lectus varius tristique.",
+		"homepage": false,
+		"linkedin": "https://www.linkedin.com/in/valerie-rogers-257ba6158/",
+		"name": "Valerie Rogers",
+		"position": "CFO",
+		"image": "../img/Val_26_crop.jpg",
+		"twitter": ""
+	 }
  ]

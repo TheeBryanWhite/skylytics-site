@@ -1,0 +1,11 @@
+@import '../sass/mixins.scss';
+
+.subpage-hero {
+	border-bottom: 20px solid color(black);
+
+	.hero {
+		margin-top: toRem(96);
+		padding: toRem(97) 0 toRem(50);
+		text-align: center;
+	}
+}
