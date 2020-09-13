@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { 
+  setActiveSection,
   setSelectorPosition,
   setSelectorWidth
 } from "../../redux/actions/actions"
@@ -20,6 +21,7 @@ class Nav extends Component {
     this.getNavLinks = this.getNavLinks.bind(this)
     this.resizeListener = this.resizeListener.bind(this)
     this.scrollHandler = this.scrollHandler.bind(this)
+    this.toppedOut = this.toppedOut.bind(this)
   }
 
   componentDidMount() {
@@ -83,20 +85,28 @@ class Nav extends Component {
   }
 
   scrollHandler = () => {
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', debounce(() => {
       this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
       this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
-    })
+    }, 500))
   }
 
-
+  toppedOut = () => {
+    if (window.scrollY <= 0) {
+      this.props.setActiveSection('home')
+    }
+    return false
+  }
 
   render() {
     return (
       <nav>
         <div className="container">
           <NavItems />
-          <div className="link-selector" style={{left: this.props.selectorPosition + 16, width: this.props.selectorWidth - 30}}>&nbsp;</div>
+          <div 
+            className="link-selector" 
+            style={{left: this.props.selectorPosition + 16, width: this.props.selectorWidth - 30}}
+          >&nbsp;</div>
           <Hamburger />
         </div>
       </nav>
@@ -106,7 +116,14 @@ class Nav extends Component {
 
 const mapStateToProps = state => ({
   selectorPosition: state.app.selectorPosition,
-  selectorWidth: state.app.selectorWidth
+  selectorWidth: state.app.selectorWidth,
+  activeSection: state.app.activeSection
 })
 
-export default connect(mapStateToProps, { setSelectorPosition, setSelectorWidth })(Nav)
+export default connect(
+                mapStateToProps,
+                { 
+                  setActiveSection,
+                  setSelectorPosition,
+                  setSelectorWidth 
+                })(Nav)

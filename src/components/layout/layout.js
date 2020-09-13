@@ -80,8 +80,6 @@ class Layout extends Component {
     })
   }
 
-  toppedOut
-
   render() {
     return (
       <>
