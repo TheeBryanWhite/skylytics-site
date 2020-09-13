@@ -40,7 +40,11 @@ class Layout extends Component {
     this.scrollHandler = this.scrollHandler.bind(this)
   }
 
-  findActiveSection() {
+  componentDidMount = () => {
+    this.scrollHandler()
+  }
+
+  findActiveSection = () => {
     const currPositions = this.getSectionLocs().map(section => {
       if (section.position >= 0 && section.position <= 500) {
         this.props.setActiveSection(section.id)
@@ -52,7 +56,7 @@ class Layout extends Component {
     return currPositions
   }
 
-  getSectionLocs() {
+  getSectionLocs = () => {
     const sections = this.getSections()
     const sectionArray = Array.prototype.slice.call(sections)
     
@@ -66,19 +70,17 @@ class Layout extends Component {
     return sectionData
   }
 
-  getSections() {
+  getSections = () => {
     return document.getElementsByTagName('section')
   }
 
-  scrollHandler() {
+  scrollHandler = () => {
     window.addEventListener('scroll', () => {
       this.findActiveSection()
     })
   }
 
-  componentDidMount() {
-    this.scrollHandler()
-  }
+  toppedOut
 
   render() {
     return (
