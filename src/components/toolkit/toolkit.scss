@@ -9,8 +9,8 @@
 		margin-top: -325px;
 	}
 
-	h2 {
-		font-size: toRem(32);
+	h2 {	
+		font-size: toRem(24);
 	}
 
 	ul {
@@ -21,8 +21,12 @@
 		background-color: color(blue);
 
 		@include respond-to(large) {
-			clip-path: polygon(0 0, 100% 49.5%, 100% 100%, 0 100%);
+			clip-path: polygon(0 0, 100% 50.5%, 100% 100%, 0 100%);
 			padding-top: 160px;
+		}
+
+		@include respond-to(epic) {
+			clip-path: polygon(0 0, 100% 45.5%, 100% 100%, 0 100%);
 		}
 	}
 
@@ -41,7 +45,11 @@
 		padding: toRem(80) toRem(32) 0;
 
 		@include respond-to(large) {
-			padding: toRem(50) 0 toRem(50) 10%;
+			padding: 1% 0 toRem(50) 10%;
+		}
+
+		@include respond-to(epic) {
+			padding: 4.5% 0 4.5% 10%;
 		}
 	}
 
@@ -67,7 +75,6 @@
 	}
 
 	.tabs {
-		font-size: toRem(13);
 		font-weight: 700;
 		padding-right: 20px;
 		position: relative;
@@ -96,7 +103,7 @@
 			border: 0;
 			color: color(white);
 			display: block;
-			height: 50px;
+			height: 70px;
 			position: relative;
 			width: 100%;
 
@@ -116,7 +123,7 @@
 		background-color: rgba(color(white), 0.6);
 		flex: 1 1 50%;
 		margin-left: 40px;
-		height: 202px;
+		height: 273px;
 		position: absolute;
 		right: 0;
 		width: 50%;
@@ -124,8 +131,7 @@
 
 	.solution {
 		color: color(blue);
-		font-size: toRem(14);
-		height: 202px;
+		height: 273px;
 		overflow-y: scroll;
 		opacity: 0;
 		padding: 15px;
@@ -145,7 +151,6 @@
 			background-color: transparent;
 			border: 0;
 			color: color(white);
-			font-size: toRem(14);
 			padding: 0;
 			text-align: left;
 
@@ -160,7 +165,6 @@
 	}
 
 	.descriptors {
-		font-size: toRem(14);
 		position: relative;
 
 		li {

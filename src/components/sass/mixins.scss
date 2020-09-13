@@ -505,7 +505,8 @@ $iphonesPlus: toRem(414);
 $iphonesPlusL: toRem(736);
 $medium: toRem(768);     // 47.5em
 $large: toRem(1024); 
-$xlarge: toRem(1280); 
+$xlarge: toRem(1280);
+$epic: toRem(1400);
 
 $breakpoints: (
     iphonesL: $iphonesL,
@@ -515,6 +516,7 @@ $breakpoints: (
     medium: $medium,
     large: $large,
     xlarge: $xlarge,
+    epic: $epic
 );
 
 // new respond-to mixin! Takes either a map value or a unit value
