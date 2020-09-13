@@ -4,6 +4,7 @@ import {
   setSelectorPosition,
   setSelectorWidth
 } from "../../redux/actions/actions"
+import debounce from 'lodash.debounce'
 
 import Hamburger from './hamburger'
 import NavItems from './nav-items'
@@ -17,13 +18,15 @@ class Nav extends Component {
     this.getActiveLinkWidth = this.getActiveLinkWidth.bind(this)
     this.getLinksLocs = this.getLinksLocs.bind(this)
     this.getNavLinks = this.getNavLinks.bind(this)
+    this.resizeListener = this.resizeListener.bind(this)
     this.scrollHandler = this.scrollHandler.bind(this)
   }
 
   componentDidMount() {
     this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
     this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
-    this.scrollHandler();
+    this.scrollHandler()
+    this.resizeListener()
   }
 
   getLinksLocs = () => {
@@ -72,12 +75,21 @@ class Nav extends Component {
     return navLinks
   }
 
+  resizeListener = () => {
+    window.addEventListener("resize", debounce(() => {
+      this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
+      this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
+    }, 500))
+  }
+
   scrollHandler = () => {
     window.addEventListener('scroll', () => {
       this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
       this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
     })
   }
+
+
 
   render() {
     return (
