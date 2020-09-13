@@ -2,7 +2,10 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import { setActiveSection } from "../../redux/actions/actions"
+import { 
+  setActiveSection, 
+  setCurrentPage 
+} from "../../redux/actions/actions"
 
 import Header from '../header/header'
 import Footer from '../footer/footer'
@@ -38,10 +41,12 @@ class Layout extends Component {
     this.getSections = this.getSections.bind(this)
     this.getSectionLocs = this.getSectionLocs.bind(this)
     this.scrollHandler = this.scrollHandler.bind(this)
+    this.setCurrentPage = this.setCurrentPage.bind(this)
   }
 
   componentDidMount = () => {
     this.scrollHandler()
+    this.setCurrentPage(this.props.page)
   }
 
   findActiveSection = () => {
@@ -80,11 +85,16 @@ class Layout extends Component {
     })
   }
 
+  setCurrentPage = page => {
+    this.props.setCurrentPage(page)
+  }
+
   render() {
     return (
       <>
         <Helmet>
           <html className={`${this.props.menuState || this.props.mobileCase ? 'locked' : ''}`} lang="en" />
+          <body className={`page-${this.props.currentPage}`} />
         </Helmet>
         <Header />
         <main>
@@ -107,12 +117,14 @@ Layout.defaultProps = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setActiveSection: (param) => dispatch(setActiveSection(param))
+    setActiveSection: (param) => dispatch(setActiveSection(param)),
+    setCurrentPage: (param) => dispatch(setCurrentPage(param))
   }
 }
 
 const mapStateToProps = state => ({
   activeSection: state.app.activeSection,
+  currentPage: state.app.currentPage,
   menuState: state.app.menuState,
   mobileCase: state.app.mobileCaseState
 })

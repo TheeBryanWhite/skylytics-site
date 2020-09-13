@@ -35,6 +35,13 @@ export const setActiveSection = (data) => (dispatch) => {
   })
 }
 
+export const setCurrentPage = (data) => (dispatch) => {
+  dispatch({
+    type: types.SET_CURRENT_PAGE,
+    payload: data,
+  })
+}
+
 export const setSelectorPosition = (data) => (dispatch) => {
   dispatch({
     type: types.SET_SELECTOR_POSITION,

@@ -11,7 +11,7 @@ import SEO from '../components/seo'
 
 const IndexPage = ({data}) => {
   return (
-    <Layout>
+    <Layout page="home">
       <SEO title="Home" description="Site description" />
       <Hero />
       <ElevatorPitch />

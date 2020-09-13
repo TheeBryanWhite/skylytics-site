@@ -4,21 +4,18 @@ import BackgroundImage from 'gatsby-background-image'
 import './subpage-hero.scss'
 
 class SubpageHero extends Component {
-	constructor(props) {
-		super(props)
-		console.log(props)
-	}
-
 	render() {
 		return(
 			<div className="subpage-hero" id="subpage-hero">
 				<BackgroundImage
-					className="hero"
+					className="sub-hero"
 					id="leadership-hero"
 					fluid={this.props.imgData}
-					Tag="div"
+					Tag="section"
 				>
+					<div className="container">
 					<h2>{this.props.pageTitle}</h2>
+					</div>
 				</BackgroundImage>
 			</div>
 		)

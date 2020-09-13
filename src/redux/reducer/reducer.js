@@ -1,10 +1,11 @@
 import { types } from "../constants/types";
 const initialState = {
-  activeSection: "home",
+  activeSection: 'home',
   activeSolution: 0,
   activeSubtab: 0,
   activeStory: 0,
   caseStoryCycle: true,
+  currentPage: 'home',
   expandedStory: null,
   heroSlide: 0,
   menuState: false,
@@ -26,6 +27,12 @@ export default (state = initialState, action) => {
       return { 
         ...state, 
         selectedStory: action.payload
+      }
+
+    case types.SET_CURRENT_PAGE:
+      return { 
+        ...state, 
+        currentPage: action.payload
       }
 
     case types.SET_EXPANDED_STORY:

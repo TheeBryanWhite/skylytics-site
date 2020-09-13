@@ -1,11 +1,31 @@
 @import '../sass/mixins.scss';
 
 .subpage-hero {
-	border-bottom: 20px solid color(black);
+	background-color: color(black);
+	padding-bottom: 20px;
+	position: relative;
+	z-index: 1;
 
-	.hero {
+	.sub-hero {
+		color: color(white);
 		margin-top: toRem(96);
 		padding: toRem(97) 0 toRem(50);
 		text-align: center;
+		z-index: 1;
+
+		@include respond-to(medium) {
+			margin-top: toRem(64);
+			text-align: left;
+		}
+
+		@include respond-to(large) {
+			padding: toRem(122) 0 toRem(100);
+		}
+	}
+
+	@include respond-to(large) {
+		h2 {
+			font-size: toRem(48);
+		}
 	}
 }

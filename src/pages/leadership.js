@@ -3,12 +3,14 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 import SubpageHero from '../components/hero-subpage/subpage-hero'
+import PageBody from '../components/page-body/page-body'
 
 const IndexPage = ({data}) => {
   return (
-    <Layout>
+    <Layout page="leadership">
       <SEO title="Leadership - skylytics" description="Site description" />
       <SubpageHero imgData={data.file.childImageSharp.fluid} pageTitle="Executive Leaderhip Team" />
+      <PageBody bodyData={data.allLeadershipJson.edges} />
     </Layout>
   )
 }
@@ -22,7 +24,7 @@ query LeadershipPageQuery {
         bio
         image {
           childImageSharp {
-            fluid(maxWidth: 300) {
+            fluid(maxWidth: 600) {
               ...GatsbyImageSharpFluid
             }
           }
