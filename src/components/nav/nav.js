@@ -21,33 +21,23 @@ class Nav extends Component {
     this.getNavLinks = this.getNavLinks.bind(this)
     this.resizeListener = this.resizeListener.bind(this)
     this.scrollHandler = this.scrollHandler.bind(this)
-    this.toppedOut = this.toppedOut.bind(this)
+    this.setCurrentPage = this.setCurrentPage.bind(this)
   }
 
   componentDidMount() {
-    this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
-    this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
+    this.setCurrentPage()
     this.scrollHandler()
     this.resizeListener()
   }
 
-  getLinksLocs = () => {
-    const links = this.getNavLinks()
-    const linkArray = Array.prototype.slice.call(links)
-    
-    const linkData = linkArray.map(section => {
-      return {
-        'id': section.getAttribute('class'),
-        'position': section.getBoundingClientRect().left,
-        'width': section.offsetWidth
-      }
-    })
-    
-    return linkData
-  }
-
   getActiveLinkPosition = linkObj => {
     let activeLinkPosition = null
+
+    linkObj.forEach(link => {
+      if (link.id === this.props.currentPage) {
+        activeLinkPosition = link.position
+      }
+    })
 
     linkObj.forEach(link => {
       if (link.id === this.props.activeSection) {
@@ -68,6 +58,21 @@ class Nav extends Component {
     })
 
     return activeLinkWidth
+  }
+
+  getLinksLocs = () => {
+    const links = this.getNavLinks()
+    const linkArray = Array.prototype.slice.call(links)
+    
+    const linkData = linkArray.map(section => {
+      return {
+        'id': section.getAttribute('class'),
+        'position': section.getBoundingClientRect().left,
+        'width': section.offsetWidth
+      }
+    })
+    
+    return linkData
   }
 
   getNavLinks = () => {
@@ -91,11 +96,9 @@ class Nav extends Component {
     }, 500))
   }
 
-  toppedOut = () => {
-    if (window.scrollY <= 0) {
-      this.props.setActiveSection('home')
-    }
-    return false
+  setCurrentPage = () => {
+    this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
+    this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
   }
 
   render() {
@@ -115,9 +118,10 @@ class Nav extends Component {
 }
 
 const mapStateToProps = state => ({
+  activeSection: state.app.activeSection,
+  currentPage: state.app.currentPage,
   selectorPosition: state.app.selectorPosition,
-  selectorWidth: state.app.selectorWidth,
-  activeSection: state.app.activeSection
+  selectorWidth: state.app.selectorWidth
 })
 
 export default connect(

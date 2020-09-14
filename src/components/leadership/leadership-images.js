@@ -32,10 +32,12 @@ const LeadershipImages = () => {
 			{LeadershipData.allLeadershipJson.edges.map(leader => 
 				(
 				<div className="leader" key={leader.node.name}>
-					<Img fluid={leader.node.image.childImageSharp.fluid} />
-					<p className="leader-name">{leader.node.name}</p>
-					<p className="leader-position">{leader.node.position}</p>
-					<p className="read-more"><Link to="/">Full Bio</Link></p>
+					<Link to="/leadership">
+						<Img fluid={leader.node.image.childImageSharp.fluid} />
+						<p className="leader-name">{leader.node.name}</p>
+						<p className="leader-position">{leader.node.position}</p>
+						<p className="read-more">Full Bio</p>
+					</Link>
 				</div>
 				))
 			}

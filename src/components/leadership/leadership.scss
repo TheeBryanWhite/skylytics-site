@@ -48,6 +48,7 @@
 		}
 
 		p {
+			color: color(white);
 			font-size: toRem(14);
 			font-weight: 500;
 			margin: 0;
@@ -58,23 +59,37 @@
 		}
 
 		a {
-			color: color(biolink);
-			font-weight: 700;
+			img {
+				filter: grayscale(100%);
+				transition: filter 0.2s linear, opacity 500ms ease 0s !important;
+			}
 
-			&:after {
-				content: '\2192';
-				font-size: 24px;
-				left: 0;
-				margin-left: 25px;
-				position: relative;
-				transition: all 0.2s linear;
+			.read-more {
+				color: color(biolink);
+				font-weight: 700;
+	
+				&:after {
+					content: '\2192';
+					font-size: 24px;
+					left: 0;
+					margin-left: 25px;
+					position: relative;
+					transition: all 0.2s linear;
+				}
 			}
 
 			&:hover {
-				color: color(white);
+				.read-more {
+					color: color(white);
+					transition: all 0.2s linear;
 
-				&:after {
-					left: 5px;
+					&:after {
+						left: 5px;
+					}
+				}
+
+				img {
+					filter: grayscale(0%);
 				}
 			}
 		}

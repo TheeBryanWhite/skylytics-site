@@ -6,6 +6,7 @@ import {
   setActiveSection, 
   setCurrentPage 
 } from "../../redux/actions/actions"
+import debounce from 'lodash.debounce'
 
 import Header from '../header/header'
 import Footer from '../footer/footer'
@@ -41,12 +42,13 @@ class Layout extends Component {
     this.getSections = this.getSections.bind(this)
     this.getSectionLocs = this.getSectionLocs.bind(this)
     this.scrollHandler = this.scrollHandler.bind(this)
-    this.setCurrentPage = this.setCurrentPage.bind(this)
   }
 
   componentDidMount = () => {
-    this.scrollHandler()
-    this.setCurrentPage(this.props.page)
+    if (this.props.currentPage === 'home') {
+      this.scrollHandler()
+    }
+    this.props.setCurrentPage(this.props.page)
   }
 
   findActiveSection = () => {
@@ -80,13 +82,9 @@ class Layout extends Component {
   }
 
   scrollHandler = () => {
-    window.addEventListener('scroll', () => {
-      this.findActiveSection()
-    })
-  }
-
-  setCurrentPage = page => {
-    this.props.setCurrentPage(page)
+      window.addEventListener('scroll', debounce(() => {
+        this.findActiveSection()
+      }, 500))
   }
 
   render() {
