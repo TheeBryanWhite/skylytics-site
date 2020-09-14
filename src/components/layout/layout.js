@@ -6,7 +6,6 @@ import {
   setActiveSection, 
   setCurrentPage 
 } from "../../redux/actions/actions"
-import debounce from 'lodash.debounce'
 
 import Header from '../header/header'
 import Footer from '../footer/footer'
@@ -51,11 +50,18 @@ class Layout extends Component {
     this.props.setCurrentPage(this.props.page)
   }
 
-  findActiveSection = () => {
+  findActiveSection = scrollDir => {
     const currPositions = this.getSectionLocs().map(section => {
-      if (section.position >= 0 && section.position <= 500) {
-        this.props.setActiveSection(section.id)
+      if (scrollDir === 'down') {
+        if (section.position >= 0 && section.position <= 500) {
+          this.props.setActiveSection(section.id)
+        }
+      } else {
+        if (section.position <= 500) {
+          this.props.setActiveSection(section.id)
+        }
       }
+      
 
       return false
     })
@@ -69,6 +75,7 @@ class Layout extends Component {
     
     const sectionData = sectionArray.map(section => {
       return {
+        'bottom': section.getBoundingClientRect().bottom,
         'id': section.getAttribute('id'),
         'position': section.getBoundingClientRect().top
       }
@@ -82,9 +89,20 @@ class Layout extends Component {
   }
 
   scrollHandler = () => {
-      window.addEventListener('scroll', debounce(() => {
-        this.findActiveSection()
-      }, 500))
+    let lastScrollTop = 0
+    let scrollDirection = null;
+
+    window.addEventListener('scroll', () => {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop){
+          scrollDirection = 'down'
+      } else {
+        scrollDirection = 'up'
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+      this.findActiveSection(scrollDirection)
+    })
   }
 
   render() {
