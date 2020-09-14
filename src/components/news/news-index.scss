@@ -1,0 +1,65 @@
+@import '../sass/mixins.scss';
+
+.news-index {
+	margin: 25px 0;
+
+	article {
+		display: flex;
+		flex: 1 0 50%;
+		flex-direction: column;
+		padding: toRem(15);
+	}
+
+	.flex-item {
+		height: 300px;
+	}
+
+	.article-thumb {
+		background-color: color(lightblue);
+		height: 200px;
+	}
+
+	.article-type {
+		padding: toRem(15);
+		text-transform: uppercase;
+
+		p {
+			color: color(white);
+			font-weight: 700;
+		}
+	}
+
+	.article-meta {
+		background-color: color(white);
+		padding: toRem(15);
+		position: relative;
+
+		h3 {
+			font-size: toRem(20);
+			font-weight: 400;
+		}
+
+		p {
+			line-height: toRem(28);
+		}
+
+		a {
+			color: color(lightblue);
+		}
+
+		.article-date {
+			bottom: 0;
+			font-size: toRem(18);
+			opacity: 0.5;
+			position: absolute
+		}
+	}
+}
+
+@include respond-to(medium) {
+	.news-articles {
+		align-items: stretch;
+		display: flex;
+		flex-wrap: wrap;
+	}
+}

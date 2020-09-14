@@ -14,7 +14,8 @@ class SubpageHero extends Component {
 					Tag="section"
 				>
 					<div className="container">
-					<h2>{this.props.pageTitle}</h2>
+						<h2>{this.props.pageTitle}</h2>
+						{(this.props.pageSubtitle ? <h3>{this.props.pageSubtitle}</h3> : '')}
 					</div>
 				</BackgroundImage>
 			</div>

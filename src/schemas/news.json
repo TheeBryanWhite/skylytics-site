@@ -1,0 +1,62 @@
+{
+  "Main" : {
+    "news_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading2",
+        "label" : "Title",
+        "placeholder" : "Title"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "uid",
+        "placeholder": "Page Slug"
+      }
+    },
+    "template": {
+      "type": "Select",
+      "config": {
+        "options": [
+          "News",
+          "Page"
+        ],
+        "label": "Template",
+        "placeholder": "Template"
+      }
+    },
+    "news_category" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Blog", "Event" ],
+        "label" : "Category",
+        "placeholder" : "Category"
+      }
+    },
+    "news_excerpt" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, strong, em",
+        "label" : "Excerpt",
+        "placeholder" : "Article Excerpt"
+      }
+    },
+    "news_hero_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Hero Image"
+      }
+    },
+    "news_body" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+        "allowTargetBlank" : true,
+        "label" : "Body"
+      }
+    }
+  }
+}

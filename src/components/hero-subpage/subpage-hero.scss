@@ -19,13 +19,18 @@
 		}
 
 		@include respond-to(large) {
-			padding: toRem(122) 0 toRem(100);
+			padding: toRem(170) 0 toRem(120);
 		}
 	}
 
 	@include respond-to(large) {
 		h2 {
 			font-size: toRem(48);
+		}
+		
+		h3 {
+			font-weight: 400;
+			font-size: toRem(30)
 		}
 	}
 }

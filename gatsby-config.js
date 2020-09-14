@@ -31,7 +31,7 @@ module.exports = {
       {
         class: 'news',
         name: 'news',
-        link: '/#news'
+        link: '/news'
       },
       {
         class: 'contact-us',
@@ -81,15 +81,43 @@ module.exports = {
         },
       },
     },
-    // Uncomment when Prismic repo is setup
-    // {
-    //   resolve: 'gatsby-source-prismic-graphql',
-    //     options: {
-    //       accessToken: '',
-    //       omitPrismicScript: true,
-    //       repositoryName: '',
-    //   }
-    // },
+    {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: 'skylytics',
+        accessToken: 'MC5YdXY2SmhJQUFORE5yaGQx.77-977-9b--_vU3vv71H77-977-977-977-9Me-_ve-_vT3vv70NC--_ve-_ve-_ve-_ve-_vT_vv70AbO-_ve-_ve-_ve-_vQM',
+        linkResolver: ({ node, key, value }) => (doc) => {
+          if (doc.type === 'news') return "/news/" + doc.uid;
+          if (doc.type === 'page') return "/" + doc.uid;
+
+          return "/doc/" + doc.id;
+        },
+        htmlSerializer: ({ node, key, value }) => (
+          type,
+          element,
+          content,
+          children,
+        ) => {
+          
+        },
+        schemas: {
+          news: require('./src/schemas/news.json'),
+          page: require('./src/schemas/page.json'),
+        },
+        lang: 'en-us',
+        prismicToolbar: true,
+        imageImgixParams: {
+          auto: 'compress,format',
+          fit: 'max',
+          q: 50,
+        },
+        imagePlaceholderImgixParams: {
+          w: 100,
+          blur: 15,
+          q: 50,
+        }
+      },
+    },
     // Uncomment when in production
     // {
     //   resolve: 'gatsby-plugin-google-tagmanager',
@@ -141,7 +169,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /svg/ // See below to configure properly
+          include: /svg/
         }
       }
     },
