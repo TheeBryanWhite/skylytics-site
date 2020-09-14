@@ -19,9 +19,9 @@ module.exports = {
         link: '/#case-stories'
       },
       {
-        class: 'tool-kit',
-        name: 'Toolkit',
-        link: '/#tool-kit'
+        class: 'solutions',
+        name: 'Solutions',
+        link: '/#solutions'
       },
       {
         class: 'leadership',
@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         class: 'news',
-        name: 'news',
+        name: 'News',
         link: '/news'
       },
       {
@@ -51,7 +51,7 @@ module.exports = {
       state: 'NH',
       zip: '03063',
       phone: '(603) 460-4496',
-      contact: 'info@safercontact.com',
+      contact: 'info@skylytics.com',
     },
     socialMedia: [
       {

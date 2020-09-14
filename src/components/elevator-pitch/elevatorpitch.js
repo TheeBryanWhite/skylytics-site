@@ -37,7 +37,7 @@ const ElevatorPitch = () => {
 			<div className="epcopy">
 				<div className="container">
 					<h2>skylytics<span>&reg;</span> brings clarity to your business by acting as the bridge between continuous intelligence technology and you.</h2>
-					<p><Link className="cta" to="/">Meet the Team</Link></p>
+					<p><Link className="cta" to="#leadership">Meet the Team</Link></p>
 				</div>
 			</div>
 		</section>

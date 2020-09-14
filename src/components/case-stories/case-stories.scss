@@ -21,6 +21,11 @@
 	a {
 		color: color(lightblue);
 		font-weight: bold;
+		transition: all 0.2s linear;
+
+		&:hover {
+			color: color(teal);
+		}
 	}
 
 	ul {
@@ -33,6 +38,12 @@
 
 	button {
 		border: 0;
+		cursor: pointer;
+		transition: background-color 0.2s linear;
+
+		&:hover {
+			background-color: color(lightblue);
+		}
 	}
 
 	.columns {
@@ -71,7 +82,6 @@
 		&.expanded {
 			position: absolute;
 			top: 0;
-			z-index: 1000;
 
 			@include respond-to(large) {
 				position: static;
@@ -158,13 +168,13 @@
 
 				img,
 				picture {
-					transform: translateY(15px);
+					transform: translateY(-55px);
 				}
 			}
 
 			@include respond-to(xlarge) {
 				img {
-					transform:  translateY(-45px);
+					transform:  translateY(-155px);
 				}
 			}
 		}
@@ -172,9 +182,10 @@
 
 	.story-container {
 		flex-wrap: wrap;
-		min-height: 300px;
+		min-height: 243px;
 		position: relative;
 		transition: opacity 0.5s linear, transform 0.5s ease(in-out-quart);
+		z-index: 10;
 
 		@include respond-to(large) {
 			display: flex;
@@ -193,7 +204,8 @@
 		}
 	}
 
-	.story-head {
+	.story-head,
+	.story-foot {
 		opacity: 1;
 		padding: 0 toRem(32);
 		transition: opacity 0.5s linear 0.5s;
@@ -215,18 +227,28 @@
 		}
 		
 		&:nth-of-type(1) {
-			z-index: 3;
+			
 		}
 
 		&:nth-of-type(2) {
-			z-index: 2;
+			
 		}
 
 		&:nth-of-type(3) {
-			z-index: 1;
+			
 		}
 
-		
+		&.active-story {
+			.story-meta {
+				z-index: 10;
+			}
+		}
+
+		&.expanded-story {
+			.story-meta {
+				z-index: -1;
+			}
+		}
 	}
 
 	.story-meta,
@@ -247,21 +269,19 @@
 		top: 0;
 		transition: opacity 0.5s linear;
 		left: 0;
-		z-index: 1;
 	}
 
 	.story-body {
 		transition: opacity 0.5s linear;
+		z-index: -1;
 	}
 
 	.active-story {
 		.story-shift {
-			z-index: 10;
 		}
 	
 		.story-meta {
 			opacity: 1;
-			z-index: 5;
 		}
 	}
 
@@ -282,7 +302,6 @@
 			position: fixed;
 			top: 142px;
 			transition: opacity 0.5s linear 0.5s;
-			z-index: 100;
 
 			@include respond-to(medium) {
 				top: 112px;
@@ -323,6 +342,47 @@
 		}
 	}
 
+	.story-foot {
+		display: inline-block;
+		position: relative;
+		z-index: 10;
+
+		&.expanded {
+			z-index: -1;
+		}
+
+		h3 {
+			margin-bottom: 10px;
+		}
+
+		p {
+			text-align: right;
+		}
+
+		a {
+			padding-right: 35px;
+			position: relative;
+			transition: all 0.2s linear;
+
+			&:after {
+				content: '\2192';
+				font-size: 24px;
+				position: absolute;
+				right: 0;
+				top: -5px;
+				transition: all 0.2s linear;
+			}
+
+			&:hover {
+				color: color(teal);
+
+				&:after {
+					right: -5px;
+				}
+			}
+		}
+	}
+
 	.color-images {
 		height: 900px;
 		position: absolute;
@@ -350,6 +410,28 @@
 
 		&.expanded-image {
 			left: 0;
+		}
+
+		&.expanded-image {
+			&:nth-of-type(1) {
+				transform: translateY(-70px);
+			}
+
+			&:nth-of-type(2) {
+				transform: translateY(-220px);
+			}
+
+			&:nth-of-type(3) {
+				transform: translate(-390px ,-220px);
+
+				@include respond-to(customTw) {
+					transform: translate(-290px ,-220px);
+				}
+
+				@include respond-to(epic) {
+					transform: translate(-240px ,-220px);
+				}
+			}
 		}
 	}
 

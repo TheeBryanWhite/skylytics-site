@@ -460,7 +460,7 @@ $gray: #cccccc;
 $blue: #0510a0;
 $lightblue: #0356fc;
 $teal: #0bd3cd;
-$red: #a00000;
+$validation: #7D46EB;
 
 //scss-lint:disable ColorVariable
 $colors: (
@@ -480,7 +480,7 @@ $colors: (
     tooltabs: $teal,
     biolink: $teal,
     footertag: $teal,
-    validation-color: $red
+    validation-color: $validation
 );
 
 @function color($key) {
@@ -505,6 +505,7 @@ $iphonesPlus: toRem(414);
 $iphonesPlusL: toRem(736);
 $medium: toRem(768);     // 47.5em
 $large: toRem(1024); 
+$customTw: toRem(1211);
 $xlarge: toRem(1280);
 $epic: toRem(1400);
 
@@ -515,6 +516,7 @@ $breakpoints: (
     small: $small,
     medium: $medium,
     large: $large,
+    customTw: $customTw,
     xlarge: $xlarge,
     epic: $epic
 );

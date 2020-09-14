@@ -91,7 +91,7 @@ export default class ContactForm extends React.Component {
     }
 
     validationMessage = () => { 
-        return 'Sorry, dude. This field is required.';
+        return 'This field is required.';
     }
 
     handleSubmit = event => {

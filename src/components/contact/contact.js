@@ -19,7 +19,7 @@ const ContactUs = () => {
 							<p>Please follow the below link to complete the demo request and Skylytics representative will be in contact with you shortly.</p>
 							<p><a className="cta" href="/" target="_blank" rel="noreferrer">Schedule a Demo</a></p>
 							<h3 className="newsletter">Join our newsletter</h3>
-							<p>By providing your emai address, you are consenting to receive news, updates, and other information concerning Skylytics and our products. You may withdraw your consent at any time by using our unsubscribe feature.</p>
+							<p>By providing your email address, you are consenting to receive news, updates, and other information concerning Skylytics and our products. You may withdraw your consent at any time by using our unsubscribe feature.</p>
 							<div className="newsletter-subscribe">
 								<form>
 								<label htmlFor="email">Email</label>

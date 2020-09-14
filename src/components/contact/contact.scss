@@ -98,9 +98,14 @@
 		
         button {
 			border: 0;
+			cursor: pointer;
 			display: inline-block;
 			font-size: 14px;
 			padding: 15px 30px;
+
+			&:hover {
+				background-color: color(lightblue);
+			}
         }
     }
 	
@@ -143,6 +148,12 @@
 		h3 {
 			color: color(teal);
 			font-size: toRem(32);
+		}
+	}
+
+	.contact-content {
+		a:hover {
+			background-color: color(lightblue);
 		}
 	}
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'gatsby'
 import Images from './images'
 import { connect } from "react-redux";
 import { 
@@ -128,6 +129,10 @@ class CaseStories extends Component {
 								</div>
 							</div>
 							))}
+						</div>
+						<div className={(this.props.expandedStory !== null ? 'story-foot expanded' : 'story-foot')}>
+							<h3>Check Current Company Events and Updates</h3>
+							<p><Link to="/news">Check updates</Link></p>
 						</div>
 					</div>
 				</div>

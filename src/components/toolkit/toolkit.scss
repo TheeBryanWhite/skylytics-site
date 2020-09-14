@@ -1,6 +1,6 @@
 @import '../sass/mixins.scss';
 
-.toolkit {
+.solutions-section {
 	color: color(white);
 	position: relative;
 	z-index: 90;
@@ -49,7 +49,7 @@
 		}
 
 		@include respond-to(epic) {
-			padding: 4.5% 0 4.5% 10%;
+			padding: 4.5% 0 2.5% 10%;
 		}
 	}
 
@@ -106,10 +106,16 @@
 			display: block;
 			height: 70px;
 			position: relative;
+			transition: all 0.4s linear;
 			width: 100%;
 
 			&:focus {
 				outline: none;
+			}
+
+			&:hover {
+				background-color: color(white);
+				color: color(blue);
 			}
 		}
 
@@ -155,15 +161,26 @@
 			cursor: pointer;
 			padding: 0;
 			text-align: left;
+			transition: all 0.2s linear;
 
 			&:focus {
 				outline: none;
+			}
+
+			&:hover {
+				color: color(blue);
 			}
 		}
 	}
 
 	.subtabs {
 		margin-bottom: toRem(16);
+
+		.active-subtab {
+			button {
+				color: color(blue);
+			}
+		}
 	}
 
 	.descriptors {
@@ -181,6 +198,7 @@
 	}
 
 	.tool-logos {
+		margin-top: toRem(35);
 		ul {
 			align-items: center;
 			display: flex;
@@ -189,6 +207,10 @@
 		li {
 			flex: 1 1 auto;
 			padding: 20px;
+		}
+
+		svg {
+			fill: color(white);
 		}
 	}
 

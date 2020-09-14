@@ -79,7 +79,7 @@
 		
 		.slide {
 			height: 1639px;
-			transform: translate(-60%, -50%);
+			transform: translate(-57%, -50%);
 			width: 1639px;
 
 			@include respond-to(large) {
@@ -106,7 +106,7 @@
 			width: 1920px;
 
 			@include respond-to(large) {
-				transform: translate(-50%, -65%);
+				transform: translate(-57%, -65%);
 			}
 		}
 
@@ -137,8 +137,8 @@
 
 	@include respond-to(large) {
 		@keyframes panup {
-			from { transform: translate(-50%, -50%) }
-			to { transform: translate(-50%, -65%) }	
+			from { transform: translate(-57%, -50%) }
+			to { transform: translate(-57%, -65%) }	
 		}
 	}
 
@@ -159,10 +159,15 @@
 
 		h2 {
 			font-size: toRem(24);
+			font-weight: 400;
 
 			@include respond-to(large) {
 				font-size: toRem(32);
 			}
+		}
+
+		p {
+			font-weight: 400;
 		}
 	}
 
@@ -170,7 +175,7 @@
 		align-self: flex-start;
 		bottom: toRem(95);
 		font-weight: 700;
-		left: 15%;
+		left: 18%;
 		position: absolute;
 		z-index: 50;
 

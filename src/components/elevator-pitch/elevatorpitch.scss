@@ -45,6 +45,12 @@
 		@include respond-to(large) {
 			padding: toRem(309.5) 0 toRem(189.5);
 		}
+
+		span {
+			display: inline-block;
+			font-size: toRem(10);
+			transform: translateY(-6px);
+		}
 	}
 
 	.cta {
@@ -65,6 +71,6 @@
 	}
 
 	.container {
-		max-width: toRem(880);
+		padding-right: 14%;
 	}
 }

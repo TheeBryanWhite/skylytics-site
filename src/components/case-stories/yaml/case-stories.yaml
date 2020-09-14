@@ -23,8 +23,8 @@
       - paragraph: The Azure® Data Pipeline makes it easier for utility companies to access and analyze all their data to develop impactful incentive programs. As more customers choose to go green, the industry continues to lead the way to a cleaner, brighter future.
 - story:
   content:
-    bw: ../img/farmtofork_bw.jpg
-    color: ../img/farmtofork_color.jpg
+    bw: ../img/sustainable_catch_bw.jpg
+    color: ../img/sustainable_catch_color.jpg
     title: A Sustainable Catch
     excerpt: As our world's population continues to grow at a considerable rate, so does our demand for nutritious food. Maximizing efficiencies with predictive analytics is the key to sustainability.
     body:
