@@ -38,7 +38,7 @@ export const NewsPageQuery = graphql`
 					}
 				}
 				uid
-				last_publication_date(formatString: "MMMM DD, YYYY")
+				first_publication_date(formatString: "MMMM DD, YYYY")
 			}
 		}
 		file(relativePath: {eq: "components/news/bg/news-bg.jpg"}) {

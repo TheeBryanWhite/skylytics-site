@@ -1,8 +1,8 @@
 @import '../sass/mixins.scss';
 
 .subpage-hero {
-	background-color: color(black);
-	padding-bottom: 20px;
+	background-color: color(lightblue);
+	border-bottom: 20px solid color(black);
 	position: relative;
 	z-index: 1;
 

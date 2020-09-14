@@ -4,7 +4,7 @@
 	margin: toRem(25) 0;
 
 	@include respond-to(large) {
-		margin: toRem(100) 0;
+		padding: toRem(50) 0;
 	}
 
 	.bgnull {
@@ -16,5 +16,6 @@
 		right: 0;
 		top: 0;
 		width: 100%;
+		z-index: -1;
 	}
 }
