@@ -10,7 +10,7 @@ class SubpageHero extends Component {
 				<BackgroundImage
 					className="sub-hero"
 					id="leadership-hero"
-					fluid={this.props.imgData}
+					fluid={this.props.imgData.fluid}
 					Tag="section"
 				>
 					<div className="container">

@@ -7,28 +7,24 @@ import LinkedInSvg from './svg/linkedin.svg'
 import TwitterSvg from './svg/twitter.svg'
 
 class Leadership extends Component{
-	constructor(props) {
-		super(props)
-		console.log(props)
-	}
 	render() {
 		return(
 			<div className="leaders-page container">
-				{this.props.bodyData.map((leader, index) => (
+				{this.props.bodyData.items.map((leader, index) => (
 					<div className="leader-wrapper" key={index}>
 						<div className="leader" key={index}>
 							<div className="leader-image flex-item">
-								<Img fluid={leader.node.image.childImageSharp.fluid} />
+								<Img fluid={leader.headshot.localFile.childImageSharp.fluid} />
 							</div>
 							<div className="leader-meta flex-item">
-								<p className="leader-name">{leader.node.name}</p>
-								<p className="leader-position">{leader.node.position}</p>
-								<p className="leader-bio">{leader.node.bio}</p>
+								<p className="leader-name">{leader.name.text}</p>
+								<p className="leader-position">{leader.position.text}</p>
+								<div className="leader-bio" dangerouslySetInnerHTML={{ __html: leader.bio.html }} />
 								<div className="leader-social">
 									<p className="label">Connect | Follow</p>
 									<ul>
-										{(leader.node.linkedin ? <li className="linkedin"><a href={leader.node.linkedin} target="_blank" rel="noreferrer"><LinkedInSvg /><span className="screen-reader-text">Follow {leader.node.name} on linkedin</span></a></li> : '')}
-										{(leader.node.twitter ? <li className="twitter"><a href={leader.node.twitter} target="_blank" rel="noreferrer"><TwitterSvg /><span className="screen-reader-text">Follow {leader.node.name} on twitter</span></a></li> : '')}
+										{(leader.linkedin ? <li className="linkedin"><a href={leader.linkedin.url} target={leader.linkedin.target} rel="noreferrer"><LinkedInSvg /><span className="screen-reader-text">Follow {leader.name.text} on linkedin</span></a></li> : '')}
+										{(leader.twitter ? <li className="twitter"><a href={leader.twitter.url} target={leader.twitter.target} rel="noreferrer"><TwitterSvg /><span className="screen-reader-text">Follow {leader.name.text} on twitter</span></a></li> : '')}
 									</ul>
 								</div>
 							</div>

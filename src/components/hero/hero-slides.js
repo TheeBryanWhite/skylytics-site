@@ -8,7 +8,6 @@ import './hero.scss'
 class HeroSlides extends Component {
 	constructor(props) {
 		super(props)
-		console.log(props)
 		this.swapState = this.swapState.bind(this)
 	}
 

@@ -8,6 +8,14 @@
         "placeholder" : "Title"
       }
     },
+    "hero" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Hero"
+      }
+    },
     "page_content" : {
       "type" : "StructuredText",
       "config" : {
