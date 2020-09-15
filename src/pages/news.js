@@ -10,7 +10,11 @@ const IndexPage = ({data}) => {
 	return(
 		<Layout page="news">
 			<SEO title="News - skylytics" description="Site description" />
-			<SubpageHero imgData={data.file.childImageSharp.fluid} pageTitle="Newsroom" pageSubtitle="Stay up-to-date on our latest innovations and partnerships" />
+			<SubpageHero
+				imgData={data.prismicPage.data.hero.localFile.childImageSharp.fluid} 
+				pageTitle="Newsroom" 
+				pageSubtitle="Stay up-to-date on our latest innovations and partnerships"
+			/>
 			<PageBody>
 				<NewsIndex pageBody={data.allPrismicNews.nodes} />
 			</PageBody>
@@ -19,35 +23,46 @@ const IndexPage = ({data}) => {
 }
 
 export const NewsPageQuery = graphql`
-	query NewsPageQuery {
-		allPrismicNews {
-			nodes {
-				id
-				data {
-					news_category
-					news_excerpt {
-						text
-					}
-					news_hero_image {
-						fluid {
-							src
-						}
-					}
-					news_title {
-						text
-					}
-				}
-				uid
-				first_publication_date(formatString: "MMMM DD, YYYY")
-			}
-		}
-		file(relativePath: {eq: "components/news/bg/news-bg.jpg"}) {
-			childImageSharp {
-				fluid(quality: 90, maxWidth: 1920) {
+query newsPageQuery {
+	prismicPage(uid: {eq: "newsroom"}) {
+		id
+		data {
+		  page_title {
+			text
+		  }
+		  hero {
+			localFile {
+			  childImageSharp {
+				fluid (maxWidth: 1920) {
 					...GatsbyImageSharpFluid_withWebp
-				}
+				  }
+			  }
 			}
+		  }
 		}
-	}`
+	  }
+allPrismicNews {
+    nodes {
+      id
+      data {
+        news_category
+        news_excerpt {
+          text
+        }
+        news_hero_image {
+          fluid {
+            src
+          }
+        }
+        news_title {
+          text
+        }
+      }
+      uid
+      first_publication_date(formatString: "MMMM DD, YYYY")
+    }
+  }
+}
+  `
 
 export default IndexPage

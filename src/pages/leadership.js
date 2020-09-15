@@ -10,7 +10,7 @@ const IndexPage = ({data}) => {
   return (
     <Layout page="leadership">
       <SEO title="Leadership - skylytics" description="Site description" />
-      <SubpageHero imgData={data.allPrismicPage.edges[0].node.data.hero.localFile.childImageSharp} pageTitle={data.allPrismicPage.edges[0].node.data.page_title.text} />
+      <SubpageHero imgData={data.prismicPage.data.hero.localFile.childImageSharp.fluid} pageTitle={data.prismicPage.data.page_title.text} />
       <PageBody>
         <Leadership bodyData={data.allPrismicLeadersBodyLeaders.edges[0].node} />
       </PageBody>
@@ -22,26 +22,23 @@ export default IndexPage
 
 export const leadershipPageQuery = graphql`
 query leadershipPageQuery {
-  allPrismicPage {
-    edges {
-      node {
-        data {
-          page_title {
-            text
-          }
-          hero {
-            localFile {
-              childImageSharp {
-                fluid (maxWidth: 1920) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  prismicPage(uid: {eq: "leadership"}) {
+		id
+		data {
+		  page_title {
+			text
+		  }
+		  hero {
+			localFile {
+			  childImageSharp {
+				fluid (maxWidth: 1920) {
+					...GatsbyImageSharpFluid_withWebp
+				  }
+			  }
+			}
+		  }
+		}
+	  }
   allPrismicLeadersBodyLeaders {
     edges {
       node {
