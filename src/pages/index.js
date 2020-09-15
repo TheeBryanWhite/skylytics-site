@@ -214,7 +214,7 @@ export const theBigQuery = graphql`
 							hero_background_image {
 								localFile {
                   childImageSharp {
-                    fluid (maxWidth: 1920) {
+                    fluid (maxWidth: 2500) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }

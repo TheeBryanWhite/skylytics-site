@@ -74,8 +74,8 @@
 
 		.slide {
 			animation: spin 600s linear infinite;
-			height: 1639px;
-			width: 1639px;
+			height: 1920px;
+			width: 1920px;
 		}
 	}
 
@@ -83,12 +83,12 @@
 		transform: translateX(-100%);
 		
 		.slide {
-			height: 1639px;
+			height: 1920px;
 			transform: translate(-60%, -50%);
-			width: 1639px;
+			width: 1920px;
 
 			@include respond-to(large) {
-				height: 825px;
+				height: 1200px;
 			}
 		}
 
@@ -106,12 +106,12 @@
 		transform:  translateX(-100%);
 		
 		.slide {
-			height: 1280px;
+			height: 2500px;
 			transform: translate(-50%, -55%);
-			width: 1920px;
+			width: 2500px;
 
 			@include respond-to(large) {
-				transform: translate(-57%, -65%);
+				transform: translate(-57%, -57%);
 			}
 		}
 
@@ -143,7 +143,7 @@
 	@include respond-to(large) {
 		@keyframes panup {
 			from { transform: translate(-57%, -50%) }
-			to { transform: translate(-57%, -65%) }	
+			to { transform: translate(-57%, -57%) }	
 		}
 	}
 
