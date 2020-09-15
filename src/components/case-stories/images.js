@@ -1,8 +1,4 @@
 import React from 'react'
-import {
-	graphql,
-	useStaticQuery
-} from 'gatsby'
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 import { 
@@ -16,33 +12,7 @@ import {
 import './case-stories.scss'
 
 const Images = props => {
-	const csImgData = useStaticQuery(graphql`
-		query csImgQuery {
-			allCaseStoriesYaml {
-				edges {
-					node {
-						content {
-							title
-							bw {
-								childImageSharp {
-									fluid(maxWidth: 900) {
-										...GatsbyImageSharpFluid
-									}
-								}
-							}
-							color {
-								childImageSharp {
-									fluid(maxWidth: 900) {
-										...GatsbyImageSharpFluid
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	`)
+	const csImgData = props.storyImages
 
 	const imageClassHandler = story => {
 		let classArr = ['story-img']
@@ -113,7 +83,7 @@ const Images = props => {
 	
 	return(
 		<div className="column story-options">
-			{csImgData.allCaseStoriesYaml.edges.map((story, index) => (
+			{csImgData.map((story, index) => (
 				<div
 					className={imageClassHandler(index)} 
 					id={`story-${index}`} 
@@ -123,11 +93,11 @@ const Images = props => {
 					onMouseLeave={() => {mouseLeaveHandler(index) }}
 					role="presentation"
 				>
-					<Img fluid={story.node.content.bw.childImageSharp.fluid} alt={story.node.content.title} />
+					<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
 				</div>
 			))}
 			<div className="color-images">
-			{csImgData.allCaseStoriesYaml.edges.map((story, index) => (
+			{csImgData.map((story, index) => (
 				<div
 					className={colorClassHandler(index)}
 					id={`story-${index}`} 
@@ -135,7 +105,7 @@ const Images = props => {
 					onClick={() => { storyCloser(index) }}
 					role="presentation"
 				>
-					<Img fluid={story.node.content.color.childImageSharp.fluid} alt={story.node.content.title} />
+					<Img fluid={story.node.items[0].color_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
 				</div>
 			))}
 			</div>

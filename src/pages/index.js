@@ -13,47 +13,251 @@ const IndexPage = ({data}) => {
   return (
     <Layout page="home">
       <SEO title="Home" description="Site description" />
-      <Hero />
-      <ElevatorPitch />
-      <CaseStories storyData={data.allCaseStoriesYaml.edges} />
-      <Toolkit solutionsData={data.allToolkitYaml.edges} />
-      <Leadership />
-      <Contact />
+      <Hero heroBody={data.allPrismicHomepageHero.edges[0].node.data} />
+      <ElevatorPitch aboutUsBody={data.allPrismicAboutUs.edges[0].node.data} />
+      <CaseStories 
+        storyMeta={data.allPrismicCaseStories.edges[0].node.data}
+        storyBody={data.allPrismicCaseStoriesBodyCaseStoriesHead.edges}
+      />
+      <Toolkit
+        solutionsMeta={data.allPrismicSolutions.edges[0].node.data}
+        solutionsBody={data.allPrismicSolutionsBodySolution.edges}
+      />
+      <Leadership
+        leadershipMeta={data.allPrismicLeaders.edges[0].node.data}
+        leadershipBody={data.allPrismicLeadersBodyLeaders.edges[0].node.items}
+      />
+      <Contact contactUsBody={data.allPrismicContactUs.edges[0].node.data} />
     </Layout>
   )
 }
 
 export const theBigQuery = graphql`
   query csCopyQuery {
-    allCaseStoriesYaml {
+    allPrismicCaseStories {
       edges {
         node {
-          content {
-            title
-            excerpt
-            body {
-              paragraph
+          data {
+            header {
+              html
             }
-            link
+            footer {
+              html
+            }
           }
         }
       }
     }
-    allToolkitYaml {
+    allPrismicCaseStoriesBodyCaseStoriesHead(sort: {fields: id, order: ASC}) {
       edges {
         node {
-          content {
-            title
-            options {
-              option {
-                body
-                name
+          items {
+            bw_image {
+              alt
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 900) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
+            }
+            color_image {
+              alt
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 900) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
+            }
+            excerpt {
+              html
+            }
+            story_body {
+              html
+            }
+          }
+          id
+        }
+      }
+    }
+    allPrismicSolutions {
+      edges {
+        node {
+          data {
+            header {
+              html
+            }
+          }
+        }
+      }
+    }
+    allPrismicSolutionsBodySolution(sort: {fields: id, order: ASC}) {
+      edges {
+        node {
+          id
+          items {
+            subtab_body {
+              html
+            }
+            subtab_label {
+              text
+            }
+          }
+          primary {
+            button_label {
+              text
+            }
+            image {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
+              alt
+            }
+          }
+        }
+      }
+    }
+    allPrismicLeadersBodyLeaders(sort: {fields: id, order: ASC}, filter: {items: {elemMatch: {feature_on_homepage: {eq: true}}}}) {
+      edges {
+        node {
+          id
+          items {
+            bio {
+              html
+            }
+            name {
+              text
+            }
+            position {
+              text
+            }
+            feature_on_homepage
+            headshot {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
+            }
+            linkedin {
+              url
+              target
+            }
+            twitter {
+              target
+              url
+            }
+          }
+        }
+      }
+    }
+    allPrismicLeaders {
+      edges {
+        node {
+          data {
+            leadership_section_header {
+              html
+            }
+            background_image {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
               }
             }
           }
         }
       }
     }
+    allPrismicContactUs {
+      edges {
+        node {
+          data {
+            demo {
+              html
+            }
+            demo_title {
+              text
+            }
+            footer {
+              html
+            }
+            header {
+              html
+            }
+            newsletter {
+              html
+            }
+          }
+        }
+      }
+    }
+    allPrismicHomepageHero {
+			edges {
+				node {
+					data {
+						hero_slides {
+							hero_body {
+								html
+							}
+							hero_background_image {
+								localFile {
+                  childImageSharp {
+                    fluid (maxWidth: 1920) {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
+                  }
+                }
+							}
+            }
+          }
+        }
+      }
+    }
+    allPrismicAboutUs {
+      edges {
+        node {
+        data {
+          about_us_body {
+          html
+          }
+          body {
+          ... on PrismicAboutUsBodyCta {
+            id
+            primary {
+            link {
+              text
+            }
+            title {
+              text
+            }
+            }
+          }
+          }
+          background_image {
+            localFile {
+              childImageSharp {
+                fluid (maxWidth: 1920) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+        }
+      }
+      }
   }
 `
 

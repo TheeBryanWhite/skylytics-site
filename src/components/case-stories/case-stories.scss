@@ -104,10 +104,11 @@
 
 		.gatsby-image-wrapper {
 			height: 100%;
+			overflow: hidden;
+			position: relative;
 		}
 
-		img,
-		picture {
+		img {
 			mix-blend-mode: overlay;
 			object-fit: cover;
 		}
@@ -122,8 +123,7 @@
 			@include respond-to(large) {
 				clip-path: polygon(0 0, 79% 0, 100% 44%, 0 85%);
 
-				img,
-				picture {
+				img {
 					transform: translateY(-170px);
 				}
 			}
@@ -143,15 +143,13 @@
 				clip-path: polygon(0 0, 100% 0, 100% 28%, 28% 100%, 0 100%);
 				margin-top: -157px;
 
-				img,
-				picture {
+				img {
 					transform: translateY(20px);
 				}
 			}
 
 			@include respond-to(epic) {
-				img,
-				picture {
+				img {
 					transform: translateY(-80px);
 				}
 			}
@@ -166,8 +164,7 @@
 				margin-top: -179px;
 				padding-left: 25%;
 
-				img,
-				picture {
+				img {
 					transform: translateY(-55px);
 				}
 			}
@@ -225,18 +222,6 @@
 			top: 0;
 			width: 100%;
 		}
-		
-		&:nth-of-type(1) {
-			
-		}
-
-		&:nth-of-type(2) {
-			
-		}
-
-		&:nth-of-type(3) {
-			
-		}
 
 		&.active-story {
 			.story-meta {
@@ -277,9 +262,6 @@
 	}
 
 	.active-story {
-		.story-shift {
-		}
-	
 		.story-meta {
 			opacity: 1;
 		}
@@ -401,8 +383,7 @@
 
 		@include respond-to(large) {
 			&:nth-of-type(1) {
-				img,
-				picture {
+				img {
 					transform: translateY(-200px);
 				}
 			}
@@ -445,8 +426,7 @@
 		width: 1000px;
 
 		.gatsby-image-wrapper,
-		img,
-		picture {
+		img {
 			height: 1000px !important;
 			width: 1000px !important;
 		}

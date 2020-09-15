@@ -1,0 +1,70 @@
+{
+  "Main": {
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Title"
+      }
+    },
+    "header": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, heading2, heading3, heading4, heading5, heading6, strong, em, list-item, o-list-item",
+        "label": "Header"
+      }
+    },
+    "body": {
+      "type": "Slices",
+      "fieldset": "Slice zone",
+      "config": {
+        "labels": {
+          "solution": []
+        },
+        "choices": {
+          "solution": {
+            "type": "Slice",
+            "fieldset": "Solution",
+            "description": "Tabbed data for the solutions section",
+            "icon": "add_circle_outline",
+            "display": "list",
+            "non-repeat": {
+              "button_label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Button Label"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
+                }
+              }
+            },
+            "repeat": {
+              "subtab_label": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Subtab Label"
+                }
+              },
+              "subtab_body": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+                  "allowTargetBlank": true,
+                  "label": "Subtab Body"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

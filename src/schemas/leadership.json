@@ -1,0 +1,98 @@
+{
+  "Main" : {
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1",
+        "label" : "Title"
+      }
+    },
+    "background_image" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Background Image"
+      }
+    },
+    "leadership_section_header" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, heading2, heading3, heading4, heading5, heading6, strong, em, list-item, o-list-item",
+        "label" : "Leadership Section Header",
+        "placeholder" : "This field is for the section on the homepage"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "leaders" : [ ]
+        },
+        "choices" : {
+          "leaders" : {
+            "type" : "Slice",
+            "fieldset" : "Leaders",
+            "description" : "Leadership member profiles",
+            "icon" : "accessibility",
+            "display" : "grid",
+            "non-repeat" : { },
+            "repeat" : {
+              "headshot" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : { },
+                  "thumbnails" : [ ],
+                  "label" : "Headshot"
+                }
+              },
+              "feature_on_homepage" : {
+                "type" : "Boolean",
+                "config" : {
+                  "default_value" : true,
+                  "label" : "Feature on Homepage"
+                }
+              },
+              "name" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1",
+                  "label" : "Name"
+                }
+              },
+              "position" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "heading1",
+                  "label" : "Position"
+                }
+              },
+              "bio" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph",
+                  "label" : "Bio"
+                }
+              },
+              "linkedin" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "LinkedIn"
+                }
+              },
+              "twitter" : {
+                "type" : "Link",
+                "config" : {
+                  "allowTargetBlank" : true,
+                  "label" : "Twitter"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

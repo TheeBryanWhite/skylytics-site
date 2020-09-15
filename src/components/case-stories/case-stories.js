@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'gatsby'
 import Images from './images'
 import { connect } from "react-redux";
 import { 
@@ -93,16 +92,16 @@ class CaseStories extends Component {
 		return (
 			<section className="casestories" id="case-stories">
 				<div className="columns">
-					<Images />
+					<Images storyImages={this.props.storyBody} />
 					<div className={(this.props.expandedStory !== null ? 'column story expanded' : 'column story')}>
-						<div className={(this.props.expandedStory !== null ? 'story-head expanded' : 'story-head')}>
-							<h2>What's your story?</h2>
-							<p>Every day we make business decisions off the information available to us; Let us show you how to leverage the power of continuous intelligence to your advantage.</p>
-						</div>
+						<div 
+							className={(this.props.expandedStory !== null ? 'story-head expanded' : 'story-head')}
+							dangerouslySetInnerHTML={{ __html: this.props.storyMeta.header.html }}
+						/>
 						<div 
 							className={(this.props.expandedStory !== null ? 'story-container expanded' : 'story-container')}
 						>
-							{this.props.storyData.map((story, index) => (
+							{this.props.storyBody.map((story, index) => (
 							<div className={this.storyClassHandler(index)}  
 								 key={index}
 							>
@@ -110,30 +109,26 @@ class CaseStories extends Component {
 									className="story-meta" 
 									ref={storyMeta => this.storyMeta[index] = storyMeta}
 								>
-									<h3>{story.node.content.title}</h3>
-									<p>{story.node.content.excerpt}</p>
+									<div dangerouslySetInnerHTML={{ __html: story.node.items[0].excerpt.html }} />
 									<ul>
 										<li><button 
 												className="cta"
 												onClick={() => {this.storyOpener(index)}}
 											>Read More</button></li>
-										{(story.node.content.link !== null ? <li><a href={`http://${story.node.content.link}`} target="_blank" rel="noreferrer">Learn more about our Tracing software, safercontact<span>&reg;</span></a></li> : '')}
+										{(index === 0 ? <li><a href="http://safercontact.com" target="_blank" rel="noreferrer">Learn more about our Tracing software, safercontact<span>&reg;</span></a></li> : '')}
 									</ul>
 								</div>
 								<div className="story-body">
-									<h3>{story.node.content.title}</h3>
-									{story.node.content.body.map((body, index) => (
-										<p key={index}>{body.paragraph}</p>
-									))}
+								<div dangerouslySetInnerHTML={{ __html: story.node.items[0].story_body.html }} />
 									<button onClick={() => { this.storyCloser() }} className="cta back">Back</button>
 								</div>
 							</div>
 							))}
 						</div>
-						<div className={(this.props.expandedStory !== null ? 'story-foot expanded' : 'story-foot')}>
-							<h3>Check Current Company Events and Updates</h3>
-							<p><Link to="/news">Check updates</Link></p>
-						</div>
+						<div
+							className={(this.props.expandedStory !== null ? 'story-foot expanded' : 'story-foot')}
+							dangerouslySetInnerHTML={{ __html: this.props.storyMeta.footer.html }}
+						/>
 					</div>
 				</div>
 			</section>

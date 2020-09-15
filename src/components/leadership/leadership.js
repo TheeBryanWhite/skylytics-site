@@ -1,41 +1,22 @@
 import React from 'react'
-import { 
-	Link,
-	useStaticQuery, 
-	graphql
-} from 'gatsby'
+import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
-import LeadershipImages from './leadership-images'
+import LeadershipImages from './images'
 
 import './leadership.scss'
 
-const Leadership = () => {
-	const leadershipBgData = useStaticQuery(graphql`
-		query LeadershipImgQuery {
-			desktop: file(relativePath: { eq: "components/leadership/bg/leadership_background.jpg" }) {
-				childImageSharp {
-					fluid(quality: 90, maxWidth: 1920) {
-						...GatsbyImageSharpFluid_withWebp
-					}
-				}
-			}
-		}
-	`);
-
-	const leadershipBgImageData = leadershipBgData.desktop.childImageSharp.fluid
-	  
+const Leadership = props => {
 	return (
 		<section className="leadership-team" id="leadership">
 			<BackgroundImage
 				className="bgnull"
-				fluid={leadershipBgImageData}
+				fluid={props.leadershipMeta.background_image.localFile.childImageSharp.fluid}
 				Tag="div"
 			></BackgroundImage>
 			<div className="leadership-copy">
 				<div className="container">
-					<h2>skylytics<span>&reg;</span> Leadership Team</h2>
-					<p>Our inspiration to make better business decisions starts with our leaders; the human bridge between continuous intelligence technology and you.</p>
-					<LeadershipImages />
+				<div dangerouslySetInnerHTML={{ __html: props.leadershipMeta.leadership_section_header.html }} />
+					<LeadershipImages leadershipImageData={props.leadershipBody} />
 					<p><Link className="cta" to="/leadership">Leadership Team Members</Link></p>
 				</div>
 			</div>

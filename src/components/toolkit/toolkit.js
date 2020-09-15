@@ -13,7 +13,6 @@ import TableauSvg from './svg/tableau_logo_wht.svg'
 class Toolkit extends Component {
 	constructor(props) {
 		super(props)
-
 		this.solutionClickHandler = this.solutionClickHandler.bind(this)
 		this.subtabClickHandler = this.subtabClickHandler.bind(this)
 	}
@@ -32,22 +31,21 @@ class Toolkit extends Component {
 				<div className="bgcontainer">
 					<div className="columns">
 						<div className="column toolkit-content">
-							<h2>We provide business clarity through continuous intelligence solutions</h2>
-							<p>Let’s build a toolkit for a successful business.</p>
+							<div dangerouslySetInnerHTML={{ __html: this.props.solutionsMeta.header.html }} />
 	
 							<div className="toolkit-options">
 								<ul className="tabs">
-									{this.props.solutionsData.map((solution, index) => (
+									{this.props.solutionsBody.map((solution, index) => (
 									<li id={`solution-tab-${index}`} key={index}>
 										<button onClick={() => { this.solutionClickHandler(index) }}>
-											<span>{solution.node.content.title}</span>
+											<span>{solution.node.primary.button_label.text}</span>
 										</button>
 									</li>
 									))}
 								</ul>
 	
 								<div className="solutions-container">
-									{this.props.solutionsData.map((solution, index) => (
+									{this.props.solutionsBody.map((solution, index) => (
 									<ul 
 										className={(this.props.activeSolution === index ? 'solution active-solution' : 'solution')}
 										id={`solution-${index}`} 
@@ -55,14 +53,14 @@ class Toolkit extends Component {
 									>
 										<li>
 											<ul className="subtabs">
-												{solution.node.content.options.map((node, index) => (
+												{solution.node.items.map((node, index) => (
 													<li 
 														className={(this.props.activeSubtab === index ? 'subtab active-subtab' : 'subtab')}
 														id={`solution-subtab-${index}`} 
 														key={index}
 													>
 															<button onClick={() => { this.subtabClickHandler(index) }}>
-																{node.option.name}
+																{node.subtab_label.text}
 															</button>
 													</li>
 												))}
@@ -70,13 +68,12 @@ class Toolkit extends Component {
 										</li>
 										<li>
 											<ul className="descriptors">
-												{solution.node.content.options.map((node, index) => (
+												{solution.node.items.map((node, index) => (
 												<li 
 													className={(this.props.activeSubtab === index ? 'descriptor active-descriptor' : 'descriptor')}
 													key={index}
-												>
-													{node.option.body}
-												</li>
+													dangerouslySetInnerHTML={{ __html: node.subtab_body.html }}
+												/>
 												))}
 											</ul>
 										</li>
@@ -95,7 +92,7 @@ class Toolkit extends Component {
 							</div>
 						</div>
 						<div className="column toolkit-images">
-							<Images />
+							<Images tkImageData={this.props.solutionsBody} />
 						</div>
 					</div>
 				</div>

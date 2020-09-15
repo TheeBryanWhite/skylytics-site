@@ -1,0 +1,34 @@
+{
+	"Main" : {
+	  "homepage_hero_title" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "single" : "heading1",
+		  "label" : "Title"
+		}
+	  },
+	  "hero_slides" : {
+		"type" : "Group",
+		"config" : {
+		  "fields" : {
+			"hero_background_image" : {
+			  "type" : "Image",
+			  "config" : {
+				"constraint" : { },
+				"thumbnails" : [ ],
+				"label" : "Hero Background Image"
+			  }
+			},
+			"hero_body" : {
+			  "type" : "StructuredText",
+			  "config" : {
+				"multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
+				"label" : "Hero Body"
+			  }
+			}
+		  },
+		  "label" : "Hero Slides"
+		}
+	  }
+	}
+  }

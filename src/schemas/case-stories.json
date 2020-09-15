@@ -1,0 +1,79 @@
+{
+	"Main" : {
+	  "title" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "single" : "heading1",
+		  "label" : "title"
+		}
+	  },
+	  "header" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "multi" : "paragraph, heading2, heading3, heading4, heading5, heading6, strong, em, list-item, o-list-item",
+		  "allowTargetBlank" : true,
+		  "label" : "Header"
+		}
+	  },
+	  "footer" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+		  "allowTargetBlank" : true,
+		  "label" : "Footer"
+		}
+	  },
+	  "body" : {
+		"type" : "Slices",
+		"fieldset" : "Slice zone",
+		"config" : {
+		  "labels" : {
+			"case_stories_head" : [ ]
+		  },
+		  "choices" : {
+			"case_stories_head" : {
+			  "type" : "Slice",
+			  "fieldset" : "Case Stories Content",
+			  "description" : "All of the fields for the Case Stories Area",
+			  "icon" : "add_circle_outline",
+			  "display" : "list",
+			  "non-repeat" : { },
+			  "repeat" : {
+				"color_image" : {
+				  "type" : "Image",
+				  "config" : {
+					"constraint" : { },
+					"thumbnails" : [ ],
+					"label" : "Color Image"
+				  }
+				},
+				"bw_image" : {
+				  "type" : "Image",
+				  "config" : {
+					"constraint" : { },
+					"thumbnails" : [ ],
+					"label" : "BW Image"
+				  }
+				},
+				"excerpt" : {
+				  "type" : "StructuredText",
+				  "config" : {
+					"multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, list-item, o-list-item",
+					"label" : "Excerpt"
+				  }
+				},
+				"story_body" : {
+				  "type" : "StructuredText",
+				  "config" : {
+					"multi" : "paragraph, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item",
+					"allowTargetBlank" : true,
+					"label" : "Story Body"
+				  }
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	}
+  }

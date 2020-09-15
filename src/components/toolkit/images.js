@@ -1,32 +1,8 @@
 import React from "react"
-import {
-	graphql,
-	useStaticQuery
-} from 'gatsby'
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 
 const Images = props => {
-	const tkImgData = useStaticQuery(graphql`
-		query tkImgQuery {
-			allToolkitYaml {
-				edges {
-					node {
-						content {
-							src {
-								childImageSharp {
-									fluid(maxWidth: 600) {
-										...GatsbyImageSharpFluid
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	`)
-
 	const classBuilder = index => {
 		let classArr = ['tk-img']
 
@@ -41,14 +17,17 @@ const Images = props => {
 
 	return (
 		<div className="tk-images">
-			{tkImgData.allToolkitYaml.edges.map((user, index) =>
+			{props.tkImageData.map((user, index) =>
 				(
 				<div 
 					className={classBuilder(index)}
 					id={`tk-${index}`}
 					key={index}
 				>
-					<Img fluid={user.node.content.src.childImageSharp.fluid} />
+					<Img 
+						alt={user.node.primary.image.alt}
+						fluid={user.node.primary.image.localFile.childImageSharp.fluid}
+					/>
 				</div>
 				))
 			}

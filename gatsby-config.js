@@ -100,22 +100,20 @@ module.exports = {
         ) => {
           
         },
+        // Remember, the schema names in the object have to match the API ID
         schemas: {
           news: require('./src/schemas/news.json'),
           page: require('./src/schemas/page.json'),
+          homepage_hero: require('./src/schemas/homepage-hero.json'),
+          about_us: require('./src/schemas/about-us.json'),
+          case_stories: require('./src/schemas/case-stories.json'),
+          solutions: require('./src/schemas/solutions.json'),
+          leaders: require('./src/schemas/leadership.json'),
+          contact_us: require('./src/schemas/contact-us.json')
         },
-        lang: 'en-us',
-        prismicToolbar: true,
-        imageImgixParams: {
-          auto: 'compress,format',
-          fit: 'max',
-          q: 50,
+        shouldDownloadImage: ({ node, key, value }) => {
+          return true
         },
-        imagePlaceholderImgixParams: {
-          w: 100,
-          blur: 15,
-          q: 50,
-        }
       },
     },
     // Uncomment when in production

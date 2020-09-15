@@ -1,38 +1,18 @@
 import React from 'react'
 import { 
-	Link,
-	useStaticQuery, 
-	graphql
+	Link
 } from 'gatsby'
 
 import HeroSlides from './hero-slides'
 
 import './hero.scss'
 
-const Hero = () => {
-	const heroData = useStaticQuery(graphql`
-	query heroImgQuery {
-		allHeroJson {
-			nodes {
-				title
-				body
-				src {
-					childImageSharp {
-						fluid(maxWidth: 1920) {
-							...GatsbyImageSharpFluid
-						}
-					}
-				}
-			}
-		}
-	}
-	`);
-
+const Hero = props => {
 	return (
 		<section className="hero" id="home">
 				<div className="slides">
 					<div className="slidemask">
-						<HeroSlides slideData={heroData} />
+						<HeroSlides slideData={props.heroBody.hero_slides} />
 						<div className="hero-cta">
 							<ul>
 								<li><Link className="cta" to="/">Learn More</Link></li>

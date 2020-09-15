@@ -8,7 +8,7 @@ import './hero.scss'
 class HeroSlides extends Component {
 	constructor(props) {
 		super(props)
-
+		console.log(props)
 		this.swapState = this.swapState.bind(this)
 	}
 
@@ -31,26 +31,19 @@ class HeroSlides extends Component {
 
 	render() {
 		return (
-			this.props.slideData.allHeroJson.nodes.map((hero, index) => (
+			this.props.slideData.map((hero, index) => (
 			<div className={`slidecontainer ${(this.props.heroSlide === index ? 'active' : '')}`} 
 				 id={`slide${index}`}
 				 key={index}
 			>
 				<BackgroundImage
 					className="slide"
-					fluid={hero.src.childImageSharp.fluid}
+					fluid={hero.hero_background_image.localFile.childImageSharp.fluid}
 					Tag="div"
 				>
 				</BackgroundImage>
 				<div className="slidecontent container">
-					<div className="hero-copy">
-						<h2>{hero.title}</h2>
-						{
-						hero.body.map((body, index) => (
-							<p key={index}>{body}</p>
-						))
-						}
-					</div>
+					<div className="hero-copy" dangerouslySetInnerHTML={{ __html: hero.hero_body.html }} />
 				</div>
 			</div>
 			))

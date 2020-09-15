@@ -12,39 +12,10 @@ const IndexPage = ({data}) => {
       <SEO title="Leadership - skylytics" description="Site description" />
       <SubpageHero imgData={data.file.childImageSharp.fluid} pageTitle="Executive Leaderhip Team" />
       <PageBody>
-        <Leadership bodyData={data.allLeadershipJson.edges} />
+        <Leadership bodyData="" />
       </PageBody>
     </Layout>
   )
 }
-
-export const LeadershipPageQuery = graphql`
-query LeadershipPageQuery {
-  allLeadershipJson {
-    edges {
-      node {
-        name
-        bio
-        image {
-          childImageSharp {
-            fluid(quality: 90, maxWidth: 600) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
-        linkedin
-        position
-        twitter
-      }
-    }
-  }
-  file(relativePath: {eq: "components/leadership/bg/leadership_background.jpg"}) {
-    childImageSharp {
-      fluid(quality: 90, maxWidth: 1920) {
-        ...GatsbyImageSharpFluid_withWebp
-      }
-    }
-  }
-}`
 
 export default IndexPage
