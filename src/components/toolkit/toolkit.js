@@ -37,7 +37,10 @@ class Toolkit extends Component {
 								<ul className="tabs">
 									{this.props.solutionsBody.map((solution, index) => (
 									<li id={`solution-tab-${index}`} key={index}>
-										<button onClick={() => { this.solutionClickHandler(index) }}>
+										<button
+											className={(this.props.activeSolution === index ? 'tab active-tab' : 'tab')}
+											onClick={() => { this.solutionClickHandler(index) }}
+										>
 											<span>{solution.node.primary.button_label.text}</span>
 										</button>
 									</li>

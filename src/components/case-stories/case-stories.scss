@@ -76,6 +76,7 @@
 		position: relative;
 
 		@include respond-to(large) {
+			padding-right: 60px;
 			padding-top: toRem(75);
 		}
 

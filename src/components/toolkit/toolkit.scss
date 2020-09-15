@@ -113,7 +113,8 @@
 				outline: none;
 			}
 
-			&:hover {
+			&:hover,
+			&.active-tab {
 				background-color: color(white);
 				color: color(blue);
 			}
