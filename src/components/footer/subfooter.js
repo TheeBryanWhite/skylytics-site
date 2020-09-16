@@ -8,7 +8,7 @@ const Subfooter = () => {
 	return(
 		<div className="subfooter container">
 			<div className="copyright">
-				<p>&copy; {theYear} Skylytics<span>&reg;</span> Data LLC | All Rights Rerved</p>
+				<p>&copy; {theYear} Skylytics<span>&reg;</span> Data LLC | All Rights Reserved</p>
 			</div>
 			<p><Link to="/">Legal Aspects</Link></p>
 			<p><Link to="/">Privacy Policy</Link></p>
