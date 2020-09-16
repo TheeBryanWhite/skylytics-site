@@ -56,7 +56,7 @@ export const theBigQuery = graphql`
               alt
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 900) {
+                  fluid(maxWidth: 1280) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -66,7 +66,7 @@ export const theBigQuery = graphql`
               alt
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 900) {
+                  fluid(maxWidth: 1280) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }

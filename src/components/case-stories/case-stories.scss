@@ -268,6 +268,26 @@
 	.story-body {
 		transition: opacity 0.5s linear;
 		z-index: -1;
+
+		@include respond-to(large) {
+			font-size: toRem(14);
+		}
+
+		@include respond-to(xlarge) {
+			font-size: toRem(16);
+		}
+
+		@include respond-to(large) {
+			h3 {
+				font-size: toRem(20);
+			}
+		}
+
+		@include respond-to(xlarge) {
+			h3 {
+				font-size: toRem(24);
+			}
+		}
 	}
 
 	.active-story {
@@ -295,10 +315,6 @@
 			position: fixed;
 			top: 0;
 			transition: opacity 0.5s linear 0.5s;
-
-			@include respond-to(medium) {
-				top: 112px;
-			}
 
 			@include respond-to(large) {
 				background-color: transparent;
@@ -382,10 +398,15 @@
 	}
 
 	.color-images {
-		height: 900px;
+		height: 1280px;
 		position: absolute;
 		top: 0;
-		width: 900px;
+		width: 1280px;
+
+		@include respond-to(large) {
+			height:1000px;
+			width: 1000px;
+		}
 	}
 
 	.color-image {
@@ -412,22 +433,33 @@
 
 		&.expanded-image {
 			&:nth-of-type(1) {
-				transform: translateY(-70px);
+				transform: translateY(-30%);
+
+				@include respond-to(large) {
+					transform: translateY(-10%);
+				}
 			}
 
 			&:nth-of-type(2) {
-				transform: translateY(-220px);
+				height: 1400px;
+				transform: translateY(0);
 			}
 
 			&:nth-of-type(3) {
-				transform: translate(-390px ,-220px);
+				left: 50%;
+				top: 50%;
+				transform: translate(-90% , -80%);
 
-				@include respond-to(customTw) {
-					transform: translate(-290px ,-220px);
+				@include respond-to(medium) {
+					transform: translate(-70% , -80%);
+				}
+
+				@include respond-to(large) {
+					transform: translate(-90% , -80%);
 				}
 
 				@include respond-to(epic) {
-					transform: translate(-240px ,-220px);
+					transform: translate(-70% , -80%);
 				}
 			}
 		}
@@ -435,18 +467,9 @@
 
 	.color-images {
 		bottom: 0;
-		height: 1000px;
 		left: 0;
 		position: absolute;
 		right: 0;
 		top: 0;
-		width: 1000px;
-
-		.gatsby-image-wrapper,
-		img,
-		picture {
-			height: 1000px !important;
-			width: 1000px !important;
-		}
 	}
 }

@@ -15,8 +15,8 @@ const Hero = props => {
 						<HeroSlides slideData={props.heroBody.hero_slides} />
 						<div className="hero-cta">
 							<ul>
-								<li><Link className="cta" to="/">Learn More</Link></li>
-								<li><Link className="business-profile" to="/">Download skylytics<span>&reg;</span> business profile</Link></li>
+								<li><Link className="cta" to="#case-stories">Learn More</Link></li>
+								{/* <li><Link className="business-profile" to="/">Download skylytics<span>&reg;</span> business profile</Link></li> */}
 							</ul>
 						</div>
 					</div>

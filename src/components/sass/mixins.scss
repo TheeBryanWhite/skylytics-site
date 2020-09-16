@@ -503,7 +503,8 @@ $small: toRem(600);      // 37.5em
 $iphonesL: toRem(667);
 $iphonesPlus: toRem(414);
 $iphonesPlusL: toRem(736);
-$medium: toRem(768);     // 47.5em
+$medium: toRem(768);  
+$eighthundred: toRem(800);   // 47.5em
 $large: toRem(1024); 
 $customTw: toRem(1211);
 $xlarge: toRem(1280);
@@ -515,6 +516,7 @@ $breakpoints: (
     iphonesPlusL: $iphonesPlusL,
     small: $small,
     medium: $medium,
+    eighthundred: eighthundred,
     large: $large,
     customTw: $customTw,
     xlarge: $xlarge,
