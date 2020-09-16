@@ -684,3 +684,10 @@ a {
         background-color: color(ctahover);
     }
 }
+
+.anchor-offset {
+    display: block;
+    position: relative;
+    top: -150px;
+    visibility: hidden;
+}

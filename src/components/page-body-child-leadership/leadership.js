@@ -12,7 +12,11 @@ class Leadership extends Component{
 			<div className="leaders-page container">
 				{this.props.bodyData.items.map((leader, index) => (
 					<div className="leader-wrapper" key={index}>
-						<div className="leader" key={index}>
+						<div 
+							className="leader"
+							key={index}
+						>
+							<a className="anchor-offset" id={index}></a>
 							<div className="leader-image flex-item">
 								<Img fluid={leader.headshot.localFile.childImageSharp.fluid} />
 							</div>

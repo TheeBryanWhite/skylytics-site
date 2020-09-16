@@ -48,6 +48,8 @@
 		flex: 0 0 50%;
 		margin-bottom: toRem(16);
 		padding: 0 toRem(32);
+		padding-bottom: 40px;
+		position: relative;
 
 		@include respond-to(large) {
 			flex: 1 1 25%;
@@ -71,8 +73,10 @@
 			}
 
 			.read-more {
+				bottom: 0;
 				color: color(biolink);
 				font-weight: 700;
+				position: absolute;
 	
 				&:after {
 					content: '\2192';
