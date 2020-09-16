@@ -90,7 +90,10 @@ class CaseStories extends Component {
 
 	render() {
 		return (
-			<section className="casestories" id="case-stories">
+			<section 
+			className={(this.props.expandedStory !== null ? 'casestories expanded' : 'casestories')}
+				id="case-stories"
+			>
 				<div className="columns">
 					<Images storyImages={this.props.storyBody} />
 					<div className={(this.props.expandedStory !== null ? 'column story expanded' : 'column story')}>

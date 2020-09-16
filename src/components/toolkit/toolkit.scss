@@ -3,7 +3,7 @@
 .solutions-section {
 	color: color(white);
 	position: relative;
-	z-index: 900;
+	z-index: 400;
 
 	@include respond-to(large) {
 		margin-top: -325px;

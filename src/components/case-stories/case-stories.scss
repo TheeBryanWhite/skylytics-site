@@ -10,6 +10,10 @@
 		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 56%);
 	}
 
+	&.expanded {
+		z-index: 1000;
+	}
+
 	h2 {
 		font-size: toRem(32);
 	}
@@ -76,13 +80,13 @@
 		position: relative;
 
 		@include respond-to(large) {
-			padding-right: 60px;
 			padding-top: toRem(75);
 		}
 
 		&.expanded {
-			position: absolute;
+			position: fixed;
 			top: 0;
+			z-index: 500;
 
 			@include respond-to(large) {
 				position: static;
@@ -105,11 +109,10 @@
 
 		.gatsby-image-wrapper {
 			height: 100%;
-			overflow: hidden;
-			position: relative;
 		}
 
-		img {
+		img,
+		picture {
 			mix-blend-mode: overlay;
 			object-fit: cover;
 		}
@@ -124,7 +127,8 @@
 			@include respond-to(large) {
 				clip-path: polygon(0 0, 79% 0, 100% 44%, 0 85%);
 
-				img {
+				img,
+				picture {
 					transform: translateY(-170px);
 				}
 			}
@@ -144,13 +148,15 @@
 				clip-path: polygon(0 0, 100% 0, 100% 28%, 28% 100%, 0 100%);
 				margin-top: -157px;
 
-				img {
+				img,
+				picture {
 					transform: translateY(20px);
 				}
 			}
 
 			@include respond-to(epic) {
-				img {
+				img,
+				picture {
 					transform: translateY(-80px);
 				}
 			}
@@ -165,7 +171,8 @@
 				margin-top: -179px;
 				padding-left: 25%;
 
-				img {
+				img,
+				picture {
 					transform: translateY(-55px);
 				}
 			}
@@ -182,7 +189,7 @@
 		flex-wrap: wrap;
 		min-height: 243px;
 		position: relative;
-		transition: opacity 0.5s linear, transform 0.5s ease(in-out-quart);
+		transition: opacity 0.5s linear, transform 0.5s linear;
 		z-index: 10;
 
 		@include respond-to(large) {
@@ -193,7 +200,7 @@
 		&.expanded {
 			margin: 0;
 			max-height: none;
-			transition: opacity 0.1s linear, transform 0.5s ease(in-out-quart) 0.5s;
+			transition: opacity 0.1s linear, transform 0.5s linear 0.5s;
 			width: 100%;
 
 			@include respond-to(large) {
@@ -217,6 +224,7 @@
 	.story-shift {
 		min-height: 300px;
 		position: absolute;
+		top: -30px;
 
 		@include respond-to(large) {
 			flex: 1 1 100%;
@@ -263,6 +271,7 @@
 	}
 
 	.active-story {
+	
 		.story-meta {
 			opacity: 1;
 		}
@@ -270,6 +279,7 @@
 
 	.expanded-story {
 		opacity: 1;
+		z-index: 1000;
 
 		.story-meta {
 			opacity: 0;
@@ -283,7 +293,7 @@
 			opacity: 1;
 			overflow-y: scroll;
 			position: fixed;
-			top: 142px;
+			top: 0;
 			transition: opacity 0.5s linear 0.5s;
 
 			@include respond-to(medium) {
@@ -328,7 +338,12 @@
 	.story-foot {
 		display: inline-block;
 		position: relative;
+		top: 24px;
 		z-index: 10;
+
+		@include respond-to(large) {
+			top: 0;
+		}
 
 		&.expanded {
 			z-index: -1;
@@ -378,13 +393,14 @@
 		max-height: none;
 		position: absolute;
 		top: 0;
-		transition: all 0.4s ease(in-out-quart);
+		transition: all 0.4s linear;
 		width: 100%;
-		z-index: 1000;
+		z-index: 100;
 
 		@include respond-to(large) {
 			&:nth-of-type(1) {
-				img {
+				img,
+				picture {
 					transform: translateY(-200px);
 				}
 			}
@@ -427,7 +443,8 @@
 		width: 1000px;
 
 		.gatsby-image-wrapper,
-		img {
+		img,
+		picture {
 			height: 1000px !important;
 			width: 1000px !important;
 		}
