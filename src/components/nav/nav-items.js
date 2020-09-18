@@ -26,7 +26,7 @@ const NavItems = (props) => {
 	  menu = menu.site.siteMetadata.menuLinks
 	  
 	const clickHandler = page => {
-		if (page === 'about-us' || page === 'case-stories' || page === 'solutions' || page === 'contact-us') {
+		if (page === 'about-us' || page === 'case-stories' || page === 'solutions' || page === 'contact-us' || page === 'legal') {
 			page = 'home'
 		}
 

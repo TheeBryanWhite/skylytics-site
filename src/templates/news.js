@@ -9,7 +9,6 @@ import './scss/news.scss'
 
 function NewsPostTemplate({data}) {
 	const post = data.prismicNews
-	console.log(post)
 
 	return(
 		<Layout page="news">

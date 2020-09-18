@@ -12,15 +12,20 @@ class HeroSlides extends Component {
 	}
 
 	componentDidMount() {
+		const slides = document.querySelectorAll('.slidecontainer')
+		
 		this.swapState()
+		slides[0].classList.add('active')
 	}
 
 	swapState() {
-		let index = 1;
+		let index = 1
+		const slides = document.querySelectorAll('.slidecontainer')
 
 		setInterval(() => {
 			if (index <= 2) {
 				this.props.setHeroSlide(index)
+				slides[index].classList.add('active')
 			} else {
 				clearInterval()
 			}
@@ -31,7 +36,7 @@ class HeroSlides extends Component {
 	render() {
 		return (
 			this.props.slideData.map((hero, index) => (
-			<div className={`slidecontainer ${(this.props.heroSlide === index ? 'active' : '')}`} 
+			<div className={'slidecontainer'} 
 				 id={`slide${index}`}
 				 key={index}
 			>

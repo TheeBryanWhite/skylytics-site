@@ -14,7 +14,7 @@ footer {
 
 		h1 {
 			margin: 0 auto toRem(8);
-			width: toRem(70);
+			width: toRem(100);
 
 			@include respond-to(large) {
 				margin: 0;
@@ -28,6 +28,10 @@ footer {
 		p {
 			color: color(footertag);
 			text-transform: uppercase;
+		}
+
+		svg {
+			fill: color(white)
 		}
 
 		.container {

@@ -7,8 +7,7 @@ import './toolkit.scss'
 
 import AzureSvg from './svg/azure_logo_wht.svg'
 import LosantSvg from './svg/losant_logo_wht.svg'
-import MicrosoftSvg from './svg/microsoft_logo_wht.svg'
-import TableauSvg from './svg/tableau_logo_wht.svg'
+import MicrosoftSvg from './svg/microsoft_partner_white.svg'
 
 class Toolkit extends Component {
 	constructor(props) {
@@ -90,7 +89,6 @@ class Toolkit extends Component {
 									<li><MicrosoftSvg /><span className="screen-reader-text">Microsoft Gold Certified</span></li>
 									<li><AzureSvg /><span className="screen-reader-text">Azure</span></li>
 									<li><LosantSvg /><span className="screen-reader-text">Losant</span></li>
-									<li><TableauSvg /><span className="screen-reader-text">Tableau</span></li>
 								</ul>
 							</div>
 						</div>
