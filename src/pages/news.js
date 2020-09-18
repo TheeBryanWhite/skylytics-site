@@ -50,9 +50,13 @@ allPrismicNews {
           text
         }
         news_hero_image {
-          fluid {
-            src
-          }
+			localFile {
+				childImageSharp {
+				  fluid (maxWidth: 1920) {
+					  ...GatsbyImageSharpFluid_withWebp
+					}
+				}
+			  }
         }
         news_title {
           text

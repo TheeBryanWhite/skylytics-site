@@ -1,49 +1,56 @@
 {
-  "Main" : {
-    "page_title" : {
-      "type" : "StructuredText",
-      "config" : {
-        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
-        "label" : "Title",
-        "placeholder" : "Title"
+  "Main": {
+    "page_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "Title",
+        "placeholder": "Title"
       }
     },
-    "hero" : {
-      "type" : "Image",
-      "config" : {
-        "constraint" : { },
-        "thumbnails" : [ ],
-        "label" : "Hero"
+    "subheading": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Subheading"
       }
     },
-    "page_content" : {
-      "type" : "StructuredText",
-      "config" : {
-        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "allowTargetBlank" : true,
-        "label" : "Content",
-        "placeholder" : "Your content here..."
+    "hero": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Hero"
       }
     },
-    "uid" : {
-      "type" : "UID",
-      "config" : {
-        "label" : "UID",
-        "placeholder" : "UID"
+    "page_content": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "allowTargetBlank": true,
+        "label": "Content",
+        "placeholder": "Your content here..."
       }
     },
-    "seo_title" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "SEO Title",
-        "placeholder" : "SEO TItle"
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "UID"
       }
     },
-    "seo_description" : {
-      "type" : "Text",
-      "config" : {
-        "label" : "SEO Description",
-        "placeholder" : "SEO Description"
+    "seo_title": {
+      "type": "Text",
+      "config": {
+        "label": "SEO Title",
+        "placeholder": "SEO TItle"
+      }
+    },
+    "seo_description": {
+      "type": "Text",
+      "config": {
+        "label": "SEO Description",
+        "placeholder": "SEO Description"
       }
     }
   }

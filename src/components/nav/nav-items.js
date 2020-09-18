@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
-import { setMenu } from '../../redux/actions/actions'
+import { 
+	setMenu,
+	setCurrentPage
+ } from '../../redux/actions/actions'
 
 const NavItems = (props) => {
 	let menu = useStaticQuery(graphql`
@@ -20,7 +23,17 @@ const NavItems = (props) => {
 		}
 	`);
 
-  	menu = menu.site.siteMetadata.menuLinks
+	  menu = menu.site.siteMetadata.menuLinks
+	  
+	const clickHandler = page => {
+		if (page === 'about-us' || page === 'case-stories' || page === 'solutions' || page === 'contact-us') {
+			page = 'home'
+		}
+
+		props.setCurrentPage(page)
+		props.setMenu(props.menuState)
+		return false
+	}
 
 	return (
 		<ul className={`${props.menuState ? 'active-menu' : ''}`}>
@@ -29,7 +42,8 @@ const NavItems = (props) => {
 			// <li key={navItem.name} className={navItem.class}>
 			<li key={navItem.name} className={ navItem.class }>
 				<Link 
-				onClick={() => props.setMenu(props.menuState)}
+				activeClassName="active-link"
+				onClick={() => clickHandler(navItem.class)}
 				to={navItem.link}
 				>
 				<span>{navItem.name}</span>
@@ -50,7 +64,8 @@ NavItems.defaultProps = {
 }
 
 const mapStateToProps = state => ({
+	currentPage: state.app.currentPage,
 	menuState: state.app.menuState
 })
   
-export default connect(mapStateToProps, { setMenu })(NavItems)
+export default connect(mapStateToProps, { setMenu, setCurrentPage })(NavItems)

@@ -26,7 +26,7 @@ module.exports = {
       {
         class: 'leadership',
         name: 'Leadership',
-        link: '/#leadership'
+        link: '/leadership'
       },
       {
         class: 'news',

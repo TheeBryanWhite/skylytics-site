@@ -21,23 +21,17 @@ class Nav extends Component {
     this.getNavLinks = this.getNavLinks.bind(this)
     this.resizeListener = this.resizeListener.bind(this)
     this.scrollHandler = this.scrollHandler.bind(this)
-    this.setCurrentPage = this.setCurrentPage.bind(this)
   }
 
   componentDidMount() {
-    this.setCurrentPage()
+    this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
+    this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
     this.scrollHandler()
     this.resizeListener()
   }
 
   getActiveLinkPosition = linkObj => {
     let activeLinkPosition = null
-
-    linkObj.forEach(link => {
-      if (link.id === this.props.currentPage) {
-        activeLinkPosition = link.position
-      }
-    })
 
     linkObj.forEach(link => {
       if (link.id === this.props.activeSection) {
@@ -96,18 +90,13 @@ class Nav extends Component {
     }, 500))
   }
 
-  setCurrentPage = () => {
-    this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
-    this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
-  }
-
   render() {
     return (
       <nav>
         <div className="container">
           <NavItems />
           <div 
-            className="link-selector" 
+            className={(this.props.currentPage === 'home' ? 'link-selector visible' : 'link-selector')} 
             style={{left: this.props.selectorPosition + 16, width: this.props.selectorWidth - 30}}
           >&nbsp;</div>
           <Hamburger />

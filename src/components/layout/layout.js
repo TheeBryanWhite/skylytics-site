@@ -45,11 +45,7 @@ class Layout extends Component {
 
   componentDidMount = () => {
     this.findActiveSection()
-
-    if (this.props.currentPage === 'home') {
-      this.scrollHandler()
-    }
-    this.props.setCurrentPage(this.props.page)
+    this.scrollHandler()
   }
 
   findActiveSection = scrollDir => {

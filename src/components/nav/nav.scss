@@ -105,8 +105,33 @@ nav {
 		height: 3px;
 		transition: all 0.2s ease(in-out-quart);
 		width: 40px;
+	}
 
-		@include respond-to(large) {
+	@include respond-to(large) {
+		.active-link:after {
+			background-color: color(teal);
+			bottom: 0;
+			content: '';
+			display: block;
+			height: 3px;
+			opacity: 1;
+			position: absolute;
+			transform: translateY(11px)
+		}
+	}
+}
+
+@include respond-to(large) {
+	.page-home {
+		.link-selector {
+			display: block;
+		}
+	
+		.active-link:after {
+			display: none;
+		}
+
+		.visible {
 			display: block;
 		}
 	}

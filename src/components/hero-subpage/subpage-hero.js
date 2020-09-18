@@ -4,10 +4,6 @@ import BackgroundImage from 'gatsby-background-image'
 import './subpage-hero.scss'
 
 class SubpageHero extends Component {
-	constructor(props) {
-		super(props)
-		console.log(props)
-	}
 	render() {
 		return(
 			<div className="subpage-hero" id="subpage-hero">
@@ -18,8 +14,10 @@ class SubpageHero extends Component {
 					Tag="section"
 				>
 					<div className="container">
-						<h2>{this.props.pageTitle}</h2>
-						{(this.props.pageSubtitle ? <h3>{this.props.pageSubtitle}</h3> : '')}
+						<div className="position-this">
+							<h2>{this.props.pageTitle}</h2>
+							{(this.props.pageSubtitle ? <h3>{this.props.pageSubtitle}</h3> : '')}
+						</div>
 					</div>
 				</BackgroundImage>
 			</div>
