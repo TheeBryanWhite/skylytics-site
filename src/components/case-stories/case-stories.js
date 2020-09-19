@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Images from './images'
+import LazyLoad from 'react-lazyload'
 import { connect } from "react-redux";
 import { 
 	caseStoryCycle,
@@ -94,46 +95,48 @@ class CaseStories extends Component {
 			className={(this.props.expandedStory !== null ? 'casestories expanded' : 'casestories')}
 				id="case-stories"
 			>
-				<div className="columns">
-					<Images storyImages={this.props.storyBody} />
-					<div className={(this.props.expandedStory !== null ? 'column story expanded' : 'column story')}>
-						<div 
-							className={(this.props.expandedStory !== null ? 'story-head expanded' : 'story-head')}
-							dangerouslySetInnerHTML={{ __html: this.props.storyMeta.header.html }}
-						/>
-						<div 
-							className={(this.props.expandedStory !== null ? 'story-container expanded' : 'story-container')}
-						>
-							{this.props.storyBody.map((story, index) => (
-							<div className={this.storyClassHandler(index)}  
-								 key={index}
+				<LazyLoad height={200}>
+					<div className="columns">
+						<Images storyImages={this.props.storyBody} />
+						<div className={(this.props.expandedStory !== null ? 'column story expanded' : 'column story')}>
+							<div 
+								className={(this.props.expandedStory !== null ? 'story-head expanded' : 'story-head')}
+								dangerouslySetInnerHTML={{ __html: this.props.storyMeta.header.html }}
+							/>
+							<div 
+								className={(this.props.expandedStory !== null ? 'story-container expanded' : 'story-container')}
 							>
-								<div 
-									className="story-meta" 
-									ref={storyMeta => this.storyMeta[index] = storyMeta}
+								{this.props.storyBody.map((story, index) => (
+								<div className={this.storyClassHandler(index)}  
+									key={index}
 								>
-									<div dangerouslySetInnerHTML={{ __html: story.node.items[0].excerpt.html }} />
-									<ul>
-										<li><button 
-												className="cta"
-												onClick={() => {this.storyOpener(index)}}
-											>Read More</button></li>
-										{(index === 0 ? <li><a href="http://safercontact.com" target="_blank" rel="noreferrer">Learn more about our Tracing software, safercontact<span>&reg;</span></a></li> : '')}
-									</ul>
+									<div 
+										className="story-meta" 
+										ref={storyMeta => this.storyMeta[index] = storyMeta}
+									>
+										<div dangerouslySetInnerHTML={{ __html: story.node.items[0].excerpt.html }} />
+										<ul>
+											<li><button 
+													className="cta"
+													onClick={() => {this.storyOpener(index)}}
+												>Read More</button></li>
+											{(index === 0 ? <li><a href="http://safercontact.com" target="_blank" rel="noreferrer">Learn more about our Tracing software, safercontact<span>&reg;</span></a></li> : '')}
+										</ul>
+									</div>
+									<div className="story-body">
+									<div dangerouslySetInnerHTML={{ __html: story.node.items[0].story_body.html }} />
+										<button onClick={() => { this.storyCloser() }} className="cta back">Back</button>
+									</div>
 								</div>
-								<div className="story-body">
-								<div dangerouslySetInnerHTML={{ __html: story.node.items[0].story_body.html }} />
-									<button onClick={() => { this.storyCloser() }} className="cta back">Back</button>
-								</div>
+								))}
 							</div>
-							))}
+							{/* <div
+								className={(this.props.expandedStory !== null ? 'story-foot expanded' : 'story-foot')}
+								dangerouslySetInnerHTML={{ __html: this.props.storyMeta.footer.html }}
+							/> */}
 						</div>
-						{/* <div
-							className={(this.props.expandedStory !== null ? 'story-foot expanded' : 'story-foot')}
-							dangerouslySetInnerHTML={{ __html: this.props.storyMeta.footer.html }}
-						/> */}
 					</div>
-				</div>
+				</LazyLoad>
 			</section>
 		)
 	}
