@@ -1,11 +1,18 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import LeadershipImages from './images'
+import {setCurrentPage} from '../../redux/actions/actions'
 
 import './leadership.scss'
 
 const Leadership = props => {
+
+	const clickHandler = () => {
+		props.setCurrentPage('leadership')
+	}
+
 	return (
 		<section className="leadership-team" id="leadership">
 			<BackgroundImage
@@ -17,11 +24,20 @@ const Leadership = props => {
 				<div className="container">
 				<div dangerouslySetInnerHTML={{ __html: props.leadershipMeta.leadership_section_header.html }} />
 					<LeadershipImages leadershipImageData={props.leadershipBody} />
-					<p><Link className="cta" to="/leadership">Leadership Team Members</Link></p>
+					<p><Link
+						className="cta"
+						onClick={() => {clickHandler()}}
+						to="/leadership">Leadership Team Members</Link></p>
 				</div>
 			</div>
 		</section>
 	)
 }
 
-export default Leadership
+const mapStateToProps = state => ({ currentPage: state.app.currentPage })
+  
+export default connect(
+	mapStateToProps,
+	{ 
+	  setCurrentPage
+	})(Leadership)
