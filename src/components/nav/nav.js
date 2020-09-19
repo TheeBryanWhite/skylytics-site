@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { 
-  setActiveSection,
   setSelectorPosition,
   setSelectorWidth
 } from "../../redux/actions/actions"
@@ -15,6 +14,7 @@ class Nav extends Component {
   constructor(props) {
     super(props)
 
+    this.holdUpHey = this.holdUpHey.bind(this)
     this.getActiveLinkPosition = this.getActiveLinkPosition.bind(this)
     this.getActiveLinkWidth = this.getActiveLinkWidth.bind(this)
     this.getLinksLocs = this.getLinksLocs.bind(this)
@@ -26,8 +26,24 @@ class Nav extends Component {
   componentDidMount() {
     this.props.setSelectorPosition(this.getActiveLinkPosition(this.getLinksLocs()))
     this.props.setSelectorWidth(this.getActiveLinkWidth(this.getLinksLocs()))
-    this.scrollHandler()
+    this.holdUpHey()
     this.resizeListener()
+  }
+
+  holdUpHey = () => {
+    const currentPagePromise = new Promise((resolve) => {
+      if (this.props.currentPage !== null) {
+        resolve('nice')
+      }
+    })
+
+    currentPagePromise.then((result) => {
+      if (this.props.currentPage === 'home') {
+        this.scrollHandler()
+      }
+    })
+
+    return false
   }
 
   getActiveLinkPosition = linkObj => {
@@ -116,7 +132,6 @@ const mapStateToProps = state => ({
 export default connect(
                 mapStateToProps,
                 { 
-                  setActiveSection,
                   setSelectorPosition,
                   setSelectorWidth 
                 })(Nav)

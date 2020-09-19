@@ -1,12 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {graphql} from 'gatsby'
+import { useDispatch } from 'react-redux'
+import { setCurrentPage } from "../redux/actions/actions"
+
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
 import PageBody from '../components/page-body/page-body'
 import SubpageHero from '../components/hero-subpage/subpage-hero'
 import Leadership from '../components/page-body-child-leadership/leadership'
 
-const IndexPage = ({data}) => {
+const LeadershipPage = ({data}) => {
+  
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(setCurrentPage('leadership'))
+  })
+  
   return (
     <Layout page="leadership">
       <SEO title="Leadership - skylytics" description="Site description" />
@@ -17,8 +27,6 @@ const IndexPage = ({data}) => {
     </Layout>
   )
 }
-
-export default IndexPage
 
 export const leadershipPageQuery = graphql`
 query leadershipPageQuery {
@@ -75,3 +83,4 @@ query leadershipPageQuery {
   }
 }
 `
+export default LeadershipPage

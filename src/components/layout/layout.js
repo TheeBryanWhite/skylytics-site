@@ -2,10 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Helmet from 'react-helmet'
-import { 
-  setActiveSection, 
-  setCurrentPage 
-} from "../../redux/actions/actions"
+import { setActiveSection } from "../../redux/actions/actions"
 
 import Header from '../header/header'
 import Footer from '../footer/footer'
@@ -131,8 +128,7 @@ Layout.defaultProps = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setActiveSection: (param) => dispatch(setActiveSection(param)),
-    setCurrentPage: (param) => dispatch(setCurrentPage(param))
+    setActiveSection: (param) => dispatch(setActiveSection(param))
   }
 }
 

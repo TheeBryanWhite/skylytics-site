@@ -1,19 +1,12 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import { Link } from 'gatsby'
 import LazyLoad from 'react-lazyload'
 import BackgroundImage from 'gatsby-background-image'
 import LeadershipImages from './images'
-import {setCurrentPage} from '../../redux/actions/actions'
 
 import './leadership.scss'
 
 const Leadership = props => {
-
-	const clickHandler = () => {
-		props.setCurrentPage('leadership')
-	}
-
 	return (
 		<section className="leadership-team" id="leadership">
 			<LazyLoad height={200}>
@@ -28,7 +21,6 @@ const Leadership = props => {
 						<LeadershipImages leadershipImageData={props.leadershipBody} />
 						<p><Link
 							className="cta"
-							onClick={() => {clickHandler()}}
 							to="/leadership">Leadership Team Members</Link></p>
 					</div>
 				</div>
@@ -36,11 +28,5 @@ const Leadership = props => {
 		</section>
 	)
 }
-
-const mapStateToProps = state => ({ currentPage: state.app.currentPage })
   
-export default connect(
-	mapStateToProps,
-	{ 
-	  setCurrentPage
-	})(Leadership)
+export default Leadership

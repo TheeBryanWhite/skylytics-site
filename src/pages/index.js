@@ -1,5 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { graphql } from 'gatsby'
+import { useDispatch } from 'react-redux'
+import { setCurrentPage } from "../redux/actions/actions"
+
 import Layout from '../components/layout/layout'
 import Hero from '../components/hero/hero'
 import ElevatorPitch from '../components/elevator-pitch/elevatorpitch'
@@ -10,6 +13,12 @@ import Contact from '../components/contact/contact'
 import SEO from '../components/seo'
 
 const IndexPage = ({data}) => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setCurrentPage('home'))
+  })
+
   return (
     <Layout page="home">
       <SEO title="Home" description="Site description" />
@@ -31,6 +40,8 @@ const IndexPage = ({data}) => {
     </Layout>
   )
 }
+
+
 
 export const theBigQuery = graphql`
   query csCopyQuery {

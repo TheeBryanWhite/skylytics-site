@@ -5,7 +5,7 @@ const initialState = {
   activeSubtab: 0,
   activeStory: 0,
   caseStoryCycle: true,
-  currentPage: 'home',
+  currentPage: null,
   expandedStory: null,
   heroSlide: 0,
   menuState: false,
