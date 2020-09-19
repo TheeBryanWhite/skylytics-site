@@ -49,6 +49,7 @@
 	.slidecontainer {
 		background-color: color(lightblue);
 		left: 0;
+		min-height: 1000px;
 		position: absolute;
 		top: 0;
 		transition: opacity 0.3s linear, transform 0.6s linear;
@@ -72,7 +73,7 @@
 		-webkit-transform: scale(1);
 
 		.slide {
-			animation: spin 1200s linear infinite;
+			animation: spin 600s linear infinite;
 			height: 1920px;
 			width: 1920px;
 		}
@@ -85,13 +86,19 @@
 		-webkit-transform: scale(1);
 		
 		.slide {
-			height: 1920px;
+			height: 900px;
 			transform: translate(-60%, -50%);
-			width: 1920px;
+			width: 900px;
 
-			@include respond-to(large) {
-				height: 1200px;
+			@include respond-to(medium) {
+				height: 100%;
+				width: 160%;
 			}
+
+			// @include respond-to(xlarge) {
+			// 	height: 1920px;
+			// 	width: 1920px;
+			// }
 		}
 
 		&.active {
@@ -99,7 +106,7 @@
 			opacity: 1;
 
 			.slide {
-				animation: panover 60s 1;
+				animation: panover 30s 1;
 			}
 		}
 	}
@@ -136,8 +143,15 @@
 	}
 
 	@keyframes panover {
-		from { transform: translate(-50%, -50%) }
+		from { transform: translate(-0%, -50%) }
 		to { transform: translate(-60%, -50%) }	
+	}
+
+	@include respond-to(small) {
+		@keyframes panover {
+			from { transform: translate(-50%, -50%) }
+			to { transform: translate(-60%, -50%) }	
+		}
 	}
 
 	@keyframes panup {

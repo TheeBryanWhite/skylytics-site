@@ -27,11 +27,11 @@
 		}
 
 		@include respond-to(xlarge) {
-			clip-path: polygon(0 0, 100% 44.5%, 100% 100%, 0 100%);
+			clip-path: polygon(0 0, 100% 47%, 100% 100%, 0 100%);
 		}
 
 		@include respond-to(epic) {
-			clip-path: polygon(0 0, 100% 42.5%, 100% 100%, 0 100%);
+			clip-path: polygon(0 0, 100% 44.5%, 100% 100%, 0 100%);
 		}
 	}
 
