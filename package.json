@@ -34,6 +34,7 @@
     "graphql-hooks": "^4.4.4",
     "gsap": "^3.2.6",
     "intersection-observer": "^0.10.0",
+    "lodash.debounce": "^4.0.8",
     "modernizr": "^3.11.2",
     "node-sass": "^4.14.1",
     "preact": "^10.4.8",
