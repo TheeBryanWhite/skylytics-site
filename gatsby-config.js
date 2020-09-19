@@ -116,34 +116,30 @@ module.exports = {
         },
       },
     },
-    // Uncomment when in production
-    // {
-    //   resolve: "gatsby-plugin-guess-js",
-    //   options: {
-    //     // Find the view id in the GA admin in a section labeled "views"
-    //     GAViewID: `VIEW_ID`,
-    //     // Add a JWT to get data from GA
-    //     jwt: {
-    //       client_email: `GOOGLE_SERVICE_ACCOUNT_EMAIL`,
-    //       private_key: `GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY`,
-    //     },
-    //     minimumThreshold: 0.03,
-    //     // The "period" for fetching analytic data.
-    //     period: {
-    //       startDate: new Date("2018-1-1"),
-    //       endDate: new Date(),
-    //     },
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-plugin-google-tagmanager',
-    //   options: {
-    //     id: '',
-    //     includeInDevelopment: false,
-    //     defaultDataLayer: { platform: "gatsby" },
-    //     routeChangeEventName: "gatsby-route-change",
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-guess-js",
+      options: {
+        GAViewID: `229262866`,
+        jwt: {
+          client_email: "skylytics@skylytics-guess-js.iam.gserviceaccount.com",
+          private_key: "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDRzKJn3UqupApH\nuWuvfUZS5i6QwNH7EyabzZM4CH0Ozk8dY/T4XKUwEUxGFgn1z4vm5pXX3zbZYNwz\n3wNw6i1Fg3euxxy8hOpBRdIRsf0hvTkcll/es/BU7VeMF8H2UtjPbDJqLiYutW/G\nyb+hCP52Az/aqhvId8uqQF+Z/AoXU28c1klIntX+vEy9u5ib9hhZjoTKjiN55Oxr\nbQMTaxPhW+Zsd7xtJqJvEnyYYqSUZ+REPePh2LoibwrG5y7rNbmyBM1pFgXHeUq+\n6Pj6z/9EzQyjHORbaBYKjmMMSFY6mgEQv6ZYOgxaCTTXkmSeQrYS0KYjb6MJD+Mf\nZ364bn3/AgMBAAECgf9uikX0EUwqpH7thqdUALd5MWxXid57xELErUdQl0/DOGbZ\nbhYknqvNFBUSOuzw3BFajcFlyyyHcCjkjjA4HQNa9ZFetrHZti58IhxbwE6pH53a\nVJvzsWUg5BRGituKHvVEywI7UlCQ1ZIFhAwu1tM8DBfKFNbxIbdLGoww7pF2Qby3\nCjGEl60MEeNVlhDNLoS0so/Pm90QR8brT6YU0TRvIBMJjKdexd81beQN3EqMvUcW\nzpWhP3UK3WbmaRoYQdwL/xbNg3UD+6PHkmtbMEiAu3jz52YeQ58aBcPDeZ05U1TM\nQrkji3liKe0NBs0w0ZSlJ6NoveMhojTIa2V9wxECgYEA6eQ+cUNVTFdKe5vgQJgE\nLbkqnoQ2N4gD0giPW8w4KnmsdvWEbmKmM3C5G6JKEgp1b90TapN7a46hbte7qDer\nxKHjTKOjsCq/KZDBPT79i+MlfovkDau1PsWUDOprtyAfibDmQhf1kmLHqThPJMJg\n7dmuBVkIZ6lK0u73OWfMDI8CgYEA5aFm5AdMrG103B4cIst8qRHbCJE02A3t0KVF\ni4ZCgEAmxO1oikUcerU3+evWXaPy7ZyDDfl+yxHqHEVexCeUQ3fp6dRvbqsAkZuv\nyXKMG+7NDJunax61mQnxLGtHkzE4z3dmFutNKuZ/OXVOeqWi2tVEQK2msAt96Fhr\n17JxD5ECgYAqgFxMbqTgY3hYb+HXOwh/WoeBGJtVifTPxNhwIPMP3N5XG5Q+DtUO\nwewRNnNpRddDRZQSqMwjpl51auRh1AP1jklkktPa3lmwbup+e6TNN7CHh1ogldQw\nnOyjUDHUrBSvC6M73Wi1ehe4C1BuaJf+gLDbresWEzBSljP8jX0JxwKBgQDjOhLJ\npFt/6JQR2Q24dKm3175pvN6QyT/CDjlCNqoJpPF4PwEKihcDad2pRnEKmliiPhUF\nOBT6t5B1R0PeUNgK51cllpxp43cdnvSVH+97GJP5XPGPM4U5mjf333SlN7jiu2Df\nXxouUIYmgmkVPmBnsU/nvK5MWCLQTubwO1hbsQKBgGQxJ/nayKsEYJske65vNVts\nUxYHODUGVMQ05csDvmgzMD/P0ejCKzkKWLiFr0WcPziGY9SBcPzkwRuwe9yGIe+k\niW8VvHQeWEgcJfcMwsHvV5J3o4pJ3QTfPSuIjepOMFS2/Rc+52bmYrPNa5fbhl+D\nw9vy/icq6Ey1MpN0VEbI\n-----END PRIVATE KEY-----\n",
+        },
+        minimumThreshold: 0.03,
+        period: {
+          startDate: new Date("2018-1-1"),
+          endDate: new Date(),
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-54CC3K3',
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: "gatsby" },
+        routeChangeEventName: "gatsby-route-change",
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -157,6 +153,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-sitemap',
