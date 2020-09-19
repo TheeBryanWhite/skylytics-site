@@ -22,12 +22,12 @@
 		background-color: color(blue);
 
 		@include respond-to(large) {
-			clip-path: polygon(0 0, 100% 50.5%, 100% 100%, 0 100%);
+			clip-path: polygon(0 0, 100% 47.5%, 100% 100%, 0 100%);
 			padding-top: 160px;
 		}
 
-		@include respond-to(epic) {
-			clip-path: polygon(0 0, 100% 45.5%, 100% 100%, 0 100%);
+		@include respond-to(xlarge) {
+			clip-path: polygon(0 0, 100% 44.5%, 100% 100%, 0 100%);
 		}
 	}
 
@@ -236,5 +236,9 @@
 			left: 0;
 			transition: all 0.6s ease(in-out-quart);
 		}
+	}
+
+	.gatsby-image-wrapper {
+		min-height: 800px;
 	}
 }
