@@ -11,7 +11,11 @@
 	}
 
 	&.expanded {
-		z-index: 1000;
+		z-index: 800;
+
+		.color-images {
+			left: 0;
+		}
 	}
 
 	h2 {
@@ -98,7 +102,6 @@
 		background-color: color(blue);
 		cursor: pointer;
 		flex: 1 0 33%;		
-		overflow: hidden;
 		position: relative;
 		transition: clip-path 0.5s linear, all 0.5s linear;
 
@@ -122,7 +125,6 @@
 		}
 
 		&:nth-of-type(1) {
-			z-index: 3;
 
 			@include respond-to(large) {
 				clip-path: polygon(0 0, 79% 0, 100% 44%, 0 85%);
@@ -139,13 +141,22 @@
 				}
 			}
 
+			@media not all and (min-resolution:.001dpcm) {
+				clip-path: none;
+				height: 190px;
+
+				img,
+				picture {
+					transform: translateY(0);
+				}
+			}
+
 		}
 
-		&:nth-of-type(2) {			
-			z-index: 2;
+		&:nth-of-type(2) {	
 
 			@include respond-to(large) {
-				clip-path: polygon(0 0, 100% 0, 100% 28%, 28% 100%, 0 100%);
+				clip-path: polygon(0 35%, 100% -6%, 100% 28%, 28% 100%, 0 100%);
 				margin-top: -157px;
 
 				img,
@@ -160,13 +171,25 @@
 					transform: translateY(-80px);
 				}
 			}
+
+			@media not all and (min-resolution:.001dpcm) {
+				clip-path: none;
+				height: 190px;
+				margin-top: 0;
+
+				img,
+				picture {
+					transform: translateY(0);
+				}
+			}
+
 		}
 
 		&:nth-of-type(3) {
 			position: relative;
-			z-index: 1;
 
 			@include respond-to(large) {
+				clip-path: polygon(16% 66%, 94% -7%, 100% 100%, 8% 100%, 0 100%);
 				margin-bottom: 175px;
 				margin-top: -179px;
 				padding-left: 25%;
@@ -180,6 +203,18 @@
 			@include respond-to(xlarge) {
 				img {
 					transform:  translateY(-155px);
+				}
+			}
+
+			@media not all and (min-resolution:.001dpcm) {
+				clip-path: none;
+				height: 300px;
+				margin: 0;
+				padding: 0;
+
+				img,
+				picture {
+					transform: translateY(-30%);
 				}
 			}
 		}
@@ -398,8 +433,11 @@
 	}
 
 	.color-images {
+		bottom: 0;
 		height: 1280px;
+		left: -200%;
 		position: absolute;
+		right: 0;
 		top: 0;
 		width: 1280px;
 
@@ -463,13 +501,5 @@
 				}
 			}
 		}
-	}
-
-	.color-images {
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
 	}
 }

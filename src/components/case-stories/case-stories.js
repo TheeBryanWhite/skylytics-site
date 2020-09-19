@@ -128,10 +128,10 @@ class CaseStories extends Component {
 							</div>
 							))}
 						</div>
-						<div
+						{/* <div
 							className={(this.props.expandedStory !== null ? 'story-foot expanded' : 'story-foot')}
 							dangerouslySetInnerHTML={{ __html: this.props.storyMeta.footer.html }}
-						/>
+						/> */}
 					</div>
 				</div>
 			</section>
