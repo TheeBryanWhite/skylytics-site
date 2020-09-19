@@ -72,7 +72,7 @@
 		-webkit-transform: scale(1);
 
 		.slide {
-			animation: spin 600s linear infinite;
+			animation: spin 1200s linear infinite;
 			height: 1920px;
 			width: 1920px;
 		}
@@ -99,7 +99,7 @@
 			opacity: 1;
 
 			.slide {
-				animation: panover 30s 1;
+				animation: panover 60s 1;
 			}
 		}
 	}
