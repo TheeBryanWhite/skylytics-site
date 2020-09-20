@@ -42,7 +42,9 @@ class HeroSlides extends Component {
 			>
 				<BackgroundImage
 					className="slide"
+					fadeIn={false}
 					fluid={hero.hero_background_image.localFile.childImageSharp.fluid}
+					preserveStackingContext={true}
 					Tag="div"
 				>
 				</BackgroundImage>

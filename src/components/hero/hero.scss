@@ -64,6 +64,7 @@
 
 	.slidecontent {
 		position: relative;
+		z-index: 1;
 	}
 
 	#slide0 {
@@ -137,11 +138,6 @@
 				animation: panup 30s linear 1;
 			}
 		}
-	}
-
-	@keyframes spin {
-		from { transform: translate(-50%, -50%) rotate(360deg) }
-		to { transform: translate(-50%, -50%) rotate(0deg) }	
 	}
 
 	@keyframes panover {
