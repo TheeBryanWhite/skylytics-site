@@ -46,7 +46,7 @@
 	}
 
 	.epcopy {
-		padding: toRem(100) toRem(32);
+		padding: toRem(100) toRem(16);
 
 		@include respond-to(medium) {
 			padding: toRem(200) toRem(32);

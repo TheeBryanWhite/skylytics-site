@@ -457,6 +457,10 @@
 		right: 0;
 		top: 0;
 		width: 1280px;
+
+		@include respond-to(large) {
+			position: absolute;
+		}
 	}
 
 	.color-image {
@@ -501,6 +505,10 @@
 					height: 1920px;
 					transform: translateY(0);
 					width: 1920px;
+				}
+
+				@include respond-to(large) {
+					transform: translateY(-30%);
 				}
 			}
 

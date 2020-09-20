@@ -73,9 +73,16 @@
 		-webkit-transform: scale(1);
 
 		.slide {
-			animation: spin 600s linear infinite;
 			height: 1920px;
+			transform: translate(-50%, -50%);
 			width: 1920px;
+		}
+
+		@include respond-to(epic) {
+			.slide {
+				height: 2500px;
+				width: 2500px;
+			}
 		}
 	}
 
@@ -94,11 +101,6 @@
 				height: 100%;
 				width: 160%;
 			}
-
-			// @include respond-to(xlarge) {
-			// 	height: 1920px;
-			// 	width: 1920px;
-			// }
 		}
 
 		&.active {

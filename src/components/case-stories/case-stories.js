@@ -32,7 +32,6 @@ class CaseStories extends Component {
 
 	storyCloser() {
 		this.props.caseStoryCycle(true)
-		this.props.setActiveStory(0)
 		this.props.setSelectedStory(null)
 		this.props.setExpandedStory(null)
 		this.props.setMobileCaseState(this.props.mobileCaseState)
