@@ -223,6 +223,11 @@
 
 	.toolkit-images {
 		clip-path: polygon(0 0, 100% 0, 100% 100%, 32% 100%);
+		display: none;
+
+		@include respond-to(large) {
+			display: block;
+		}
 	}
 
 	.tk-images {
