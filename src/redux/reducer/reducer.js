@@ -4,7 +4,7 @@ const initialState = {
   activeSolution: 0,
   activeSubtab: 0,
   activeStory: 0,
-  caseStoryCycle: true,
+  caseStoryCycle: false,
   currentPage: null,
   expandedStory: null,
   heroSlide: 0,

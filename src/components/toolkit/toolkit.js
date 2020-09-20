@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
-import LazyLoad from 'react-lazyload'
 import { setActiveSolution, setActiveSubtab } from "../../redux/actions/actions";
 import Images from './images.js'
 
@@ -28,7 +27,7 @@ class Toolkit extends Component {
 	render() {
 		return (
 			<section className="solutions-section">
-				<button className="anchor-offset" id="solutions"></button>
+				<button className="anchor-offset" id="solutions">Toolkit Section</button>
 					<div className="bgcontainer">
 						<div className="columns">
 							<div className="column toolkit-content">

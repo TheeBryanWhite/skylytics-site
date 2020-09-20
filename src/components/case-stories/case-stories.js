@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Images from './images'
-import LazyLoad from 'react-lazyload'
 import { connect } from "react-redux";
 import { 
 	caseStoryCycle,
@@ -22,7 +21,6 @@ class CaseStories extends Component {
 		this.storyClassHandler = this.storyClassHandler.bind(this)
 		this.storyCloser = this.storyCloser.bind(this)
 		this.storyOpener = this.storyOpener.bind(this)
-		this.swapState = this.swapState.bind(this)
 	}
 
 	clickHandler(story) {
@@ -49,7 +47,6 @@ class CaseStories extends Component {
 	}
 
 	componentDidMount() {
-		this.swapState(this.props.activeStory)
 		this.storyClassHandler(this.props.activeStory)
 	}
 
@@ -69,30 +66,10 @@ class CaseStories extends Component {
 		return classOutput
 	}
 
-	swapState(story) {
-		let index = story + 1;
-		if (this.props.selectedStory === null) {
-			setInterval(() => {
-				if (this.props.caseStoryCycle && this.props.selectedStory === null) {
-					this.props.setActiveStory(index)
-					this.storyClassHandler(index)
-					// Won't lie. This math has me scratching my head
-					if (index <= 1) {
-						index += 1;
-					} else {
-						index = 0
-					}
-				} else {
-					clearInterval()
-				}
-			}, 10000)
-		}
-	}
-
 	render() {
 		return (
 			<section className={(this.props.expandedStory !== null ? 'casestories expanded' : 'casestories')}>
-				<button className="anchor-offset" id="case-stories"></button>
+				<button className="anchor-offset" id="case-stories">Case Stories Section</button>
 				
 					<div className="columns">
 						<Images storyImages={this.props.storyBody} />

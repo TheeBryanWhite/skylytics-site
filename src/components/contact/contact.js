@@ -1,5 +1,4 @@
 import React from 'react'
-import LazyLoad from 'react-lazyload'
 import ContactForm from './contact-form/ContactForm'
 
 import DemoSvg from './svg/demo_icon.svg'
@@ -7,7 +6,7 @@ import DemoSvg from './svg/demo_icon.svg'
 const ContactUs = props => {
 	return(
 	<section className="contact">
-		<button className="anchor-offset" id="contact-us"></button>
+		<button className="anchor-offset" id="contact-us">Contact Us Section</button>
 			<div className="bgblue">
 				<div className="bgblack form-container columns">
 					<div className="container">

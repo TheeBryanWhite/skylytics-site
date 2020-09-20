@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import LazyLoad from 'react-lazyload'
 import BackgroundImage from 'gatsby-background-image'
 import LeadershipImages from './images'
 

@@ -1,13 +1,12 @@
 import React from 'react'
 import BackgroundImage from 'gatsby-background-image'
-import LazyLoad from 'react-lazyload'
 
 import './elevatorpitch.scss'
 
 const ElevatorPitch = props => {
 	return (
 		<section className="elevator-pitch">
-			<button className="anchor-offset" id="about-us"></button>
+			<button className="anchor-offset" id="about-us">About Us Section</button>
 				<BackgroundImage
 					className="bgnull"
 					fluid={props.aboutUsBody.background_image.localFile.childImageSharp.fluid}

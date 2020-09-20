@@ -69,14 +69,12 @@ const Images = props => {
 
 	const mouseEnterHandler = story => {
 		if (props.selectedStory === null) {
-			props.caseStoryCycle(false)
 			props.setActiveStory(story)
 		}
 	}
 	
 	const mouseLeaveHandler = story => {
 		if (props.selectedStory === null) {
-			props.caseStoryCycle(true)
 			props.setActiveStory(story)
 		}
 	}
