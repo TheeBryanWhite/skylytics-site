@@ -4,6 +4,7 @@
 	src: url("./avenir-next/avenir-next-regular.ttf") format("truetype"),
 	     url("./avenir-next/avenir-next-regular.woff2") format("woff2"),
 		 url("./avenir-next/avenir-next-regular.woff") format("woff");
+	font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
 	src: url("./avenir-next/avenir-next-medium.ttf") format("truetype"),
 	     url("./avenir-next/avenir-next-medium.woff2") format("woff2"),
 		 url("./avenir-next/avenir-next-medium.woff") format("woff");
+	font-display: swap;
 }
 
 @font-face {
@@ -20,6 +22,7 @@
 	src: url("./avenir-next/avenir-next-demi.ttf") format("truetype"),
 	     url("./avenir-next/avenir-next-demi.woff2") format("woff2"),
 		 url("./avenir-next/avenir-next-demi.woff") format("woff");
+	font-display: swap;
 }
 
 @font-face {
@@ -28,4 +31,5 @@
 	src: url("./avenir-next/avenir-next-bold.ttf") format("truetype"),
 	     url("./avenir-next/avenir-next-bold.woff2") format("woff2"),
 		 url("./avenir-next/avenir-next-bold.woff") format("woff");
+	font-display: swap;
 }
