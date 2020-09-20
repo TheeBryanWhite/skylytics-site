@@ -120,10 +120,12 @@
 		background-color: color(blue);
 		cursor: pointer;
 		flex: 1 0 33%;		
+		height: 199px;
 		position: relative;
 		transition: clip-path 0.5s linear, all 0.5s linear;
 
 		@include respond-to(large) {
+			height: auto;
 			max-height: 310px;
 			overflow: visible;
 		}
