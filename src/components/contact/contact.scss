@@ -3,6 +3,7 @@
 .contact {
 	background-color: color(black);	
 	color: color(white);
+	position: relative;
 
 	@include respond-to(large) {
 		clip-path: polygon(100% 10%, 100% 100%, 0 100%, 0 27.5%);
@@ -10,8 +11,14 @@
 		padding-top: 25px;
 
 		@include respond-to(xlarge) {
-			clip-path: polygon(100% 10%, 100% 100%, 0 100%, 0 28%);
+			clip-path: polygon(100% 10%, 100% 100%, 0 100%, 0 29.5%);
 		}
+	}
+
+	button {
+		position: absolute;
+		top: 150px;
+		visibility: hidden;
 	}
 
 	svg {

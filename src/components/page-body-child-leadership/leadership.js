@@ -16,7 +16,7 @@ class Leadership extends Component{
 							className="leader"
 							key={index}
 						>
-							<a className="anchor-offset" id={index}></a>
+							<button className="anchor-offset" id={index}></button>
 							<div className="leader-image flex-item">
 								<Img fluid={leader.headshot.localFile.childImageSharp.fluid} />
 							</div>

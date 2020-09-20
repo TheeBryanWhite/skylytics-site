@@ -9,7 +9,6 @@ import './leadership.scss'
 const Leadership = props => {
 	return (
 		<section className="leadership-team" id="leadership">
-			<LazyLoad height={200}>
 				<BackgroundImage
 					className="bgnull"
 					fluid={props.leadershipMeta.background_image.localFile.childImageSharp.fluid}
@@ -24,7 +23,6 @@ const Leadership = props => {
 							to="/leadership">Leadership Team Members</Link></p>
 					</div>
 				</div>
-			</LazyLoad>
 		</section>
 	)
 }

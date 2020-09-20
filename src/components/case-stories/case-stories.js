@@ -91,11 +91,9 @@ class CaseStories extends Component {
 
 	render() {
 		return (
-			<section 
-			className={(this.props.expandedStory !== null ? 'casestories expanded' : 'casestories')}
-				id="case-stories"
-			>
-				<LazyLoad height={200}>
+			<section className={(this.props.expandedStory !== null ? 'casestories expanded' : 'casestories')}>
+				<button id="case-stories"></button>
+				
 					<div className="columns">
 						<Images storyImages={this.props.storyBody} />
 						<div className={(this.props.expandedStory !== null ? 'column story expanded' : 'column story')}>
@@ -136,7 +134,6 @@ class CaseStories extends Component {
 							/> */}
 						</div>
 					</div>
-				</LazyLoad>
 			</section>
 		)
 	}

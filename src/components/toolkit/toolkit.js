@@ -28,7 +28,7 @@ class Toolkit extends Component {
 	render() {
 		return (
 			<section className="solutions-section" id="solutions">
-				<LazyLoad height={200}>
+				
 					<div className="bgcontainer">
 						<div className="columns">
 							<div className="column toolkit-content">
@@ -99,7 +99,7 @@ class Toolkit extends Component {
 							</div>
 						</div>
 					</div>
-				</LazyLoad>
+				
 			</section>
 		)
 	}

@@ -7,7 +7,6 @@ import './elevatorpitch.scss'
 const ElevatorPitch = props => {
 	return (
 		<section className="elevator-pitch" id="about-us">
-			<LazyLoad height={200}>
 				<BackgroundImage
 					className="bgnull"
 					fluid={props.aboutUsBody.background_image.localFile.childImageSharp.fluid}
@@ -23,7 +22,6 @@ const ElevatorPitch = props => {
 						<p><a className="cta" href={props.aboutUsBody.body[0].primary.link.text}>{props.aboutUsBody.body[0].primary.title.text}</a></p>
 					</div>
 				</div>
-			</LazyLoad>
 		</section>
 	)
 }
