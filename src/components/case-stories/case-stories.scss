@@ -3,7 +3,7 @@
 .casestories {
 	color: color(white);
 	position: relative;
-	z-index: 899;
+	z-index: 900;
 
 	@include respond-to(large) {
 		padding-top: 25px;
