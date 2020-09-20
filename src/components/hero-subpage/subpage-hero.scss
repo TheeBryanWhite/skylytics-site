@@ -9,7 +9,7 @@
 	.sub-hero {
 		color: color(white);
 		margin-top: toRem(96);
-		padding: toRem(97) 0 toRem(50);
+		// padding: toRem(97) 0 toRem(50);
 		text-align: center;
 		z-index: 1;
 
@@ -41,7 +41,11 @@
 	}
 
 	.position-this {
+		left: 50%;
+		padding: 0 toRem(32);
 		position: absolute;
 		top: 50%;
+		transform: translateX(-50%);
+		width: 100%;
 	}
 }
