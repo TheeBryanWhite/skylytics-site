@@ -81,19 +81,21 @@ const Images = props => {
 	
 	return(
 		<div className="column story-options">
-			{csImgData.map((story, index) => (
-				<div
-					className={imageClassHandler(index)} 
-					id={`story-${index}`} 
-					key={index}
-					onClick={() => { clickHandler(index) }}
-					onMouseEnter={() => { mouseEnterHandler(index) }}
-					onMouseLeave={() => {mouseLeaveHandler(index) }}
-					role="presentation"
-				>
-					<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
-				</div>
-			))}
+			<div className="story-previews">
+				{csImgData.map((story, index) => (
+					<div
+						className={imageClassHandler(index)} 
+						id={`story-${index}`} 
+						key={index}
+						onClick={() => { clickHandler(index) }}
+						onMouseEnter={() => { mouseEnterHandler(index) }}
+						onMouseLeave={() => {mouseLeaveHandler(index) }}
+						role="presentation"
+					>
+						<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
+					</div>
+				))}
+			</div>
 			<div className="color-images">
 			{csImgData.map((story, index) => (
 				<div
