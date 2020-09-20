@@ -92,7 +92,7 @@ class CaseStories extends Component {
 	render() {
 		return (
 			<section className={(this.props.expandedStory !== null ? 'casestories expanded' : 'casestories')}>
-				<button id="case-stories"></button>
+				<button className="anchor-offset" id="case-stories"></button>
 				
 					<div className="columns">
 						<Images storyImages={this.props.storyBody} />

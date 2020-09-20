@@ -3,13 +3,14 @@
 .casestories {
 	color: color(white);
 	position: relative;
+	z-index: 91;
 
 	@include respond-to(large) {
 		padding-top: 25px;
 		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 56%);
 	}
 
-	button {
+	.anchor-offset {
 		visibility: hidden;
 		position: absolute;
 		top: -125px;
@@ -24,6 +25,10 @@
 
 		.story-options {
 			min-height: 1000px;
+
+			@include respond-to(large) {
+				min-height: 0;
+			}
 		}
 	}
 
@@ -449,11 +454,6 @@
 		right: 0;
 		top: 0;
 		width: 1280px;
-
-		@include respond-to(large) {
-			height:1000px;
-			width: 1000px;
-		}
 	}
 
 	.color-image {
