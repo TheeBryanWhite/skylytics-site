@@ -17,8 +17,12 @@
 
 	.anchor-offset {
 		position: absolute;
-		top: 150px;
+		top: -75px;
 		visibility: hidden;
+
+		@include respond-to(large) {
+			top: 150px;
+		}
 	}
 
 	svg {

@@ -6,7 +6,8 @@ import './elevatorpitch.scss'
 
 const ElevatorPitch = props => {
 	return (
-		<section className="elevator-pitch" id="about-us">
+		<section className="elevator-pitch">
+			<button className="anchor-offset" id="about-us"></button>
 				<BackgroundImage
 					className="bgnull"
 					fluid={props.aboutUsBody.background_image.localFile.childImageSharp.fluid}

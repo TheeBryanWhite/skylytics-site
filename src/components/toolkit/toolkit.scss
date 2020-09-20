@@ -10,6 +10,16 @@
 		z-index: 90;
 	}
 
+	.anchor-offset {
+		visibility: hidden;
+		position: absolute;
+		top: -125px;
+
+		@include respond-to(large) {
+			top: 0;
+		}
+	}
+
 	h2 {	
 		font-size: toRem(24);
 	}

@@ -27,8 +27,8 @@ class Toolkit extends Component {
 
 	render() {
 		return (
-			<section className="solutions-section" id="solutions">
-				
+			<section className="solutions-section">
+				<button className="anchor-offset" id="solutions"></button>
 					<div className="bgcontainer">
 						<div className="columns">
 							<div className="column toolkit-content">

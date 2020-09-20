@@ -8,6 +8,16 @@
 		margin-top: -200px;
 	}
 
+	.anchor-offset {
+		visibility: hidden;
+		position: absolute;
+		top: -125px;
+
+		@include respond-to(large) {
+			top: 0;
+		}
+	}
+
 	h2 {
 		color: color(white);
 		font-size: toRem(32);
