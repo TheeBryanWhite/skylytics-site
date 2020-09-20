@@ -20,7 +20,7 @@ const NavItems = (props) => {
 		}
 	`);
 
-	  menu = menu.site.siteMetadata.menuLinks
+	menu = menu.site.siteMetadata.menuLinks
 	  
 	const clickHandler = () => {
 		props.setMenu(props.menuState)

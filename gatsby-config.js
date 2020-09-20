@@ -6,7 +6,7 @@ module.exports = {
       {
         class: 'home',
         name: 'Home',
-        link: '/#top'
+        link: '/'
       },
       {
         class: 'about-us',
@@ -38,11 +38,11 @@ module.exports = {
         name: 'Contact Us',
         link: '/#contact-us'
       },
-      {
-        class: 'login',
-        name: 'Login',
-        link: '/'
-      },
+      // {
+      //   class: 'login',
+      //   name: 'Login',
+      //   link: '/'
+      // },
     ],
     address: {
       address1: '402 Amherst St.',
@@ -58,10 +58,10 @@ module.exports = {
         name: 'LinkedIn',
         url: 'https://www.linkedin.com/company/skylytics-data-llc/'
       },
-      {
-        name: 'Facebook',
-        url: 'https://www.facebook.com/Skylytics-Data-LLC-101495944931186'
-      },
+      // {
+      //   name: 'Facebook',
+      //   url: 'https://www.facebook.com/Skylytics-Data-LLC-101495944931186'
+      // },
       {
         name: 'Twitter',
         url: 'https://twitter.com/SkyLyticsD8a'
