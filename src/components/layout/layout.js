@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
@@ -10,7 +11,7 @@ import '../../utils/normalize.css'
 class Layout extends Component {
   constructor(props) {
     super(props)
-
+console.log(props)
     if (typeof window !== "undefined") {
       require("smooth-scroll")('a[href*="#"]', {
         offset: (anchor) => {
@@ -38,8 +39,7 @@ class Layout extends Component {
     return (
       <>
         <Helmet>
-          <html className={`${this.props.menuState || this.props.mobileCase ? 'locked' : ''}`} lang="en" />
-          <body className={`page-${this.props.currentPage}`} />
+          <html className={(this.props.menuState || this.props.mobileCaseState ? 'locked' : '')} lang="en" />
         </Helmet>
         <Header />
         <main>
@@ -60,4 +60,9 @@ Layout.defaultProps = {
   siteTitle: ``
 }
 
-export default Layout
+const mapStateToProps = state => ({
+  menuState: state.app.menuState,
+  mobileCaseState: state.app.mobileCaseState
+})
+
+export default connect(mapStateToProps, null)(Layout)
