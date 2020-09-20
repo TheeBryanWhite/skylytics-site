@@ -69,33 +69,31 @@ const Images = props => {
 
 	const mouseEnterHandler = story => {
 		if (props.selectedStory === null) {
-			props.setActiveStory(story)
 		}
 	}
 	
 	const mouseLeaveHandler = story => {
 		if (props.selectedStory === null) {
+			props.caseStoryCycle(true)
 			props.setActiveStory(story)
 		}
 	}
 	
 	return(
 		<div className="column story-options">
-			<div className="story-previews">
-				{csImgData.map((story, index) => (
-					<div
-						className={imageClassHandler(index)} 
-						id={`story-${index}`} 
-						key={index}
-						onClick={() => { clickHandler(index) }}
-						onMouseEnter={() => { mouseEnterHandler(index) }}
-						onMouseLeave={() => {mouseLeaveHandler(index) }}
-						role="presentation"
-					>
-						<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
-					</div>
-				))}
+			{csImgData.map((story, index) => (
+			<div
+				className={imageClassHandler(index)} 
+				id={`story-${index}`} 
+				key={index}
+				onClick={() => { clickHandler(index) }}
+				onMouseEnter={() => { mouseEnterHandler(index) }}
+				onMouseLeave={() => {mouseLeaveHandler(index) }}
+				role="presentation"
+			>
+				<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
 			</div>
+			))}
 			<div className="color-images">
 			{csImgData.map((story, index) => (
 				<div

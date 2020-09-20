@@ -83,19 +83,16 @@
 
 	.story-options {
 		position: relative;
+		align-items: stretch;
+		display: flex;
+		height: 190px;
+		overflow: hidden;
 
 		@include respond-to(large) {
 			clip-path: polygon(0 0, 63% 0, 109% 100%, 0 100%);
 			display: block;
 			height: 760px;
 		}
-	}
-
-	.story-previews {
-		align-items: stretch;
-		display: flex;
-		height: 190px;
-		overflow: hidden;
 	}
 
 	.story {
