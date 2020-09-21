@@ -108,7 +108,7 @@ export default class ContactForm extends React.Component {
                     {
                       "to": [
                         {
-                          "email": "info@skylytics.com"
+                          "email": "info@skylytis.com"
                         }
                       ],
                       "subject": "A submission from the Skylytics contact form from " + this.state.company.value 
