@@ -89,12 +89,18 @@ footer {
 	}
 
 	.subfooter {
-		display: flex;
 		font-size: toRem(10);
 		font-weight: 700;
 		margin: 0 toRem(32);
-		padding: 10px 0 35px;
+		padding: 35px 0;
+		text-align: center;
 		text-transform: uppercase;
+
+		@include respond-to(medium) {
+			display: flex;
+			padding: 10px 0 35px;
+			text-align: left;
+		}
 
 		@include respond-to(large) {
 			margin: 0 auto;
