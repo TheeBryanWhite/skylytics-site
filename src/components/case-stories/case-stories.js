@@ -94,7 +94,7 @@ class CaseStories extends Component {
 													className="cta"
 													onClick={() => {this.storyOpener(index)}}
 												>Read More</button></li>
-											{(index === 0 ? <li><a href="http://safercontact.com" target="_blank" rel="noreferrer">Learn more about our Tracing software, safercontact<span>&reg;</span></a></li> : '')}
+											{(index === 0 ? <li><a href="http://safercontact.com" target="_blank" rel="noreferrer">Learn more about our Contact Tracing software, safercontact<span>&reg;</span></a></li> : '')}
 										</ul>
 									</div>
 									<div className="story-body">
