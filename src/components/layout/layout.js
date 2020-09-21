@@ -11,7 +11,7 @@ import '../../utils/normalize.css'
 class Layout extends Component {
   constructor(props) {
     super(props)
-console.log(props)
+    
     if (typeof window !== "undefined") {
       require("smooth-scroll")('a[href*="#"]', {
         offset: (anchor) => {
