@@ -96,15 +96,15 @@
 		position: relative;
 		width: 50%;
 
-		&:after {
-			background-color: rgba(color(white), 0.6);
-			content: '';
-			height: 2px;
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 20px;
-		}
+		// &:after {
+		// 	background-color: rgba(color(white), 0.6);
+		// 	content: '';
+		// 	height: 2px;
+		// 	position: absolute;
+		// 	right: 0;
+		// 	top: 0;
+		// 	width: 20px;
+		// }
 
 		li {
 			margin-bottom: toRem(32);
