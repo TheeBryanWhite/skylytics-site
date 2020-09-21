@@ -7,6 +7,20 @@ export const caseStoryCycle = (data) => (dispatch) => {
   })
 }
 
+export const contactFormSubmit = (data) => (dispatch) => {
+  dispatch({
+    type: types.CONTACT_FORM_SUBMIT,
+    payload: data,
+  })
+}
+
+export const newsletterFormSubmit = (data) => (dispatch) => {
+  dispatch({
+    type: types.NEWSLETTER_FORM_SUBMIT,
+    payload: data,
+  })
+}
+
 export const setMenu = (data) => (dispatch) => {
   dispatch({
     type: types.SET_MENU,

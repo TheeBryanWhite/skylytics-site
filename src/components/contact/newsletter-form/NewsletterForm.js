@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-
-import MailSvg from '../svg/mail_icon.svg'
+import { connect } from "react-redux";
+import { newsletterFormSubmit } from '../../../redux/actions/actions'
 
 import '../contact.scss'
 
-export default class NewsletterForm extends React.Component {
+class NewsletterForm extends React.Component {
 
     state = {
         "email": {
@@ -119,7 +119,7 @@ export default class NewsletterForm extends React.Component {
                 'Content-Type': 'application/json; charset=UTF-8'
             },
             }).then(response => {
-                window.location.replace('/contact-us-success');
+                this.props.newsletterFormSubmit(true)
                 console.log(response);
             }).catch(error => {
                 console.log(error);
@@ -161,3 +161,9 @@ export default class NewsletterForm extends React.Component {
             )
         }
     }
+
+const mapStateToProps = state => ({
+    newsletterFormSubmit: state.app.newsletterFormSubmit
+})
+
+export default connect(mapStateToProps, { newsletterFormSubmit })(NewsletterForm)

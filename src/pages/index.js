@@ -21,7 +21,7 @@ const IndexPage = ({data}) => {
 
   return (
     <Layout page="home">
-      <SEO title="Home" description="Site description" />
+      <SEO title="Skylytics | Home" description="Skylytics brings clarity to your business by acting as the bridge between continuous intelligence technology and you" />
       <Hero heroBody={data.allPrismicHomepageHero.edges[0].node.data} />
       <ElevatorPitch aboutUsBody={data.allPrismicAboutUs.edges[0].node.data} />
       <CaseStories 

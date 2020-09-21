@@ -5,11 +5,13 @@ const initialState = {
   activeSubtab: 0,
   activeStory: 0,
   caseStoryCycle: false,
+  contactFormSubmit: false,
   currentPage: null,
   expandedStory: null,
   heroSlide: 0,
   menuState: false,
   mobileCaseState: false,
+  newsletterFormSubmit: false,
   selectedStory: null,
   selectorPosition: 0,
   selectorWidth: 0
@@ -21,6 +23,18 @@ export default (state = initialState, action) => {
       return { 
         ...state, 
         caseStoryCycle: action.payload
+      }
+
+    case types.CONTACT_FORM_SUBMIT:
+      return { 
+        ...state, 
+        contactFormSubmit: action.payload
+      }
+
+    case types.NEWSLETTER_FORM_SUBMIT:
+      return { 
+        ...state, 
+        newsletterFormSubmit: action.payload
       }
 
     case types.SET_SELECTED_STORY:

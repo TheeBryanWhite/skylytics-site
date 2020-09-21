@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
+import { connect } from "react-redux";
+import { contactFormSubmit } from '../../../redux/actions/actions'
 
 import MailSvg from '../svg/mail_icon.svg'
 
 import '../contact.scss'
 
-export default class ContactForm extends React.Component {
+class ContactForm extends React.Component {
 
     state = {
         "name": {
@@ -135,7 +137,7 @@ export default class ContactForm extends React.Component {
                 'Content-Type': 'application/json; charset=UTF-8'
             },
             }).then(response => {
-                window.location.replace('/contact-us-success');
+                this.props.contactFormSubmit(true)
                 console.log(response);
             }).catch(error => {
                 console.log(error);
@@ -232,3 +234,9 @@ export default class ContactForm extends React.Component {
             )
         }
     }
+
+const mapStateToProps = state => ({
+    contactFormSubmit: state.app.contactFormSubmit
+})
+
+export default connect(mapStateToProps, { contactFormSubmit })(ContactForm)

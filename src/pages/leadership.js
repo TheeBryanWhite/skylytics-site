@@ -19,7 +19,7 @@ const LeadershipPage = ({data}) => {
   
   return (
     <Layout page="leadership">
-      <SEO title="Leadership - skylytics" description="Site description" />
+      <SEO title="Skylytics | Leadership" description="Meet your Skylytics Continuous Intelligence professionals" />
       <SubpageHero imgData={data.prismicPage.data.hero.localFile.childImageSharp.fluid} pageTitle={data.prismicPage.data.page_title.text} />
       <PageBody>
         <Leadership bodyData={data.allPrismicLeadersBodyLeaders.edges[0].node} />

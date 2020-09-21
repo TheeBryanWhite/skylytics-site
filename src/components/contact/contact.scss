@@ -85,6 +85,15 @@
 				padding: 0 toRem(16)
 			}
 		}
+
+	}
+
+	.contact-column {
+		@include respond-to(large) {
+			.form-confirmation {
+				padding-bottom: 235px;
+			}
+		}
 	}
 
 	.cf-container {
