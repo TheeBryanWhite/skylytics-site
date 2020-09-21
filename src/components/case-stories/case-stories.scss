@@ -19,6 +19,10 @@
 	&.expanded {
 		z-index: 900;
 
+		@include respond-to(large) {
+			z-index: 890;
+		}
+
 		.color-images {
 			left: 0;
 			z-index: 1000;
