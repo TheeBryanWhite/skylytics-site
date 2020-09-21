@@ -123,7 +123,11 @@
     input {
 		margin-bottom: toRem(16);
 		position: relative;
-    }
+	}
+	
+	textarea {
+		resize: none;
+	}
 
     label {
         @include screen-reader-text;
