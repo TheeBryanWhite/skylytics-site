@@ -3,7 +3,6 @@
 .elevator-pitch {
 	background-color: color(black);
 	position: relative;
-	z-index: -1;
 
 	@include respond-to(large) {
 		margin-top: -200px;
