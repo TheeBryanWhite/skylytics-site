@@ -5,7 +5,7 @@ import MailSvg from '../svg/mail_icon.svg'
 
 import '../contact.scss'
 
-export default class ContactForm extends React.Component {
+export default class NewsletterForm extends React.Component {
 
     state = {
         "email": {
@@ -132,35 +132,32 @@ export default class ContactForm extends React.Component {
 
     render () {
         return (
-            <div className="cf-container">
-                <h2><MailSvg />Contact Us</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        id="email"
-                        name="email"
-                        onChange={this.handleInputChange}
-                        placeholder="Email"
-                        type="text"
-                        value={this.state.email.value}
-                    />
-                    <p className="validation-message">{this.validationMessage()}</p>
-                    <p className="validation-email">This doesn't seem to be a valid email address.</p>
-                    <label htmlFor="postnobills">postnobills</label>
-                    <input
-                        className="postnobills"
-                        id="postnobills"
-                        name="postnobills"
-                        onChange={this.handleInputChange}
-                        placeholder="postnobills"
-                        type="text"
-                        value={this.state.postnobills.value}
-                    />
-                    <div className="row submit-container">
-                        <button className="cta" type="submit">Subscribe</button>
-                    </div>
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="email">Enter your Email</label>
+                <input
+                    id="email"
+                    name="email"
+                    onChange={this.handleInputChange}
+                    placeholder="Email"
+                    type="text"
+                    value={this.state.email.value}
+                />
+                <p className="validation-message">{this.validationMessage()}</p>
+                <p className="validation-email">This doesn't seem to be a valid email address.</p>
+                <label htmlFor="postnobills">postnobills</label>
+                <input
+                    className="postnobills"
+                    id="postnobills"
+                    name="postnobills"
+                    onChange={this.handleInputChange}
+                    placeholder="postnobills"
+                    type="text"
+                    value={this.state.postnobills.value}
+                />
+                <div className="row submit-container">
+                    <button className="cta" type="submit">Subscribe</button>
+                </div>
+            </form>
             )
         }
     }

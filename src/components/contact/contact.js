@@ -1,5 +1,6 @@
 import React from 'react'
 import ContactForm from './contact-form/ContactForm'
+import NewsletterForm from './newsletter-form/NewsletterForm'
 
 import DemoSvg from './svg/demo_icon.svg'
 
@@ -19,18 +20,7 @@ const ContactUs = props => {
 							<div dangerouslySetInnerHTML={{ __html: props.contactUsBody.demo.html }} />
 							<div dangerouslySetInnerHTML={{ __html: props.contactUsBody.newsletter.html }} />
 							<div className="newsletter-subscribe">
-								<form>
-								<label htmlFor="email">Email</label>
-								<input
-									id="email"
-									name="email"
-									placeholder="Enter your Email"
-									type="text"
-								/>
-								<div className="row submit-container">
-									<button className="cta" type="submit">Subscribe</button>
-								</div>
-								</form>
+								<NewsletterForm />
 							</div>
 						</div>
 					</div>
