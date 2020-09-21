@@ -92,7 +92,7 @@ export default class NewsletterForm extends React.Component {
                     {
                       "to": [
                         {
-                          "email": "bryan@3pt.design"
+                          "email": "info@skylytics.com"
                         }
                       ],
                       "subject": "A newsletter subscription from the Skylytics form" 
