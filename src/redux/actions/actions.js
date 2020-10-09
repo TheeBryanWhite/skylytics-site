@@ -21,6 +21,13 @@ export const newsletterFormSubmit = (data) => (dispatch) => {
   })
 }
 
+export const setListOpenClose = (data) => (dispatch) => {
+  dispatch({
+    type: types.SET_LIST_OPEN_CLOSE,
+    payload: data,
+  })
+}
+
 export const setMenu = (data) => (dispatch) => {
   dispatch({
     type: types.SET_MENU,

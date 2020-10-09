@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import { graphql } from 'gatsby'
 import { useDispatch } from 'react-redux'
-import { setCurrentPage } from "../redux/actions/actions"
+import { setActiveSection, setCurrentPage } from "../redux/actions/actions"
 
 import Layout from '../components/layout/layout'
 import Hero from '../components/hero/hero'
@@ -16,8 +16,9 @@ const IndexPage = ({data}) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(setActiveSection('home'))
     dispatch(setCurrentPage('home'))
-  })
+  }, [])
 
   return (
     <Layout page="home">

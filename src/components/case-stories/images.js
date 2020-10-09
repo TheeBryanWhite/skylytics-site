@@ -73,27 +73,25 @@ const Images = props => {
 		}
 	}
 	
-	// const mouseLeaveHandler = story => {
-	// 	if (props.selectedStory === null) {
-	// 		props.setActiveStory(story)
-	// 	}
-	// }
-	
 	return(
 		<div className="column story-options">
+			<div className="images-thumbs">
 			{csImgData.map((story, index) => (
-			<div
-				className={imageClassHandler(index)} 
-				id={`story-${index}`} 
-				key={index}
-				onClick={() => { clickHandler(index) }}
-				onMouseEnter={() => { mouseEnterHandler(index) }}
-				role="presentation"
-			>
-				<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
-			</div>
+				<div
+					className={imageClassHandler(index)} 
+					id={`story-${index}`} 
+					key={index}
+					onClick={() => { clickHandler(index) }}
+					onMouseEnter={() => { mouseEnterHandler(index) }}
+					role="presentation"
+				>
+					<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
+				</div>
 			))}
-			<div className="color-images">
+			</div>
+			
+			<div className="images-color">
+				<div className="bgcast"></div>
 			{csImgData.map((story, index) => (
 				<div
 					className={colorClassHandler(index)}

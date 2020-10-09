@@ -1,32 +1,36 @@
 @import '../sass/mixins.scss';
 
-.leaders-page {
-	align-items: stretch;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+.leaders {
+	h2 {
+		color: color(white);
+	}
 
 	.leader-wrapper {
-		align-items: stretch;
 		display: flex;
-	
+		flex-wrap: wrap;
+
 		@include respond-to(small) {
-			flex: 0 0 50%;
-			padding: 0 15px;
-		}
-	
-		@include respond-to(small) {
-			flex: 0 0 33%;
+			flex-wrap: wrap;
 		}
 	}
 	
 	.leader {
-		align-items: stretch;
 		background-color: color(white);
 		display: flex;
 		flex-direction: column;
-		margin: toRem(25) 0;
+		margin: toRem(25) toRem(15);
 		position: relative;
+
+		@include respond-to(small) {
+			flex: 1;
+			margin: 0 toRem(15);
+		}
+
+		@include respond-to(medium) {
+			margin-left: 0;
+			margin-right: 30px;
+			max-width: 300px;
+		}
 	}
 	
 	.leader-meta {
@@ -65,6 +69,25 @@
 			display: inline-block;
 			height: 35px;
 			width: 35px;
+		}
+	}
+
+	&.leadership {
+		margin-top: 50px;
+
+		@include respond-to(small) {
+			flex-wrap: wrap;
+
+			.leader {
+				flex: 0 1 45%;
+				margin-bottom: toRem(25);
+			}
+		}
+
+		@include respond-to(large) {
+			.leader {
+				flex: 1;
+			}
 		}
 	}
 }

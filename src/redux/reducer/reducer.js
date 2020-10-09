@@ -14,7 +14,8 @@ const initialState = {
   newsletterFormSubmit: false,
   selectedStory: null,
   selectorPosition: 0,
-  selectorWidth: 0
+  selectorWidth: 0,
+  solutionsSubList: false
 };
 
 export default (state = initialState, action) => {
@@ -35,6 +36,12 @@ export default (state = initialState, action) => {
       return { 
         ...state, 
         newsletterFormSubmit: action.payload
+      }
+
+    case types.SET_LIST_OPEN_CLOSE:
+      return { 
+        ...state, 
+        solutionsSubList: !action.payload 
       }
 
     case types.SET_SELECTED_STORY:

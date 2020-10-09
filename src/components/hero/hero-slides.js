@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import { connect } from "react-redux";
 import { setHeroSlide } from "../../redux/actions/actions";
@@ -40,6 +41,7 @@ class HeroSlides extends Component {
 				 id={`slide${index}`}
 				 key={index}
 			>
+				<div className="overlay"></div>
 				<BackgroundImage
 					className="slide"
 					fadeIn={false}
@@ -50,6 +52,12 @@ class HeroSlides extends Component {
 				</BackgroundImage>
 				<div className="slidecontent container">
 					<div className="hero-copy" dangerouslySetInnerHTML={{ __html: hero.hero_body.html }} />
+					<div className="hero-cta">
+						<ul>
+							<li><Link className="cta" to="#case-stories">Learn More</Link></li>
+							{/* <li><Link className="business-profile" to="/">Download skylytics<span>&reg;</span> business profile</Link></li> */}
+						</ul>
+					</div>
 				</div>
 			</div>
 			))

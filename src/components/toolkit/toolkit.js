@@ -1,7 +1,12 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
-import { setActiveSolution, setActiveSubtab } from "../../redux/actions/actions";
-import Images from './images.js'
+import { 
+	setActiveSolution, 
+	setActiveSubtab,
+	setListOpenClose
+} from "../../redux/actions/actions";
+import Images from './images'
+import SelectList from './SelectList'
 
 import './toolkit.scss'
 
@@ -13,21 +18,17 @@ class Toolkit extends Component {
 	constructor(props) {
 		super(props)
 		this.solutionClickHandler = this.solutionClickHandler.bind(this)
-		this.subtabClickHandler = this.subtabClickHandler.bind(this)
 	}
 
 	solutionClickHandler(index) {
 		this.props.setActiveSolution(index)
-	}
-
-	subtabClickHandler(index) {
-		this.props.setActiveSubtab(index)
+		this.props.setListOpenClose('false')
 	}
 
 	render() {
 		return (
 			<section className="solutions-section">
-				<button className="anchor-offset" id="solutions">Toolkit Section</button>
+				<button className="anchor-offset section-anchor" id="solutions">Toolkit Section</button>
 					<div className="bgcontainer">
 						<div className="columns">
 							<div className="column toolkit-content">
@@ -55,19 +56,7 @@ class Toolkit extends Component {
 											key={index}
 										>
 											<li>
-												<ul className="subtabs">
-													{solution.node.items.map((node, index) => (
-														<li 
-															className={(this.props.activeSubtab === index ? 'subtab active-subtab' : 'subtab')}
-															id={`solution-subtab-${index}`} 
-															key={index}
-														>
-																<button onClick={() => { this.subtabClickHandler(index) }}>
-																	{node.subtab_label.text}
-																</button>
-														</li>
-													))}
-												</ul>
+												<SelectList listProps={solution} />
 											</li>
 											<li>
 												<ul className="descriptors">
@@ -106,7 +95,8 @@ class Toolkit extends Component {
 
 const mapStateToProps = state => ({
 	activeSolution: state.app.activeSolution,
-	activeSubtab: state.app.activeSubtab
+	activeSubtab: state.app.activeSubtab,
+	solutionsSubList: state.app.solutionsSubList
 })
 
-export default connect(mapStateToProps, { setActiveSolution, setActiveSubtab })(Toolkit)
+export default connect(mapStateToProps, { setActiveSolution, setActiveSubtab, setListOpenClose })(Toolkit)

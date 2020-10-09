@@ -7,7 +7,7 @@ import './leadership.scss'
 
 const Leadership = props => {
 	return (
-		<section className="leadership-team" id="leadership">
+		<section className="leadership-team section-anchor" id="leadership">
 				<BackgroundImage
 					className="bgnull"
 					fluid={props.leadershipMeta.background_image.localFile.childImageSharp.fluid}

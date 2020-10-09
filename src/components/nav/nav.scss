@@ -103,8 +103,13 @@ nav {
 		display: none;
 		position: fixed;
 		height: 3px;
+		transform: translateY(-1px);
 		transition: all 0.2s ease(in-out-quart);
 		width: 40px;
+
+		@include respond-to(large) {
+			display: block;
+		}
 	}
 
 	@include respond-to(large) {

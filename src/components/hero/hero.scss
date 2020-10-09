@@ -1,15 +1,14 @@
 @import '../sass/mixins.scss';
 
 .hero {
-	background-color: color(herobg);
 	color: color(white);
-	margin-top: toRem(65);
+	margin-top: toRem(143);
 	overflow: hidden;
 	position: relative;
 	z-index: 90;
 
-	@include respond-to(large) {
-		clip-path: polygon(0 0, 100% 0, 100% 73%, 0 100%, 0 53%);
+	@include respond-to(medium) {
+		margin-top: toRem(112);
 	}
 
 	a {
@@ -19,169 +18,178 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		padding: toRem(100) toRem(32);
-
-		@include respond-to(small) {
-			padding: toRem(140) toRem(32);
-		}
-
-		@include respond-to(large) {
-			padding: toRem(202) toRem(32);
-		}
 	}
 
-	@include respond-to(large) { 
-		.slides {
-			clip-path: polygon(0 0, 100% 0, 100% 76%, 13% 100%, 0 53%);
+	.slides {
+		margin: 0 auto;
+		max-width: 1440px;
+
+		@include respond-to(large) { 
+			clip-path: polygon(0 0, 100% 0, 100% 76%, 10% 100%, 0 37%);
+			position: relative;
+		}
+
+		@include respond-to(xlarge) { 
+			clip-path: polygon(0 0, 100% 0, 100% 76%, 11.2% 100%, 0 53%);
 			position: relative;
 		}
 	}
 
-	.slidemask {
-		height: 693px;
-		position: relative;
+	.overlay {
+		background-color: rgba(color(black), 0.4);
+		bottom: 0;
+		display: none;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
 
 		@include respond-to(large) {
-			height: 822px;
+			display: block;
+		}
+	}
+
+	.slidemask {
+		position: relative;
+		height: 500px;
+
+		@include respond-to(large) {
+			height: 620px;
+		}
+
+		@include respond-to(xlarge) {
+			height: 800px;
 		}
 	}
 
 	.slidecontainer {
-		background-color: color(lightblue);
-		left: 0;
-		min-height: 1000px;
+		background-color: color(herobg);
+		height: 500px;
+		left: 50%;
 		position: absolute;
-		top: 0;
+		top: 50%;
+		transform: scale(1) 
+				   translateX(-50%) 
+				   translateY(-50%);
 		transition: opacity 0.3s linear, transform 0.6s linear;
+		-webkit-backface-visibility: hidden;
 		width: 100%;
+
+		@include respond-to(large) {
+			height: 620px;
+		}
+
+		@include respond-to(xlarge) {
+			height: 800px;
+		}
 	}
 
 	.slide {
-		left: 50%;
+		height: 500px;
 		position: absolute !important;
-		top: 50%;
+		top: 0;
+		width: 100%;
+
+		@include respond-to(large) {
+			height: 620px;
+		}
+
+		@include respond-to(xlarge) {
+			height: 800px;
+		}
 	}
 
 	.slidecontent {
-		position: relative;
+		background-color: rgba(color(black), 0.4);
+		margin: 0 toRem(32);
+		padding: toRem(16) toRem(32);
+		text-align: center;
+		top: 50%;
+		transform: translateY(-50%);
 		z-index: 1;
+
+		@include respond-to(medium) {
+			text-align: right;
+		}
+
+		@include respond-to(large) {
+			background-color: transparent;
+			margin: auto;
+			transform: translateY(-70%);
+		}
 	}
 
 	#slide0 {
-		left: 0;
 		overflow: hidden;
-		-webkit-backface-visibility: hidden;
-		-webkit-transform: scale(1);
 
-		.slide {
-			height: 1920px;
-			transform: translate(-50%, -50%);
-			width: 1920px;
-		}
-
-		@include respond-to(epic) {
+		@include respond-to(xlarge) {
 			.slide {
-				height: 2500px;
-				width: 2500px;
+				animation: zoom 30s linear 1;
 			}
 		}
 	}
 
 	#slide1 {
 		opacity: 0;
-		transform: translateX(-200%);
-		-webkit-backface-visibility: hidden;
-		-webkit-transform: scale(1);
-		
-		.slide {
-			height: 900px;
-			transform: translate(-60%, -50%);
-			width: 900px;
-
-			@include respond-to(medium) {
-				height: 100%;
-				width: 160%;
-			}
-		}
 
 		&.active {
-			transform: translateX(0);
 			opacity: 1;
 
-			.slide {
-				animation: panover 30s 1;
+			@include respond-to(xlarge){
+				.slide {
+					animation: panover 30s linear 1;
+					width: 150vw;
+				}
 			}
 		}
 	}
 
 	#slide2 {
 		opacity: 0;
-		transform:  translateX(-200%);
-		-webkit-backface-visibility: hidden;
-		-webkit-transform: scale(1);
-		
-		.slide {
-			height: 2500px;
-			transform: translate(-50%, -55%);
-			width: 2500px;
-
-			@include respond-to(large) {
-				transform: translate(-57%, -57%);
-			}
-		}
 
 		&.active {
-			transform: translateX(0);
 			opacity: 1;
 
-			.slide {
-				animation: panup 30s linear 1;
+			@include respond-to(xlarge) {
+				.slide {
+					animation: panup 30s linear 1;
+					height: 150vh;
+					transform: translate(-100px, -30%);
+					width: 110vw;
+				}
 			}
 		}
+	}
+
+	@keyframes zoom {
+		from { transform: scale(1) }
+		to { transform: scale(1.2) }
 	}
 
 	@keyframes panover {
-		from { transform: translate(-20%, -50%) }
-		to { transform: translate(-60%, -50%) }	
-	}
-
-	@include respond-to(small) {
-		@keyframes panover {
-			from { transform: translate(-50%, -50%) }
-			to { transform: translate(-60%, -50%) }	
-		}
+		from { transform: translateX(0) }
+		to { transform: translateX(-10%) }	
 	}
 
 	@keyframes panup {
-		from { transform: translate(-50%, -50%) }
-		to { transform: translate(-50%, -55%) }	
-	}
-
-	@include respond-to(large) {
-		@keyframes panup {
-			from { transform: translate(-57%, -50%) }
-			to { transform: translate(-57%, -57%) }	
-		}
+		from { transform: translate(-100px, -10%) }
+		to { transform: translate(-100px, -30%) }
 	}
 
 	.hero-copy {
-		background-color: rgba(color(black), 0.4);
 		align-self: flex-end;
 		font-size: toRem(18);
 		font-weight: 600;
-		padding: toRem(16);
-		text-align: right;
 
 		@include respond-to(large) {
-			background: transparent;
 			font-size: toRem(24);
-			margin-bottom: toRem(100);
-			width: 62%;
+			width: 50%;
 		}
 
 		h2 {
-			font-size: toRem(24);
-			font-weight: 400;
+			font-size: toRem(22);
+			font-weight: 700;
 
 			@include respond-to(large) {
 				font-size: toRem(32);
@@ -194,29 +202,16 @@
 	}
 
 	.hero-cta {
-		align-self: flex-start;
-		bottom: toRem(95);
 		font-weight: 700;
-		left: 18%;
-		position: absolute;
-		z-index: 50;
-
-		@include respond-to(large) {
-			bottom: toRem(250);
-		}
 
 		ul {
 			list-style: none;
 		}
 
-		li {
-			margin: toRem(16) 0;
-
-			span {
-				display: inline-block;
-				font-size: toRem(8);
-				transform: translateY(-5px);
-			}
+		span {
+			display: inline-block;
+			font-size: toRem(8);
+			transform: translateY(-5px);
 		}
 
 		.cta {

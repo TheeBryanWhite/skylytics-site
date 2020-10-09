@@ -2,10 +2,19 @@
 
 .elevator-pitch {
 	background-color: color(black);
+	border-top: 20px solid color(black);
 	position: relative;
 
 	@include respond-to(large) {
-		margin-top: -200px;
+		border: 0;
+		margin-top: -135px;
+		height: 753px;
+	}
+
+	@include respond-to(xlarge) {
+		border: 0;
+		margin-top: -170px;
+		height: 753px;
 	}
 
 	.anchor-offset {
@@ -20,11 +29,18 @@
 
 	h2 {
 		color: color(white);
-		font-size: toRem(32);
+		font-size: toRem(24);
+		line-height: toRem(28);
 		margin-bottom: toRem(25);
 		font-style: italic;
 
+		@include respond-to(medium) {
+			font-size: toRem(32);
+			line-height: 40px;
+		}
+
 		@include respond-to(large) {
+			line-height: 50px;
 			margin-bottom: toRem(50);
 		}
 	}
@@ -33,16 +49,27 @@
 		margin: 0;
 	}
 
+	.bg-mask {
+		margin: 0 auto;
+		max-width: 1440px;
+
+		@include respond-to(large) {
+			clip-path: polygon(10.4% 20.4%, 100% 0, 100% 100%, 27% 100%);
+			height: 753px;
+			width: 100%;
+		}
+
+		@include respond-to(xlarge) {
+			clip-path: polygon(11.6% 25.4%, 100% 0, 100% 100%, 27% 100%);
+		}
+	}
+
 	.bgnull {
 		bottom: 0;
 		left: 0;
 		position: absolute !important;
 		right: 0;
 		top: 0;
-
-		@include respond-to(large) {
-			clip-path: polygon(12.8% 26.4%, 100% 0, 100% 100%, 31% 100%);
-		}
 	}
 
 	.epcopy {
@@ -53,7 +80,11 @@
 		}
 
 		@include respond-to(large) {
-			padding: toRem(309.5) 0 toRem(189.5);
+			padding: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-30%);
+			width: 100%;
 		}
 
 		span {
@@ -78,9 +109,5 @@
 			margin-left: 25px;
 			transition: all 0.2s linear;
 		}
-	}
-
-	.container {
-		padding-right: 14%;
 	}
 }

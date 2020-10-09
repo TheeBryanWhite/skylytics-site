@@ -10,7 +10,7 @@ import DemoSvg from './svg/demo_icon.svg'
 const ContactUs = props => {
 	return(
 	<section className="contact">
-		<button className="anchor-offset" id="contact-us">Contact Us Section</button>
+		<button className="anchor-offset section-anchor" id="contact-us">Contact Us Section</button>
 			<div className="bgblue">
 				<div className="bgblack form-container columns contact-column">
 					<div className="container">

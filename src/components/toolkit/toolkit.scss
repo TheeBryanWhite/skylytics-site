@@ -1,23 +1,20 @@
 @import '../sass/mixins.scss';
 
 .solutions-section {
+	border-top: solid 25px color(black);
 	color: color(white);
 	position: relative;
-	z-index: 400;
 
 	@include respond-to(large) {
-		margin-top: -325px;
-		z-index: 90;
+		border: 0;
+		height: 657px;
+		margin-top: -111px;
 	}
 
 	.anchor-offset {
 		visibility: hidden;
 		position: absolute;
-		top: -125px;
-
-		@include respond-to(large) {
-			top: 0;
-		}
+		top: -110px;
 	}
 
 	h2 {	
@@ -30,41 +27,36 @@
 
 	.bgcontainer {
 		background-color: color(blue);
+		margin: 0 auto;
+		max-width: 1440px;
 
 		@include respond-to(large) {
-			clip-path: polygon(0 0, 100% 47.5%, 100% 100%, 0 100%);
-			padding-top: 160px;
-		}
-
-		@include respond-to(xlarge) {
-			clip-path: polygon(0 0, 100% 47%, 100% 100%, 0 100%);
-		}
-
-		@include respond-to(epic) {
-			clip-path: polygon(0 0, 100% 44.5%, 100% 100%, 0 100%);
+			clip-path: polygon(0 0, 100% 20.5%, 100% 100%, 0 100%);
+			padding-top: 56px;
 		}
 	}
 
 	@include respond-to(large) {
 		.columns {
 			display: flex;
+			height: 600px;
 		}
 	}
 
 	.column {
-		flex: 1 1 50%;
+		flex: 1 1 auto;
+
+		@include respond-to(large) {
+			width: 50%;
+		}
 	}
 
 	.toolkit-content {
-		flex: 1 1 49%;
 		padding: toRem(80) toRem(32) 0;
 
 		@include respond-to(large) {
-			padding: 1% 0 toRem(50) 10%;
-		}
-
-		@include respond-to(epic) {
-			padding: 4.5% 0 2.5% 10%;
+			align-self: center;
+			padding: 0 toRem(32);
 		}
 	}
 
@@ -171,6 +163,10 @@
 			z-index: 5;
 		}
 
+		li {
+			position: relative;
+		}
+
 		button {
 			background-color: transparent;
 			border: 0;
@@ -222,22 +218,12 @@
 		}
 
 		li {
-			flex: 1 1 auto;
+			flex: 1;
 			padding: 10px;
 		}
 
 		li:nth-of-type(1) {
-			flex: 2 2 auto;
-		}
-
-		@include respond-to(medium) {
-			li:nth-of-type(1) {
-				flex: 0 0 300px;
-			}
-	
-			li:nth-of-type(2) {
-				flex: 0 0 100px;
-			}
+			flex: 2;
 		}
 
 		svg {
@@ -273,5 +259,79 @@
 
 	.gatsby-image-wrapper {
 		min-height: 800px;
+	}
+
+	// Subtabs select list styles
+	.subtabs {
+		background-color: color(white);
+		border: 1px solid color(blue);
+		transition: all 0.4s ease(in-out-quart);
+		width: 100%;
+		z-index: 5;
+
+		ul {
+			background-color: color(white);
+			border: 1px solid color(blue);
+			border-top: 0;
+			display: none;
+			left: 0;
+			position: absolute;
+			width: 100%;
+			z-index: 1;
+		}
+
+		&.open {
+			ul {
+				display: block;
+			}
+
+			.selected-item:after {
+				top: 10px;
+				transform: rotate(-45deg);
+			}
+		}
+
+		button {
+			background-color: transparent;
+			color: blue;
+			display: block;
+			padding: toRem(5);
+			transition: all 0.4s linear;
+			width: 100%;
+
+			&:hover {
+				background-color: color(blue);
+				color: white;
+			}
+		}
+
+		.selected-item {
+			border-bottom: 1px solid color(blue);
+			padding: toRem(5);
+			padding-right: toRem(32);
+
+			&:after {
+				border-style: solid;
+				border-width: toRem(2) toRem(2) 0 0;
+				content: '';
+				display: inline-block;
+				height: toRem(10);
+				right: toRem(16);
+				position: absolute;
+				top: toRem(7);
+				transform: rotate(135deg);
+				vertical-align: top;
+				width: toRem(10);
+			}
+
+			button {
+				color: color(blue);
+				padding: 0;
+
+				&:hover {
+					background-color: transparent;
+				}
+			}
+		}
 	}
 }
