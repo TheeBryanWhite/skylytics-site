@@ -20,6 +20,7 @@ const LeadershipImages = props => {
 							</div>
 						)
 					}
+					return false
 				})
 			}
 		</div>

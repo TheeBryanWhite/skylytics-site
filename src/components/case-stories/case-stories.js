@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import Images from './images'
 import { connect } from "react-redux";
 import { 
-	caseStoryCycle,
+	setCaseStoryCycle,
 	setActiveStory,
 	setExpandedStory,
 	setMobileCaseState,
 	setSelectedStory
 } from "../../redux/actions/actions";
+import intervalHandler from '../../utils/intervalHandler'
 
 import './case-stories.scss'
 
@@ -15,19 +16,29 @@ class CaseStories extends Component {
 	constructor(props) {
 		super(props)
 
-		this.clickHandler = this.clickHandler.bind(this)
+		this.autoSlide = this.autoSlide.bind(this)
 		this.getLargestBody = this.getLargestBody.bind(this)
 		this.storyBodyClassHandler = this.storyBodyClassHandler.bind(this)
 		this.storyCloser = this.storyCloser.bind(this)
 		this.storyMetaClassHandler = this.storyMetaClassHandler.bind(this)
 		this.storyOpener = this.storyOpener.bind(this)
+
+		this.index = 0
+		this.stopAutoSlide = intervalHandler(this.autoSlide, 6000)
 	}
 
-	clickHandler(story) {
-		this.props.caseStoryCycle(false)
-		this.props.setActiveStory(story)
-		this.props.setSelectedStory(story)
-		this.props.setExpandedStory(story)
+	autoSlide() {
+		if (this.index < 2) {
+			if (this.props.caseStoryCycle) {
+				this.index += 1
+				this.props.setActiveStory(this.index)
+				this.props.setSelectedStory(this.index)
+			}
+		} else {
+			this.index = 0
+			this.props.setActiveStory(0)
+			this.props.setSelectedStory(0)
+		}
 	}
 
 	componentDidMount() {
@@ -51,14 +62,13 @@ class CaseStories extends Component {
 	}
 
 	storyCloser() {
-		this.props.caseStoryCycle(true)
 		this.props.setSelectedStory(null)
 		this.props.setExpandedStory(null)
 		this.props.setMobileCaseState(this.props.mobileCaseState)
 	}
 
 	storyOpener(story) {
-		this.props.caseStoryCycle(false)
+		this.props.setCaseStoryCycle(false)
 		this.props.setActiveStory(story)
 		this.props.setSelectedStory(story)
 		this.props.setExpandedStory(story)
@@ -165,7 +175,7 @@ const mapStateToProps = state => ({
 export default connect(
 					mapStateToProps,
 					{ 
-						caseStoryCycle,
+						setCaseStoryCycle,
 						setActiveStory, 
 						setExpandedStory, 
 						setMobileCaseState,

@@ -2,7 +2,7 @@ import React from 'react'
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 import { 
-	caseStoryCycle,
+	setCaseStoryCycle,
 	setSelectedStory,
 	setExpandedStory,
 	setMobileCaseState,
@@ -55,6 +55,7 @@ const Images = props => {
 	}
 
 	const clickHandler = story => {
+		props.setCaseStoryCycle(false)
 		props.setSelectedStory(story)
 		props.setActiveStory(story)
 		props.setExpandedStory(null)
@@ -68,9 +69,9 @@ const Images = props => {
 	}
 
 	const mouseEnterHandler = story => {
-		if (props.selectedStory === null) {
-			props.setActiveStory(story)
-		}
+		props.setCaseStoryCycle(false)
+		props.setActiveStory(story)
+		props.setSelectedStory(story)
 	}
 	
 	return(
@@ -114,7 +115,6 @@ const mapStateToProps = state => ({
 	caseStoryCycle: state.app.caseStoryCycle,
 	expandedStory: state.app.expandedStory,
 	selectedStory: state.app.selectedStory
-
 })
 
 export default connect(
@@ -124,5 +124,5 @@ export default connect(
 		setExpandedStory,
 		setSelectedStory,
 		setMobileCaseState,
-		caseStoryCycle
+		setCaseStoryCycle
 	})(Images)

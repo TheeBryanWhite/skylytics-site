@@ -39,6 +39,7 @@ class Leadership extends Component{
 								</div>
 							)
 						}
+						return false
 					})}
 				</div>
 				</div>
@@ -72,6 +73,7 @@ class Leadership extends Component{
 								</div>
 							)
 						}
+						return false
 					})}
 				</div>
 				</div>

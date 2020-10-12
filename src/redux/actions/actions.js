@@ -1,12 +1,5 @@
 import { types } from "../constants/types";
 
-export const caseStoryCycle = (data) => (dispatch) => {
-  dispatch({
-    type: types.CASE_STORY_CYCLE,
-    payload: data,
-  })
-}
-
 export const contactFormSubmit = (data) => (dispatch) => {
   dispatch({
     type: types.CONTACT_FORM_SUBMIT,
@@ -17,6 +10,13 @@ export const contactFormSubmit = (data) => (dispatch) => {
 export const newsletterFormSubmit = (data) => (dispatch) => {
   dispatch({
     type: types.NEWSLETTER_FORM_SUBMIT,
+    payload: data,
+  })
+}
+
+export const setCaseStoryCycle = (data) => (dispatch) => {
+  dispatch({
+    type: types.CASE_STORY_CYCLE,
     payload: data,
   })
 }

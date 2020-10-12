@@ -123,6 +123,10 @@
 	#slide0 {
 		overflow: hidden;
 
+		&.active {
+			z-index: 1;
+		}
+
 		@include respond-to(xlarge) {
 			.slide {
 				animation: zoom 30s linear 1;
@@ -135,6 +139,7 @@
 
 		&.active {
 			opacity: 1;
+			z-index: 2;
 
 			@include respond-to(xlarge){
 				.slide {
@@ -150,6 +155,7 @@
 
 		&.active {
 			opacity: 1;
+			z-index: 3;
 
 			@include respond-to(xlarge) {
 				.slide {

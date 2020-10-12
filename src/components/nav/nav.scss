@@ -33,9 +33,11 @@ nav {
 			width: calc(100% - 30px);
 		}
 
-		&:hover {
-			&:after {
-				opacity: 1;
+		@include respond-to(large) {
+			&:hover {
+				&:after {
+					opacity: 1;
+				}
 			}
 		}
 	}
