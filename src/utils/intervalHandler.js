@@ -6,6 +6,6 @@ export default (handler, interval) => {
 		const id = setInterval(handler, interval)
 		setIntervalId(id)
 		return () => clearInterval(id)
-	}, []);
+	}, [handler, interval]);
 	return () => clearInterval(intervalId)
 }

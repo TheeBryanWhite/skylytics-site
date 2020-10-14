@@ -18,7 +18,7 @@ const SelectList = props => {
 		const theLabel = theSelected.current
 		const theDefault = theLabel.nextElementSibling.querySelector('.active-subtab')
 		theLabel.innerHTML = theDefault.innerHTML
-	}, [theList])
+	}, [theSelected])
 
 	const setLabel = (label, target) => {
 		const labelToSet = theSelected.current
@@ -35,7 +35,7 @@ const SelectList = props => {
 
 	useEffect(() => {
 		setDefaults()
-	}, [])
+	}, [setDefaults])
 
 	return(
 		<div className={(props.solutionsSubList ? 'subtabs open' : 'subtabs')}>
@@ -44,6 +44,7 @@ const SelectList = props => {
 				onClick={() => {listOpenClose()}}
 				onKeyDown={() => {listOpenClose()}}
 				ref={theSelected}
+				role="list"
 			></div>
 			<ul ref={theList}>
 			{props.listProps.node.items.map((node, index) => (

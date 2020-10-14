@@ -18,7 +18,7 @@ const IndexPage = ({data}) => {
   useEffect(() => {
     dispatch(setActiveSection('home'))
     dispatch(setCurrentPage('home'))
-  }, [])
+  }, [dispatch])
 
   return (
     <Layout page="home">

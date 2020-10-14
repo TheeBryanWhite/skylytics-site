@@ -16,7 +16,7 @@ const LeadershipPage = ({data}) => {
   useEffect(() => {
     dispatch(setCurrentPage('leadership'))
     dispatch(setActiveSection('leadership'))
-  }, [])
+  }, [dispatch])
   
   return (
     <Layout page="leadership">

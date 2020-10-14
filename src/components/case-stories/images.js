@@ -61,13 +61,6 @@ const Images = props => {
 		props.setExpandedStory(null)
 	}
 
-	const storyCloser = (story) => {
-		props.setActiveStory(story)
-		props.setSelectedStory(story)
-		props.setExpandedStory(null)
-		props.setMobileCaseState(props.caseState)
-	}
-
 	const mouseEnterHandler = story => {
 		props.setCaseStoryCycle(false)
 		props.setActiveStory(story)
@@ -98,7 +91,6 @@ const Images = props => {
 					className={colorClassHandler(index)}
 					id={`story-${index}`} 
 					key={index}
-					onClick={() => { storyCloser(index) }}
 					role="presentation"
 				>
 					<Img fluid={story.node.items[0].color_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />

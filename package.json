@@ -48,6 +48,7 @@
     "react-helmet": "^6.0.0",
     "react-lazyload": "^3.0.0",
     "react-redux": "^7.2.1",
+    "react-scripts": "^3.4.3",
     "redux-thunk": "^2.3.0",
     "smooth-scroll": "^16.1.3"
   },
