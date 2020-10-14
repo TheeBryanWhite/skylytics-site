@@ -14,12 +14,14 @@
 
 	h2 {
 		font-size: toRem(32);
-	}
-
-	span {
-		display: inline-block;
-		font-size: 0.625em;
-		transform: translateY(-6px);
+		
+		strong,
+		b {
+			display: inline-block;
+			font-size: toRem(16);
+			font-weight: 400;
+			transform: translateY(-10px);
+		}
 	}
 
 	.bgnull {

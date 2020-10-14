@@ -98,7 +98,7 @@ module.exports = {
           content,
           children,
         ) => {
-          console.log(type, element, content, children)
+
         },
         // Remember, the schema names in the object have to match the API ID
         schemas: {

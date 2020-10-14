@@ -614,3 +614,9 @@ body {
 a {
   text-decoration: none;
 }
+
+@include respond-to(large) {
+  .column-restrict {
+    width: 50%;
+  }
+}

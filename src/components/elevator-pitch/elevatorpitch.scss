@@ -7,13 +7,13 @@
 
 	@include respond-to(large) {
 		border: 0;
-		margin-top: -135px;
+		margin-top: -155px;
 		height: 753px;
 	}
 
 	@include respond-to(xlarge) {
 		border: 0;
-		margin-top: -170px;
+		margin-top: -250px;
 		height: 753px;
 	}
 
@@ -43,6 +43,14 @@
 			line-height: 50px;
 			margin-bottom: toRem(50);
 		}
+
+		strong,
+		b {
+			display: inline-block;
+			font-size: toRem(16);
+			font-weight: 400;
+			transform: translateY(-10px);
+		}
 	}
 
 	p {
@@ -60,7 +68,7 @@
 		}
 
 		@include respond-to(xlarge) {
-			clip-path: polygon(11.6% 25.4%, 100% 0, 100% 100%, 27% 100%);
+			clip-path: polygon(11.6% 26.9%, 100% 0, 100% 100%, 27% 100%);
 		}
 	}
 

@@ -15,9 +15,29 @@
 		color: color(white);
 	}
 
+	.bgcolor {
+		background-color: color(teal);
+	}
+
 	.container {
 		display: flex;
 		flex-direction: column;
+	}
+
+	@include respond-to(large) {
+		.bgcolor {
+			clip-path: polygon(0 0, 100% 0, 100% 73%, 0% 98.7%, 0 100%);
+			margin: 0 auto;
+			max-width: 1440px;
+			padding-bottom: 25px;
+			position: relative;
+	
+			@include respond-to(xlarge) { 
+				clip-path: polygon(0 0, 100% 0, 99% 69%, 11.2% 92%, 0 95%);
+				padding-bottom: 50px;
+				position: relative;
+			}
+		}
 	}
 
 	.slides {

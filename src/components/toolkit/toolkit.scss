@@ -40,6 +40,7 @@
 		.columns {
 			display: flex;
 			height: 600px;
+			justify-content: flex-end;
 		}
 	}
 
@@ -47,7 +48,7 @@
 		flex: 1 1 auto;
 
 		@include respond-to(large) {
-			width: 50%;
+			flex: 0 0 50%;
 		}
 	}
 
@@ -56,7 +57,12 @@
 
 		@include respond-to(large) {
 			align-self: center;
+			left: 50%;
+			max-width: 1200px;
 			padding: 0 toRem(32);
+			position: absolute;
+			transform: translateX(-50%);
+			width: 100%;
 		}
 	}
 
@@ -87,16 +93,6 @@
 		padding-right: 20px;
 		position: relative;
 		width: 50%;
-
-		// &:after {
-		// 	background-color: rgba(color(white), 0.6);
-		// 	content: '';
-		// 	height: 2px;
-		// 	position: absolute;
-		// 	right: 0;
-		// 	top: 0;
-		// 	width: 20px;
-		// }
 
 		li {
 			margin-bottom: toRem(32);

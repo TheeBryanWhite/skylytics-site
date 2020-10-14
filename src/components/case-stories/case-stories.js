@@ -117,7 +117,7 @@ class CaseStories extends Component {
 					<div className="columns">
 						<Images storyImages={this.props.storyBody} />
 						<div className="column story">
-							<div className="center-this">
+							<div className="center-this column-restrict">
 								<div 
 									className="story-head"
 									dangerouslySetInnerHTML={{ __html: this.props.storyMeta.header.html }}
