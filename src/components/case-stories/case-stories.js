@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import Images from './images'
 import { connect } from "react-redux";
 import { 
@@ -15,7 +15,9 @@ import './case-stories.scss'
 const CaseStories = props => {
 	let index = useRef(0)
 
-	const autoSlide = () => {
+	const autoSlide = useCallback(() => {
+		props.setActiveStory(index.current)
+
 		if (props.caseStoryCycle) {
 			if (index.current < 2) {
 				index.current += 1
@@ -27,7 +29,7 @@ const CaseStories = props => {
 				props.setSelectedStory(0)
 			}
 		}
-	}
+	}, [props])
 
 	const getLargestBody = () => {
 		let bodyHeights = []
@@ -46,11 +48,9 @@ const CaseStories = props => {
 	}
 
 	const storyCloser = () => {
-		stopAutoSlide()
-		props.setCaseStoryCycle(false)
 		props.setSelectedStory(null)
 		props.setExpandedStory(null)
-		props.setMobileCaseState(props.mobileCaseState)
+		props.setMobileCaseState(this.props.mobileCaseState)
 	}
 
 	const storyOpener = story => {
@@ -59,7 +59,7 @@ const CaseStories = props => {
 		props.setActiveStory(story)
 		props.setSelectedStory(story)
 		props.setExpandedStory(story)
-		props.setMobileCaseState(props.mobileCaseState)
+		props.setMobileCaseState(this.props.mobileCaseState)
 	}
 
 	const storyMetaClassHandler = story => {
@@ -96,10 +96,9 @@ const CaseStories = props => {
 
 	const stopAutoSlide = intervalHandler(autoSlide, 6000)
 
-	useEffect(() => {
-		getLargestBody()
-		intervalHandler(autoSlide, 6000)
-	}, [autoSlide])
+	// useEffect(() => {
+	// 	getLargestBody()
+	// }, [autoSlide])
 	
 	return (
 		<section 
