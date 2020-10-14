@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Images from './images'
 import { connect } from "react-redux";
 import { 
@@ -15,7 +15,7 @@ import './case-stories.scss'
 const CaseStories = props => {
 	let index = useRef(0)
 
-	const autoSlide = useCallback(() => {
+	const autoSlide = () => {
 		if (props.caseStoryCycle) {
 			if (index.current < 2) {
 				index.current += 1
@@ -27,7 +27,7 @@ const CaseStories = props => {
 				props.setSelectedStory(0)
 			}
 		}
-	}, [props])
+	}
 
 	const getLargestBody = () => {
 		let bodyHeights = []
