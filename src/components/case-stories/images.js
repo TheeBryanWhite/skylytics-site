@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback} from 'react'
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 import { 
@@ -8,11 +8,30 @@ import {
 	setMobileCaseState,
 	setActiveStory
 } from "../../redux/actions/actions"
+import intervalHandler from '../../utils/intervalHandler'
 
 import './case-stories.scss'
 
 const Images = props => {
 	const csImgData = props.storyImages
+
+	let index = 0
+
+	const autoSlide = () => {
+		props.setActiveStory(index)
+
+		if (index < 2) {
+			index += 1
+			props.setActiveStory(index)
+			props.setSelectedStory(index)
+		} else {
+			index = 0
+			props.setActiveStory(0)
+			props.setSelectedStory(0)
+		}
+	}
+
+	const stopAutoSlide = intervalHandler(autoSlide, 6000)
 
 	const imageClassHandler = story => {
 		let classArr = ['story-img']
@@ -62,6 +81,7 @@ const Images = props => {
 	}
 
 	const mouseEnterHandler = story => {
+		stopAutoSlide()
 		props.setCaseStoryCycle(false)
 		props.setActiveStory(story)
 		props.setSelectedStory(story)
