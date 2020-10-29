@@ -614,3 +614,12 @@ body {
 a {
   text-decoration: none;
 }
+
+.underline {
+  text-decoration: underline;
+}
+
+.indent {
+  display: block;
+  padding-left: toRem(16);
+}
