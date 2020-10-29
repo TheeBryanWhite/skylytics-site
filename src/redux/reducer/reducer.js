@@ -8,6 +8,7 @@ const initialState = {
   contactFormSubmit: false,
   currentPage: null,
   expandedStory: null,
+  heroCycle: true,
   heroSlide: 0,
   menuState: false,
   mobileCaseState: false,
@@ -30,6 +31,12 @@ export default (state = initialState, action) => {
       return { 
         ...state, 
         contactFormSubmit: action.payload
+      }
+
+    case types.HERO_CYCLE:
+      return { 
+        ...state, 
+        heroCycle: action.payload
       }
 
     case types.NEWSLETTER_FORM_SUBMIT:

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import HeroSlides from './hero-slides'
+import HeroNav from './hero-nav'
 
 import './hero.scss'
 
@@ -12,6 +13,7 @@ const Hero = props => {
 					<div className="slidemask">
 						<HeroSlides slideData={props.heroBody.hero_slides} />
 					</div>
+					<HeroNav slideData={props.heroBody.hero_slides} />
 				</div>
 			</div>
 		</section>

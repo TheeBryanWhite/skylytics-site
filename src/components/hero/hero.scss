@@ -250,4 +250,31 @@
 			}
 		}
 	}
+
+	.hero-nav {
+		position: absolute;
+		right: toRem(32);
+		top: 35%;
+		transform: translateY(-50%);
+		z-index: 5;
+
+		li {
+			list-style: none;
+			padding: toRem(8) 0;
+		}
+
+		button {
+			background-color: color(white);
+			border: 0;
+			border-radius: 50%;
+			cursor: pointer;
+			height: toRem(15);
+			transition: all 0.4s linear;
+			width: toRem(15);
+
+			&:hover {
+				background-color: rgba(color(blue), 0.5);
+			}
+		}
+	}
 }

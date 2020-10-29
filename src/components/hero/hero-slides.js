@@ -24,14 +24,15 @@ class HeroSlides extends Component {
 		const slides = document.querySelectorAll('.slidecontainer')
 
 		setInterval(() => {
-			if (index <= 2) {
+			if (index <= 2 && this.props.heroCycle) {
 				this.props.setHeroSlide(index)
 				slides[index].classList.add('active')
 			} else {
 				clearInterval()
 			}
-			index += 1;
-		}, 10000)
+			
+			index += 1
+		}, 9000)
 	}
 
 	render() {
@@ -66,6 +67,7 @@ class HeroSlides extends Component {
 }
 
 const mapStateToProps = state => ({
+	heroCycle: state.app.heroCycle,
     heroSlide: state.app.heroSlide
 })
 

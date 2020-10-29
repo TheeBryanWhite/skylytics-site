@@ -21,6 +21,13 @@ export const setCaseStoryCycle = (data) => (dispatch) => {
   })
 }
 
+export const setHeroCycle = (data) => (dispatch) => {
+  dispatch({
+    type: types.HERO_CYCLE,
+    payload: data,
+  })
+}
+
 export const setListOpenClose = (data) => (dispatch) => {
   dispatch({
     type: types.SET_LIST_OPEN_CLOSE,
