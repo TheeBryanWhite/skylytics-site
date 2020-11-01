@@ -13,7 +13,14 @@ const HeroNav = props => {
 		<ul className="hero-nav">
 		{
 			props.slideData.map((hero, index) => (
-				<li><button onClick={() => {clickHandler(index)}}><span className="screen-reader-text">{index}</span></button></li>
+				<li>
+					<button
+						class={(props.heroSlide === index ? 'active-pip' : '')}
+						onClick={() => {clickHandler(index)}}
+					>
+						<span className="screen-reader-text">{index}</span>
+					</button>
+				</li>
 			))
 		} 
 		</ul>
