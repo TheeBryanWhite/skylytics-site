@@ -34,7 +34,7 @@
 			position: relative;
 	
 			@include respond-to(xlarge) { 
-				clip-path: polygon(0 0, 100% 0, 99% 69%, 11.2% 92%, 0 95%);
+				clip-path: polygon(0 0, 100% 0, 100% 68%, 12.2% 92%, 0 95%);
 				padding-bottom: 50px;
 				position: relative;
 			}
