@@ -36,11 +36,10 @@
 
 		@include respond-to(medium) {
 			font-size: toRem(32);
-			line-height: 40px;
+			line-height: 36px;
 		}
 
 		@include respond-to(large) {
-			line-height: 50px;
 			margin-bottom: toRem(50);
 		}
 

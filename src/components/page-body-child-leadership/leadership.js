@@ -66,7 +66,6 @@ class Leadership extends Component{
 											<p className="label">Connect | Follow</p>
 											<ul>
 												{(leader.linkedin ? <li className="linkedin"><a href={leader.linkedin.url} target={leader.linkedin.target} rel="noreferrer"><LinkedInSvg /><span className="screen-reader-text">Follow {leader.name.text} on linkedin</span></a></li> : '')}
-												{(leader.twitter ? <li className="twitter"><a href={leader.twitter.url} target={leader.twitter.target} rel="noreferrer"><TwitterSvg /><span className="screen-reader-text">Follow {leader.name.text} on twitter</span></a></li> : '')}
 											</ul>
 										</div>
 									</div>

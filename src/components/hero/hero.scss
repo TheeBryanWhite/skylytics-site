@@ -13,6 +13,7 @@
 
 	a {
 		color: color(white);
+		text-decoration: underline;
 	}
 
 	.bgcolor {
@@ -286,6 +287,10 @@
 				display: flex;
 				padding: toRem(8) 0;
 			}
+		}
+
+		a {
+			text-decoration: none;
 		}
 
 		button {

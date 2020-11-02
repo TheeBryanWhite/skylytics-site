@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React from 'react'
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 import { 
@@ -18,17 +18,17 @@ const Images = props => {
 	let index = 0
 
 	const autoSlide = () => {
-		props.setActiveStory(index)
-
-		if (index < 2) {
-			index += 1
 			props.setActiveStory(index)
-			props.setSelectedStory(index)
-		} else {
-			index = 0
-			props.setActiveStory(0)
-			props.setSelectedStory(0)
-		}
+
+			if (index < 2) {
+				index += 1
+				props.setActiveStory(index)
+				props.setSelectedStory(index)
+			} else {
+				index = 0
+				props.setActiveStory(0)
+				props.setSelectedStory(0)
+			}	
 	}
 
 	const stopAutoSlide = intervalHandler(autoSlide, 6000)
@@ -74,6 +74,7 @@ const Images = props => {
 	}
 
 	const clickHandler = story => {
+		stopAutoSlide()
 		props.setCaseStoryCycle(false)
 		props.setSelectedStory(story)
 		props.setActiveStory(story)

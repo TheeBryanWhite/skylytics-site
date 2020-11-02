@@ -30,6 +30,7 @@ const CaseStories = props => {
 	}
 
 	const storyCloser = () => {
+		props.setCaseStoryCycle(false)
 		props.setSelectedStory(null)
 		props.setExpandedStory(null)
 		props.setMobileCaseState(props.mobileCaseState)
@@ -88,7 +89,7 @@ const CaseStories = props => {
 		>				
 			<div className="bgmask">
 				<div className="columns">
-					<Images storyImages={props.storyBody} />
+					<Images storyImages={props.storyBody} cycleState={props.cycleState} />
 					<div className="column story">
 						<div className="center-this column-restrict">
 							<div 
