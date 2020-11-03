@@ -28,11 +28,11 @@ module.exports = {
         name: 'Leadership',
         link: '/leadership'
       },
-      // {
-      //   class: 'news',
-      //   name: 'News',
-      //   link: '/news'
-      // },
+      {
+        class: 'news',
+        name: 'News',
+        link: '/news'
+      },
       {
         class: 'contact-us',
         name: 'Contact Us',

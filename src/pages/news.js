@@ -15,7 +15,7 @@ const IndexPage = ({data}) => {
 				pageTitle="Newsroom" 
 				pageSubtitle="Stay up-to-date on our latest innovations and partnerships"
 			/>
-			<PageBody>
+			<PageBody currentPage="news">
 				<NewsIndex pageBody={data.allPrismicNews.nodes} />
 			</PageBody>
 		</Layout>
@@ -50,13 +50,9 @@ allPrismicNews {
           text
         }
         news_hero_image {
-			localFile {
-				childImageSharp {
-				  fluid (maxWidth: 1920) {
-					  ...GatsbyImageSharpFluid_withWebp
-					}
-				}
-			  }
+			fluid (maxWidth: 1920) {
+				src
+			}
         }
         news_title {
           text

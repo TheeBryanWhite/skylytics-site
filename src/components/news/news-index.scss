@@ -8,10 +8,24 @@
 		flex: 1 0 50%;
 		flex-direction: column;
 		padding: toRem(15);
+
+		@include respond-to(large) {
+			flex: 0 0 50%;
+		}
 	}
 
 	.flex-item {
 		height: 300px;
+	}
+
+	.no-results {
+		h3 {
+			margin: 0;
+		}
+		.flex-item {
+			height: auto;
+			text-align: center;
+		}
 	}
 
 	.article-thumb {
