@@ -9,11 +9,12 @@ import './scss/news.scss'
 
 function NewsPostTemplate({data}) {
 	const post = data.prismicNews
+	const page = data.prismicPage
 
 	return(
 		<Layout page="news">
 			<SEO title="News - skylytics" description="Site description" />
-			<SubpageHero imgData={post.data.news_hero_image.fluid} pageTitle={post.data.news_title.text} />
+			<SubpageHero imgData={page.data.hero.localFile.childImageSharp.fluid} pageTitle={post.data.news_title.text} />
 			<PageBody>
 				<article>
 					<div className="container wysiwyg">
@@ -30,6 +31,20 @@ function NewsPostTemplate({data}) {
 
 export const query = graphql`
 query PostBySlug($uid: String!) {
+	prismicPage(uid: {eq: "newsroom"}) {
+		id
+		data {
+		  hero {
+			localFile {
+			  childImageSharp {
+				fluid (maxWidth: 1920) {
+					...GatsbyImageSharpFluid_withWebp
+				  }
+			  }
+			}
+		  }
+		}
+	  }
 	prismicNews(uid: {eq: $uid}) {
 		data {
 			news_body {
