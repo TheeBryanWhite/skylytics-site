@@ -2,47 +2,16 @@
 
 .casestories {
 	color: color(white);
+	overflow: hidden;
 	position: relative;
-	z-index: 91;
 
 	@include respond-to(large) {
-		padding-top: 25px;
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 56%);
-	}
-
-	.anchor-offset {
-		visibility: hidden;
-		position: absolute;
-		top: -125px;
-	}
-
-	&.expanded {
-		z-index: 900;
-
-		@include respond-to(large) {
-			z-index: 890;
-		}
-
-		.color-images {
-			left: 0;
-			z-index: 1000;
-		}
-
-		.story-options {
-			min-height: 1000px;
-
-			@include respond-to(large) {
-				min-height: 0;
-			}
-		}
+		border-top: solid 25px color(black);
+		
 	}
 
 	h2 {
 		font-size: toRem(32);
-	}
-
-	h3 {
-		margin-top: toRem(28);
 	}
 
 	a {
@@ -73,326 +42,294 @@
 		}
 	}
 
+	@include respond-to(large) {
+		.bgmask {
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0 83%);
+			margin: 0 auto;
+			max-width: 1440px;
+		}
+	}
+
 	.columns {
 		background-color: color(blue);
+		position: relative;
 
 		@include respond-to(large) {
-			display: flex;
+			height: 800px;
 		}
 	}
 
-	.column {
-		flex: 1 1 50%;
+	@include respond-to(large) {
+		.story-options {
+			overflow: hidden;
+			position: relative;
+			width: 50%;
+			z-index: 1;
+		}
 	}
 
-	.story-options {
-		position: relative;
+	.images-thumbs {
 		align-items: stretch;
 		display: flex;
-		height: 190px;
-		overflow: hidden;
 
 		@include respond-to(large) {
-			clip-path: polygon(0 0, 63% 0, 109% 100%, 0 100%);
-			display: block;
-			height: 760px;
+			clip-path: polygon(0 0, 55% 0, 100% 100%, 0% 100%);
+			flex-direction: column;
+		}
+
+		.gatsby-image-wrapper {
+			height: 100%;
 		}
 	}
 
-	.story {
-		min-height: 300px;
-		padding-top: toRem(40);
-		position: relative;
+	@include respond-to(large) {
+		.story-head,
+		.story-meta {
+			h2 {
+				font-size: toRem(40);
+			}
+
+			h3 {
+				font-size: toRem(32);
+			}
+
+			p {
+				font-size: toRem(20);
+			}
+		}
+	}
+
+	.images-color,
+	.story-body-container {
+		height: 100vh;
+		left: -200%;
+		position: fixed;
+		top: 0;
+		transition: all 0.4s ease(in-out-quart);
+		width: 100%;
 
 		@include respond-to(large) {
-			padding-top: toRem(75);
+			left: 0;
+			position: absolute;
+			z-index: -1;
 		}
 
-		&.expanded {
-			position: absolute;
-			top: 190px;
-			z-index: 1000;
+		.color-image,
+		.gatsby-image-wrapper,
+		.story-body {
+			height: 100vh;
 
 			@include respond-to(large) {
-				position: static;
-				top: 0;
+				height: auto;
 			}
+		}
+
+		@include respond-to(large) {
+			.color-image,
+			.color-image .gatsby-image-wrapper {
+				height: 100%;
+			}
+		}
+
+		.color-image,
+		.story-body {
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		.story-body {
+			width: 50%;
+		}
+
+		@include respond-to(large) {
+			.color-image {
+				left: -100%;
+			}
+
+			.story-body {
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+
+		.color-image {
+			transition: all 0.4s linear;
+			z-index: -1;
+		}
+	}
+
+	@include respond-to(large) {
+		.images-color {
+			clip-path: polygon(0 0, 55% 0, 100% 100%, 0% 100%);
+			height: 750px;
+			width: 100%;
+		}
+	}
+
+	@include respond-to(large) {
+		.story-body-container {
+			display: flex;
+			justify-content: flex-end;
+			left: 0;
+			padding: 0 toRem(32);
+		}
+	}
+
+	.story-head {
+		opacity: 1;
+		transition: all 0.4s linear;
+	}
+
+	&.expanded {
+		.images-color,
+		.story-body-container {
+			left: 0;
+			z-index: 900;
+
+			@include respond-to(large) {
+				z-index: 0;
+			}
+		}
+
+		@include respond-to(large) {
+			.images-color {
+				z-index: 1;
+			}
+
+			.story-body-container {
+				height: 750px;
+			}
+		}
+
+		.expanded-image {
+			left: 0;
+			z-index: 0;
+		}
+
+		.story-head,
+		.story-meta-container {
+			opacity: 0;
+		}
+	}
+
+	.bgcast {
+		background-color: rgba(color(black), 0.5);
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 901;
+
+		@include respond-to(large) {
+			display: none;
 		}
 	}
 
 	.story-img {
 		background-color: color(blue);
 		cursor: pointer;
-		flex: 1 0 33%;		
-		height: 199px;
-		position: relative;
-		transition: clip-path 0.5s linear, all 0.5s linear;
+		flex: 1;
+		transition: all 0.4s linear;
 
 		@include respond-to(large) {
-			height: auto;
-			max-height: 310px;
-			overflow: visible;
+			flex: auto;
+			height: 300px;
+			margin-top: -50px;
+
+			&:nth-of-type(1) {
+				clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+			}
+
+			&:nth-of-type(2) {
+				clip-path: polygon(0 16.8%, 100% -8.3%, 100% 83%, 0 84%);
+			}
+
+			&:nth-of-type(3) {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 84%)
+			}
 		}
 
-		.gatsby-image-wrapper {
-			height: 100%;
-		}
-
-		img,
-		picture {
-			mix-blend-mode: overlay;
-			object-fit: cover;
-		}
-		
 		&.active-image {
 			background-color: transparent;
-			z-index: 1;
 		}
 
-		&:nth-of-type(1) {
-
-			@include respond-to(large) {
-				clip-path: polygon(0 0, 79% 0, 100% 44%, 0 85%);
-
-				img,
-				picture {
-					transform: translateY(-170px);
-				}
-			}
-
-			@include respond-to(xlarge) {
-				img {
-					transform:  translateY(-250px);
-				}
-			}
-
-			@media not all and (min-resolution:.001dpcm) {
-				clip-path: none;
-				height: 190px;
-
-				img,
-				picture {
-					transform: translateY(0);
-				}
-			}
-
-		}
-
-		&:nth-of-type(2) {	
-
-			@include respond-to(large) {
-				clip-path: polygon(0 35%, 100% -6%, 100% 28%, 28% 100%, 0 100%);
-				margin-top: -157px;
-
-				img,
-				picture {
-					transform: translateY(20px);
-				}
-			}
-
-			@include respond-to(epic) {
-				img,
-				picture {
-					transform: translateY(-80px);
-				}
-			}
-
-			@media not all and (min-resolution:.001dpcm) {
-				clip-path: none;
-				height: 190px;
-				margin-top: 0;
-
-				img,
-				picture {
-					transform: translateY(0);
-				}
-			}
-
-		}
-
-		&:nth-of-type(3) {
-			position: relative;
-
-			@include respond-to(large) {
-				clip-path: polygon(16% 66%, 94% -7%, 100% 100%, 8% 100%, 0 100%);
-				margin-bottom: 175px;
-				margin-top: -179px;
-				padding-left: 25%;
-
-				img,
-				picture {
-					transform: translateY(-55px);
-				}
-			}
-
-			@include respond-to(xlarge) {
-				img {
-					transform:  translateY(-155px);
-				}
-			}
-
-			@media not all and (min-resolution:.001dpcm) {
-				clip-path: none;
-				height: 300px;
-				margin: 0;
-				padding: 0;
-
-				img,
-				picture {
-					transform: translateY(-30%);
-				}
-			}
+		img {
+			mix-blend-mode: overlay;
 		}
 	}
 
-	.story-container {
-		flex-wrap: wrap;
-		min-height: 243px;
-		position: relative;
-		transition: opacity 0.5s linear, transform 0.5s linear;
+	.story {
+		padding: toRem(32);
 
 		@include respond-to(large) {
 			display: flex;
-			margin: 0;
-		}
-
-		&.expanded {
-			margin: 0;
-			max-height: none;
-			transition: opacity 0.1s linear, transform 0.5s linear 0.5s;
-			width: 100%;
-
-			@include respond-to(large) {
-				transform: translateY(-200px);
-			}
-		}
-	}
-
-	.story-head,
-	.story-foot {
-		opacity: 1;
-		padding: 0 toRem(32);
-		transition: opacity 0.5s linear 0.5s;
-
-		&.expanded {
-			opacity: 0;
-			transition: opacity 0.5s linear;
-		}
-	}
-
-	.story-shift {
-		min-height: 300px;
-		position: absolute;
-		top: -30px;
-		width: 100%;
-
-		@include respond-to(large) {
-			flex: 1 1 100%;
-			top: 0;
-			width: 100%;
-		}
-
-		&.active-story {
-			.story-meta {
-				z-index: 1;
-			}
-		}
-
-		&.expanded-story {
-			.story-meta {
-				opacity: 0;
-				z-index: -1;
-			}
-		}
-	}
-
-	.story-meta,
-	.story-body {
-		opacity: 0;
-		padding: 0 toRem(32);
-		transition: all 0.5s linear;
-		width: 100%;
-
-		@include respond-to(large) {
+			height: 100%;
+			justify-content: flex-end;
+			left: 50%;
+			margin: 0 auto;
+			max-width: 1200px;
+			padding: 0 toRem(32);
 			position: absolute;
+			top: 0;
+			transform: translateX(-50%);
+			width: 100%;
+			z-index: 0;
 		}
+	}
+
+	.story-meta-container {
+		opacity: 1;
+		position: relative;
+		transition: all 0.4s linear;
 	}
 
 	.story-meta {
-		min-height: 300px;
+		opacity: 0;
 		position: absolute;
-		transition: opacity 0.5s linear;
-		left: 0;
+		top: 0;
+		transition: all 0.4s linear;
+		width: 100%;
+		z-index: -1;
 
-		@include respond-to(large) {
-			top: 0;
+		&.active-story {
+			opacity: 1;
+			z-index: 1;
 		}
 	}
 
 	.story-body {
-		transition: opacity 0.5s linear;
+		opacity: 0;
+		overflow-y: scroll;
+		padding: toRem(32);
+		transition: all 0.4s linear;
+		z-index: -1;
 
 		@include respond-to(large) {
-			font-size: toRem(14);
+			overflow-y: visible;
 		}
 
-		@include respond-to(xlarge) {
-			font-size: toRem(16);
-		}
-
-		@include respond-to(large) {
-			h3 {
-				font-size: toRem(20);
-			}
-		}
-
-		@include respond-to(xlarge) {
-			h3 {
-				font-size: toRem(24);
-			}
+		&.expanded-story {
+			opacity: 1;
+			z-index: 902;
 		}
 	}
 
-	.active-story {
-	
-		.story-meta {
-			opacity: 1;
-		}
-	}
-
-	.expanded-story {
-		opacity: 1;
-		z-index: 1;
-
-		.story-meta {
-			opacity: 0;
-			transition: opacity 0.5s linear;
-		}
-
-		.story-body {
-			background: rgba(color(black), 0.6);
-			height: 100%;
-			max-height: 1500px;
-			opacity: 1;
-			overflow-y: scroll;
-			position: fixed;
-			top: 0;
-			transition: opacity 0.5s linear 0.5s;
-
-			@include respond-to(large) {
-				background-color: transparent;
-				position: static;
-			}
-		}
-
-		.cta {
-			margin-bottom: 32px;
+	@include respond-to(large) {
+		.center-this {
+			position: absolute;
+			top: 45%;
+			transform: translateY(-50%);
+			width: 47%;
 		}
 	}
 
 	.cta {
 		color: color(white);
 		margin-top: toRem(24);
+		position: relative;
+		z-index: 2;
 
 		&:after {
 			content: '\2192';
@@ -411,130 +348,6 @@
 			font-size: 24px;
 			margin-right: 25px;
 			transition: all 0.2s linear;
-		}
-	}
-
-	.story-foot {
-		display: inline-block;
-		position: relative;
-		top: 24px;
-
-		@include respond-to(large) {
-			top: 0;
-		}
-
-		h3 {
-			margin-bottom: 10px;
-		}
-
-		p {
-			text-align: right;
-		}
-
-		a {
-			padding-right: 35px;
-			position: relative;
-			transition: all 0.2s linear;
-
-			&:after {
-				content: '\2192';
-				font-size: 24px;
-				position: absolute;
-				right: 0;
-				top: -5px;
-				transition: all 0.2s linear;
-			}
-
-			&:hover {
-				color: color(teal);
-
-				&:after {
-					right: -5px;
-				}
-			}
-		}
-	}
-
-	.color-images {
-		bottom: 0;
-		height: 1280px;
-		left: -400%;
-		position: fixed;
-		right: 0;
-		top: 0;
-		width: 1280px;
-
-		@include respond-to(large) {
-			position: absolute;
-		}
-	}
-
-	.color-image {
-		left: -100%;
-		max-height: none;
-		position: absolute;
-		top: 0;
-		transition: all 0.4s linear;
-		width: 100%;
-
-		@include respond-to(large) {
-			&:nth-of-type(1) {
-				img,
-				picture {
-					transform: translateY(-200px);
-				}
-			}
-		}
-
-		&.expanded-image {
-			left: 0;
-		}
-
-		&.expanded-image {
-			&:nth-of-type(1) {
-				transform: translateY(-30%);
-
-				@include respond-to(medium) {
-					transform: translateY(0);
-				}
-
-				@include respond-to(large) {
-					transform: translateY(-10%);
-				}
-			}
-
-			&:nth-of-type(2) {
-				height: 1400px;
-				transform: translateY(-70px);
-
-				@include respond-to(medium) {
-					height: 1920px;
-					transform: translateY(0);
-					width: 1920px;
-				}
-
-				@include respond-to(large) {
-					transform: translateY(-30%);
-				}
-			}
-
-			&:nth-of-type(3) {
-				left: 50%;
-				top: 50%;
-				transform: translate(-90% , -80%);
-
-				@include respond-to(medium) {
-					transform: translate(-70% , -60%);
-				}
-
-				@include respond-to(large) {
-					transform: translate(-90% , -80%);
-				}
-
-				@include respond-to(epic) {
-					transform: translate(-70% , -80%);
-				}
-			}
 		}
 	}
 }

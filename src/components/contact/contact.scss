@@ -3,16 +3,14 @@
 .contact {
 	background-color: color(black);	
 	color: color(white);
+	margin: 0 auto;
+	max-width: 1440px;
 	position: relative;
 
 	@include respond-to(large) {
-		clip-path: polygon(100% 10%, 100% 100%, 0 100%, 0 27.5%);
+		clip-path: polygon(100% 8.1%, 100% 100%, 0 100%, 0 28.5%);
 		margin-top: -300px;
 		padding-top: 25px;
-
-		@include respond-to(xlarge) {
-			clip-path: polygon(100% 10%, 100% 100%, 0 100%, 0 29.5%);
-		}
 	}
 
 	.anchor-offset {
@@ -61,7 +59,7 @@
 		padding-bottom: 50px;
 
 		@include respond-to(large) {
-			clip-path: polygon(84% 0, 100% 56%, 100% 100%, 0 100%, 0 18%);
+			clip-path: polygon(84.5% 0, 100% 53%, 100% 100%, 0 100%, 0 18%);
 			padding-top: 150px;
 		}
 

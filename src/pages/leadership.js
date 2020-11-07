@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {graphql} from 'gatsby'
 import { useDispatch } from 'react-redux'
-import { setCurrentPage } from "../redux/actions/actions"
+import { setActiveSection, setCurrentPage } from "../redux/actions/actions"
 
 import Layout from '../components/layout/layout'
 import SEO from '../components/seo'
@@ -15,7 +15,8 @@ const LeadershipPage = ({data}) => {
   
   useEffect(() => {
     dispatch(setCurrentPage('leadership'))
-  })
+    dispatch(setActiveSection('leadership'))
+  }, [dispatch])
   
   return (
     <Layout page="leadership">
@@ -54,6 +55,7 @@ query leadershipPageQuery {
           bio {
             html
           }
+          feature_on_homepage
           headshot {
             localFile {
               childImageSharp {

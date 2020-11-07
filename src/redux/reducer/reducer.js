@@ -4,17 +4,19 @@ const initialState = {
   activeSolution: 0,
   activeSubtab: 0,
   activeStory: 0,
-  caseStoryCycle: false,
+  caseStoryCycle: true,
   contactFormSubmit: false,
   currentPage: null,
   expandedStory: null,
+  heroCycle: true,
   heroSlide: 0,
   menuState: false,
   mobileCaseState: false,
   newsletterFormSubmit: false,
   selectedStory: null,
   selectorPosition: 0,
-  selectorWidth: 0
+  selectorWidth: 0,
+  solutionsSubList: false
 };
 
 export default (state = initialState, action) => {
@@ -31,10 +33,22 @@ export default (state = initialState, action) => {
         contactFormSubmit: action.payload
       }
 
+    case types.HERO_CYCLE:
+      return { 
+        ...state, 
+        heroCycle: action.payload
+      }
+
     case types.NEWSLETTER_FORM_SUBMIT:
       return { 
         ...state, 
         newsletterFormSubmit: action.payload
+      }
+
+    case types.SET_LIST_OPEN_CLOSE:
+      return { 
+        ...state, 
+        solutionsSubList: !action.payload 
       }
 
     case types.SET_SELECTED_STORY:

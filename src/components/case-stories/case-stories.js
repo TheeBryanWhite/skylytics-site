@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import Images from './images'
 import { connect } from "react-redux";
 import { 
-	caseStoryCycle,
+	setCaseStoryCycle,
 	setActiveStory,
 	setExpandedStory,
 	setMobileCaseState,
@@ -11,108 +11,126 @@ import {
 
 import './case-stories.scss'
 
-class CaseStories extends Component {
-	constructor(props) {
-		super(props)
+const CaseStories = props => {
 
-		this.storyMeta = []
+	const getLargestBody = () => {
+		let bodyHeights = []
 
-		this.clickHandler = this.clickHandler.bind(this)
-		this.storyClassHandler = this.storyClassHandler.bind(this)
-		this.storyCloser = this.storyCloser.bind(this)
-		this.storyOpener = this.storyOpener.bind(this)
+		const storyBodies = document.getElementsByClassName('story-meta')
+		const storyMetaContainer = document.getElementById('story-metas')
+		const bodiesArr = [].slice.call(storyBodies)
+
+		bodiesArr.forEach(body => {
+			bodyHeights.push(body.offsetHeight)
+		})
+
+		const largest =  Math.max(...bodyHeights)
+		
+		storyMetaContainer.style.height = largest + 'px'
 	}
 
-	clickHandler(story) {
-		this.props.caseStoryCycle(false)
-		this.props.setActiveStory(story)
-		this.props.setSelectedStory(story)
-		this.props.setExpandedStory(story)
+	const storyCloser = () => {
+		props.setCaseStoryCycle(false)
+		props.setSelectedStory(null)
+		props.setExpandedStory(null)
+		props.setMobileCaseState(props.mobileCaseState)
 	}
 
-	storyCloser() {
-		this.props.caseStoryCycle(true)
-		this.props.setSelectedStory(null)
-		this.props.setExpandedStory(null)
-		this.props.setMobileCaseState(this.props.mobileCaseState)
+	const storyOpener = story => {
+		props.setCaseStoryCycle(false)
+		props.setActiveStory(story)
+		props.setSelectedStory(story)
+		props.setExpandedStory(story)
+		props.setMobileCaseState(props.mobileCaseState)
 	}
 
-	storyOpener(story) {
-		this.props.caseStoryCycle(false)
-		this.props.setActiveStory(story)
-		this.props.setSelectedStory(story)
-		this.props.setExpandedStory(story)
-		this.props.setMobileCaseState(this.props.mobileCaseState)
-	}
-
-	componentDidMount() {
-		this.storyClassHandler(this.props.activeStory)
-	}
-
-	storyClassHandler(story) {
+	const storyMetaClassHandler = story => {
 		let classOutput = null
 
-		if (this.props.expandedStory === story) {
-			classOutput = 'story-shift active-story expanded-story'
-		} else if (this.props.selectedStory === story && this.props.activeStory === story) {
-			classOutput = 'story-shift active-story'
-		} else if (this.props.selectedStory === null && this.props.activeStory === story) {
-				classOutput = 'story-shift active-story'
+		if (props.expandedStory === story) {
+			classOutput = 'story-meta active-story expanded-story'
+		} else if (props.selectedStory === story && props.activeStory === story) {
+			classOutput = 'story-meta active-story'
+		} else if (props.selectedStory === null && props.activeStory === story) {
+				classOutput = 'story-meta active-story'
 		} else {
-			classOutput = 'story-shift'
+			classOutput = 'story-meta'
 		}
 
 		return classOutput
 	}
 
-	render() {
-		return (
-			<section className={(this.props.expandedStory !== null ? 'casestories expanded' : 'casestories')}>
-				<button className="anchor-offset" id="case-stories">Case Stories Section</button>
-				
-					<div className="columns">
-						<Images storyImages={this.props.storyBody} />
-						<div className={(this.props.expandedStory !== null ? 'column story expanded' : 'column story')}>
+	const storyBodyClassHandler = story => {
+		let classOutput = null
+
+		if (props.expandedStory === story) {
+			classOutput = 'story-body active-story expanded-story'
+		} else if (props.selectedStory === story && props.activeStory === story) {
+			classOutput = 'story-body active-story'
+		} else if (props.selectedStory === null && props.activeStory === story) {
+				classOutput = 'story-body active-story'
+		} else {
+			classOutput = 'story-body'
+		}
+
+		return classOutput
+	}
+
+	// const stopAutoSlide = intervalHandler(autoSlide, 6000)
+
+	useEffect(() => {
+		getLargestBody()
+	}, [])
+	
+	return (
+		<section 
+			className={(props.expandedStory !== null ? 'casestories section-anchor expanded' : 'casestories section-anchor')}
+			id="case-stories"
+		>				
+			<div className="bgmask">
+				<div className="columns">
+					<Images storyImages={props.storyBody} cycleState={props.cycleState} />
+					<div className="column story">
+						<div className="center-this column-restrict">
 							<div 
-								className={(this.props.expandedStory !== null ? 'story-head expanded' : 'story-head')}
-								dangerouslySetInnerHTML={{ __html: this.props.storyMeta.header.html }}
+								className="story-head"
+								dangerouslySetInnerHTML={{ __html: props.storyMeta.header.html }}
 							/>
+
 							<div 
-								className={(this.props.expandedStory !== null ? 'story-container expanded' : 'story-container')}
+								className="story-meta-container"
+								id="story-metas"
 							>
-								{this.props.storyBody.map((story, index) => (
-								<div className={this.storyClassHandler(index)}  
-									key={index}
+							{props.storyBody.map((story, index) => (
+								<div 
+									className={storyMetaClassHandler(index)} 
+									ref={storyMeta => storyMeta[index] = storyMeta}
 								>
-									<div 
-										className="story-meta" 
-										ref={storyMeta => this.storyMeta[index] = storyMeta}
-									>
-										<div dangerouslySetInnerHTML={{ __html: story.node.items[0].excerpt.html }} />
-										<ul>
-											<li><button 
-													className="cta"
-													onClick={() => {this.storyOpener(index)}}
-												>Read More</button></li>
-											{(index === 0 ? <li><a href="http://www.safercontact.com" target="_blank" rel="noreferrer">Learn more about our Contact Tracing software, safercontact<span>&reg;</span></a></li> : '')}
-										</ul>
-									</div>
-									<div className="story-body">
-									<div dangerouslySetInnerHTML={{ __html: story.node.items[0].story_body.html }} />
-										<button onClick={() => { this.storyCloser() }} className="cta back">Back</button>
-									</div>
-								</div>
-								))}
+								<div dangerouslySetInnerHTML={{ __html: story.node.items[0].excerpt.html }} />
+								<ul>
+									<li><button 
+											className="cta"
+											onClick={() => {storyOpener(index)}}
+										>Read More</button></li>
+									{(index === 0 ? <li><a href="http://www.safercontact.com" target="_blank" rel="noreferrer">Learn more about our Contact Tracing software, safercontact<span>&reg;</span></a></li> : '')}
+								</ul>
 							</div>
-							{/* <div
-								className={(this.props.expandedStory !== null ? 'story-foot expanded' : 'story-foot')}
-								dangerouslySetInnerHTML={{ __html: this.props.storyMeta.footer.html }}
-							/> */}
+							))}
+							</div>
+						</div>
+						<div className="story-body-container">
+							{props.storyBody.map((story, index) => (
+								<div className={storyBodyClassHandler(index)} >
+									<div dangerouslySetInnerHTML={{ __html: story.node.items[0].story_body.html }} />
+									<button onClick={() => { storyCloser() }} className="cta back">Back</button>
+								</div>
+							))}
 						</div>
 					</div>
-			</section>
-		)
-	}
+				</div>
+			</div>
+		</section>
+	)
 }
 
 const mapStateToProps = state => ({
@@ -126,7 +144,7 @@ const mapStateToProps = state => ({
 export default connect(
 					mapStateToProps,
 					{ 
-						caseStoryCycle,
+						setCaseStoryCycle,
 						setActiveStory, 
 						setExpandedStory, 
 						setMobileCaseState,

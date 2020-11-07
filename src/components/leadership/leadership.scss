@@ -7,17 +7,21 @@
 	z-index: 90;
 
 	@include respond-to(large) {
+		margin: 0 auto;
 		margin-top: 25px;
+		max-width: 1440px;
 	}
 
 	h2 {
 		font-size: toRem(32);
-	}
-
-	span {
-		display: inline-block;
-		font-size: 0.625em;
-		transform: translateY(-6px);
+		
+		strong,
+		b {
+			display: inline-block;
+			font-size: toRem(16);
+			font-weight: 400;
+			transform: translateY(-10px);
+		}
 	}
 
 	.bgnull {
@@ -45,15 +49,12 @@
 	}
 
 	.leader {
-		flex: 0 0 50%;
+		flex: 1;
 		margin-bottom: toRem(16);
+		max-width: 300px;
 		padding: 0 toRem(32);
 		padding-bottom: 40px;
 		position: relative;
-
-		@include respond-to(large) {
-			flex: 1 1 25%;
-		}
 
 		p {
 			color: color(white);

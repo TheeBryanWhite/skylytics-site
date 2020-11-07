@@ -5,17 +5,18 @@ import './elevatorpitch.scss'
 
 const ElevatorPitch = props => {
 	return (
-		<section className="elevator-pitch">
-			<button className="anchor-offset" id="about-us">About Us Section</button>
-				<BackgroundImage
-					className="bgnull"
-					fluid={props.aboutUsBody.background_image.localFile.childImageSharp.fluid}
-					style={{
-						backgroundPosition: 'top right'
-					}}
-					Tag="div"
-				>
-				</BackgroundImage>
+		<section className="elevator-pitch section-anchor" id="about-us">
+				<div className="bg-mask">
+					<BackgroundImage
+						className="bgnull"
+						fluid={props.aboutUsBody.background_image.localFile.childImageSharp.fluid}
+						style={{
+							backgroundPosition: 'top right'
+						}}
+						Tag="div"
+					>
+					</BackgroundImage>
+				</div>
 				<div className="epcopy">
 					<div className="container">
 						<div dangerouslySetInnerHTML={{ __html: props.aboutUsBody.about_us_body.html }} />

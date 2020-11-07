@@ -2,17 +2,36 @@ import React from 'react'
 import Img from "gatsby-image"
 import { connect } from "react-redux"
 import { 
-	caseStoryCycle,
+	setCaseStoryCycle,
 	setSelectedStory,
 	setExpandedStory,
 	setMobileCaseState,
 	setActiveStory
 } from "../../redux/actions/actions"
+import intervalHandler from '../../utils/intervalHandler'
 
 import './case-stories.scss'
 
 const Images = props => {
 	const csImgData = props.storyImages
+
+	let index = 0
+
+	const autoSlide = () => {
+			props.setActiveStory(index)
+
+			if (index < 2) {
+				index += 1
+				props.setActiveStory(index)
+				props.setSelectedStory(index)
+			} else {
+				index = 0
+				props.setActiveStory(0)
+				props.setSelectedStory(0)
+			}	
+	}
+
+	const stopAutoSlide = intervalHandler(autoSlide, 6000)
 
 	const imageClassHandler = story => {
 		let classArr = ['story-img']
@@ -55,51 +74,44 @@ const Images = props => {
 	}
 
 	const clickHandler = story => {
+		stopAutoSlide()
+		props.setCaseStoryCycle(false)
 		props.setSelectedStory(story)
 		props.setActiveStory(story)
 		props.setExpandedStory(null)
-	}
-
-	const storyCloser = (story) => {
-		props.setActiveStory(story)
-		props.setSelectedStory(story)
-		props.setExpandedStory(null)
-		props.setMobileCaseState(props.caseState)
 	}
 
 	const mouseEnterHandler = story => {
-		if (props.selectedStory === null) {
-			props.setActiveStory(story)
-		}
+		stopAutoSlide()
+		props.setCaseStoryCycle(false)
+		props.setActiveStory(story)
+		props.setSelectedStory(story)
 	}
-	
-	// const mouseLeaveHandler = story => {
-	// 	if (props.selectedStory === null) {
-	// 		props.setActiveStory(story)
-	// 	}
-	// }
 	
 	return(
 		<div className="column story-options">
+			<div className="images-thumbs">
 			{csImgData.map((story, index) => (
-			<div
-				className={imageClassHandler(index)} 
-				id={`story-${index}`} 
-				key={index}
-				onClick={() => { clickHandler(index) }}
-				onMouseEnter={() => { mouseEnterHandler(index) }}
-				role="presentation"
-			>
-				<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
-			</div>
+				<div
+					className={imageClassHandler(index)} 
+					id={`story-${index}`} 
+					key={index}
+					onClick={() => { clickHandler(index) }}
+					onMouseEnter={() => { mouseEnterHandler(index) }}
+					role="presentation"
+				>
+					<Img fluid={story.node.items[0].bw_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
+				</div>
 			))}
-			<div className="color-images">
+			</div>
+			
+			<div className="images-color">
+				<div className="bgcast"></div>
 			{csImgData.map((story, index) => (
 				<div
 					className={colorClassHandler(index)}
 					id={`story-${index}`} 
 					key={index}
-					onClick={() => { storyCloser(index) }}
 					role="presentation"
 				>
 					<Img fluid={story.node.items[0].color_image.localFile.childImageSharp.fluid} alt={story.node.items[0].bw_image.alt} />
@@ -116,7 +128,6 @@ const mapStateToProps = state => ({
 	caseStoryCycle: state.app.caseStoryCycle,
 	expandedStory: state.app.expandedStory,
 	selectedStory: state.app.selectedStory
-
 })
 
 export default connect(
@@ -126,5 +137,5 @@ export default connect(
 		setExpandedStory,
 		setSelectedStory,
 		setMobileCaseState,
-		caseStoryCycle
+		setCaseStoryCycle
 	})(Images)

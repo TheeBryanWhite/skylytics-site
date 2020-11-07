@@ -1,70 +1,95 @@
 @import '../sass/mixins.scss';
 
 .leaders-page {
-	align-items: stretch;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-
-	.leader-wrapper {
-		align-items: stretch;
-		display: flex;
-	
-		@include respond-to(small) {
-			flex: 0 0 50%;
-			padding: 0 15px;
+	.leaders {
+		h2 {
+			color: color(white);
 		}
 	
-		@include respond-to(small) {
-			flex: 0 0 33%;
-		}
-	}
-	
-	.leader {
-		align-items: stretch;
-		background-color: color(white);
-		display: flex;
-		flex-direction: column;
-		margin: toRem(25) 0;
-		position: relative;
-	}
-	
-	.leader-meta {
-		padding: toRem(25) toRem(25) toRem(90);
-	}
-	
-	.leader-name {
-		font-weight: 700;
-		margin: 0;
-	}
-	
-	.leader-position {
-		color: color(lightblue);
-		font-size: toRem(14);
-		font-weight: 700;
-	}
-	
-	.leader-social {
-		bottom: 15px;
-		position: absolute;
-		p {
-			font-weight: 700;
-			margin-bottom: 10px;
-		}
-	
-		ul {
-			list-style: none;
+		.leader-wrapper {
 			display: flex;
+			flex-wrap: wrap;
+	
+			@include respond-to(small) {
+				flex-wrap: wrap;
+			}
+		}
+		
+		.leader {
+			background-color: color(white);
+			display: flex;
+			flex-direction: column;
+			margin: toRem(25) toRem(15);
+			position: relative;
+	
+			@include respond-to(small) {
+				flex: 1;
+				margin: 0 toRem(15);
+			}
+	
+			@include respond-to(medium) {
+				margin-left: 0;
+				margin-right: 30px;
+				max-width: 300px;
+			}
+		}
+		
+		.leader-meta {
+			padding: toRem(25) toRem(25) toRem(90);
+		}
+		
+		.leader-name {
+			font-weight: 700;
+			margin: 0;
+		}
+		
+		.leader-position {
+			color: color(lightblue);
+			font-size: toRem(14);
+			font-weight: 700;
+		}
+		
+		.leader-social {
+			bottom: 15px;
+			position: absolute;
+			p {
+				font-weight: 700;
+				margin-bottom: 10px;
+			}
+		
+			ul {
+				list-style: none;
+				display: flex;
+			}
+		
+			li {
+				margin-right: toRem(15);
+			}
+		
+			a {
+				display: inline-block;
+				height: 35px;
+				width: 35px;
+			}
 		}
 	
-		li {
-			margin-right: toRem(15);
-		}
+		&.leadership {
+			margin-top: 50px;
 	
-		a {
-			display: inline-block;
-			height: 35px;
-			width: 35px;
+			@include respond-to(small) {
+				flex-wrap: wrap;
+	
+				.leader {
+					flex: 0 1 45%;
+					margin-bottom: toRem(25);
+				}
+			}
+	
+			@include respond-to(large) {
+				.leader {
+					flex: 1;
+				}
+			}
 		}
 	}
 }

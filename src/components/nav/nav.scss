@@ -33,9 +33,11 @@ nav {
 			width: calc(100% - 30px);
 		}
 
-		&:hover {
-			&:after {
-				opacity: 1;
+		@include respond-to(large) {
+			&:hover {
+				&:after {
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -103,8 +105,13 @@ nav {
 		display: none;
 		position: fixed;
 		height: 3px;
+		transform: translateY(-1px);
 		transition: all 0.2s ease(in-out-quart);
 		width: 40px;
+
+		@include respond-to(large) {
+			display: block;
+		}
 	}
 
 	@include respond-to(large) {

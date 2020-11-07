@@ -14,7 +14,7 @@ footer {
 
 		h1 {
 			margin: 0 auto toRem(8);
-			width: toRem(100);
+			width: toRem(180);
 
 			@include respond-to(large) {
 				margin: 0;

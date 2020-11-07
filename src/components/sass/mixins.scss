@@ -6,7 +6,7 @@
 $base-size: 16;
 
 @function toRem($target, $context: $base-size) {
-    @return ($target / $context) * 1em;
+    @return ($target / $context) * 1rem;
 }
 
 //Example Usage:
@@ -473,7 +473,7 @@ $colors: (
     login: $blue,
     superheaderbg: $blue,
     superheadercopy: $teal,
-    herobg: $blue,
+    herobg: $black,
     cta: $teal,
     ctahover: $lightblue,
     indicator: $lightblue,
@@ -667,7 +667,7 @@ a {
 
 .container {
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 1200px;
     padding-left: 2rem;
     padding-right: 2rem;
     position: relative;
@@ -689,7 +689,7 @@ a {
 
 .anchor-offset {
     display: block;
-    position: relative;
+    position: absolute;
     top: -150px;
     visibility: hidden;
 }
