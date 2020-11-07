@@ -615,7 +615,6 @@ a {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 .underline {
   text-decoration: underline;
 }
@@ -624,10 +623,3 @@ a {
   display: block;
   padding-left: toRem(16);
 }
-=======
-@include respond-to(large) {
-  .column-restrict {
-    width: 50%;
-  }
-}
->>>>>>> tuneup

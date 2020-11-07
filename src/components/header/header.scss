@@ -7,6 +7,21 @@ header {
 	z-index: 899;
 }
 
+.link-bar {
+	background-color: color(black);
+	font-size: toRem(24);
+	padding: toRem(8) 0;
+	text-align: right;
+
+	p {
+		margin: 0;
+	}
+
+	a {
+		color: color(white);
+	}
+}
+
 .super-header {
 	background-color: color(superheaderbg);
 	padding-bottom: toRem(15);
