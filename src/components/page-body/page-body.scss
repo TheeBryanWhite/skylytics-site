@@ -31,5 +31,16 @@
 			background-color: transparent;
 		}
 	}
+}
 
+.page-undefined {
+	article {
+		background-color: color(blue);
+		color: color(white);
+
+		a {
+			color: color(teal);
+			text-decoration: underline;
+		}
+	}
 }
