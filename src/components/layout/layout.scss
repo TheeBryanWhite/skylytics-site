@@ -623,3 +623,10 @@ a {
   display: block;
   padding-left: toRem(16);
 }
+
+
+@include respond-to(large) {
+  .column-restrict {
+    max-width: 50%;
+  }
+}
