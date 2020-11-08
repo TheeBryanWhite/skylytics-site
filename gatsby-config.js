@@ -152,7 +152,6 @@ module.exports = {
         icon: 'src/images/triangle.png', // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
     'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     {
