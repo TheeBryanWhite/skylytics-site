@@ -30,7 +30,7 @@ function NewsPostTemplate({data}) {
 }
 
 export const query = graphql`
-query PostBySlug($uid: String!) {
+query PostBySlug {
 	prismicPage(uid: {eq: "newsroom"}) {
 		id
 		data {
@@ -45,23 +45,33 @@ query PostBySlug($uid: String!) {
 		  }
 		}
 	  }
-	prismicNews(uid: {eq: $uid}) {
-		data {
-			news_body {
+	  allPrismicNews(sort: {fields: [first_publication_date], order: DESC}) {
+		edges {
+		  node {
+			first_publication_date(formatString: "MMMM DD, YYYY")
+			last_publication_date
+			uid
+			data {
+			  news_body {
 				html
-			}
-			news_category
-			news_hero_image {
-				fluid {
-					src
-				}
-			}
-			news_title {
+				raw
 				text
 			  }
+			  news_category
+			  news_hero_image {
+				fluid {
+				  src
+				}
+			  }
+			  news_title {
+				html
+				raw
+				text
+			  }
+			}
+		  }
 		}
-		first_publication_date(formatString: "MMMM DD, YYYY")
-	}
+	  }
 }
 `
 

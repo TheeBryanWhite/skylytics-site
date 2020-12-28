@@ -41,7 +41,7 @@ query newsPageQuery {
 		  }
 		}
 	  }
-allPrismicNews {
+allPrismicNews(sort: {fields: [first_publication_date], order: DESC}) {
     nodes {
       id
       data {
