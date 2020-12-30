@@ -17,7 +17,7 @@ class Layout extends Component {
         offset: (anchor) => {
           switch(anchor.getAttribute('id')) {
             case 'case-stories':
-              return 150;
+              return 100;
 
             case 'leadership':
               return 100;
