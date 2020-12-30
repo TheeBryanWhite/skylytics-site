@@ -12,7 +12,6 @@ import {
  } from "../../redux/actions/actions";
 
 import './hero.scss'
-
 class HeroSlides extends Component {
 	constructor(props) {
 		super(props)
@@ -22,25 +21,29 @@ class HeroSlides extends Component {
 
 	componentDidMount() {
 		this.swapState()
-		// this.findLinks()
+		this.findLinks()
 	}
 
 	findLinks() {
 		const slideMask = document.getElementsByClassName('slidemask')
 		const slideContent = slideMask[0].querySelectorAll('.hero-copy')
+
 		slideContent.forEach(slide => {
 			const links = slide.querySelectorAll('a')
 			if (links.length > 0) {
 				links.forEach(link => {
-					link.addEventListener('click', () => {
-						const destination = link.hash
-						const destArr = destination.split('?')
-						const theSlide = destArr[1].replace('slide=', '')
+					link.addEventListener('click', event => {
+						const destination = link.href
+						const pattern = /\d/g // return only the digits from the string
+						
+						let theSlide = destination.match(pattern)
+						theSlide = theSlide.toString()
+						theSlide = parseInt(theSlide)
+						
 						this.props.setCaseStoryCycle(false)
 						this.props.setActiveStory(theSlide)
 						this.props.setSelectedStory(theSlide)
 						this.props.setExpandedStory(theSlide)
-						
 					})
 				})
 			}
