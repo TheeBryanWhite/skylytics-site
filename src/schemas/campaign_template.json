@@ -1,0 +1,78 @@
+{
+	"Main" : {
+	  "uid" : {
+		"type" : "UID",
+		"config" : {
+		  "label" : "UID"
+		}
+	  },
+	  "partner_name" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+		  "label" : "Partner name"
+		}
+	  },
+	  "partner_hero" : {
+		"type" : "Image",
+		"config" : {
+		  "constraint" : { },
+		  "thumbnails" : [ ],
+		  "label" : "Hero"
+		}
+	  },
+	  "partner_logo" : {
+		"type" : "Image",
+		"config" : {
+		  "constraint" : { },
+		  "thumbnails" : [ ],
+		  "label" : "Partner Logo"
+		}
+	  },
+	  "partner_hero_copy" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+		  "label" : "Hero Copy"
+		}
+	  },
+	  "partner_number_of_columns" : {
+		"type" : "Number",
+		"config" : {
+		  "label" : "Number of Columns"
+		}
+	  },
+	  "partner_container_hero" : {
+		"type" : "Image",
+		"config" : {
+		  "constraint" : { },
+		  "thumbnails" : [ ],
+		  "label" : "Container Hero"
+		}
+	  },
+	  "partner_body" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+		  "allowTargetBlank" : true,
+		  "label" : "Body"
+		}
+	  },
+	  "partner_cta_copy" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+		  "allowTargetBlank" : true,
+		  "label" : "CTA Copy"
+		}
+	  },
+	  "form" : {
+		"type" : "Link",
+		"config" : {
+		  "select" : "document",
+		  "customtypes" : [ "form_builder" ],
+		  "label" : "Form"
+		}
+	  }
+	}
+  }
