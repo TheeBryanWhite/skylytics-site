@@ -296,7 +296,7 @@ class LosantForm extends React.Component {
                     {
                         "to": [
                             {
-                                "email": "bryan@3pt.design"
+                                "email": "info@skylytics.com"
                             }
                         ],
                         "from": {
