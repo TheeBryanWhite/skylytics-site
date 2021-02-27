@@ -71,7 +71,8 @@ module.exports = {
     title: 'Skylytics Data, LLC',
   },
   plugins: [
-    'gatsby-background-image',
+    `gatsby-background-image`,
+    `gatsby-plugin-emotion`,
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
@@ -89,6 +90,7 @@ module.exports = {
         linkResolver: ({ node, key, value }) => (doc) => {
           if (doc.type === 'news') return "/news/" + doc.uid;
           if (doc.type === 'page') return "/" + doc.uid;
+          if (doc.type === 'campaign_template') return "/partners/" + doc.uid;
 
           return "/doc/" + doc.id;
         },
@@ -109,7 +111,9 @@ module.exports = {
           case_stories: require('./src/schemas/case-stories.json'),
           solutions: require('./src/schemas/solutions.json'),
           leaders: require('./src/schemas/leadership.json'),
-          contact_us: require('./src/schemas/contact-us.json')
+          contact_us: require('./src/schemas/contact-us.json'),
+          campaign_template: require('./src/schemas/campaign_template.json'),
+          form_builder: require('./src/schemas/form_builder.json')
         },
         shouldDownloadImage: ({ node, key, value }) => {
           return true

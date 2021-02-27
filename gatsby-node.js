@@ -13,27 +13,49 @@ exports.createPages = async ({ graphql, actions }) => {
   // Query all Pages with their IDs and template data.
   const news = await graphql(`
     {
-		allPrismicNews {
-			nodes {
-			  id
-			  data {
-				template
-			  }
-			  uid
-			}
+      allPrismicNews {
+        nodes {
+          id
+          data {
+            template
+          }
+          uid
+        }
 		  }
     }
   `)
 
-  const pageTemplates = {
+  const partners = await graphql(`
+    {
+      allPrismicCampaignTemplate {
+        nodes {
+          id
+          uid
+        }
+      }
+    }
+  `)
+
+  const pageTemplate = {
     News: path.resolve(__dirname, 'src/templates/news.js'),
+    Partners: path.resolve(__dirname, 'src/templates/partners.js'),
   }
 
   // Create pages for each Page in Prismic using the selected template.
   news.data.allPrismicNews.nodes.forEach((node) => {
     createPage({
       path: `/${node.uid}`,
-      component: pageTemplates[node.data.template],
+      component: pageTemplate.News,
+      context: {
+        uid: node.uid,
+      },
+    })
+  })
+
+  partners.data.allPrismicCampaignTemplate.nodes.forEach((node) => {
+    createPage({
+      path: `/partners/${node.uid}`,
+      component: pageTemplate.Partners,
       context: {
         uid: node.uid,
       },

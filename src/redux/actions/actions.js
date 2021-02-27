@@ -7,6 +7,13 @@ export const contactFormSubmit = (data) => (dispatch) => {
   })
 }
 
+export const losantFormSubmit = (data) => (dispatch) => {
+  dispatch({
+    type: types.LOSANT_FORM_SUBMIT,
+    payload: data,
+  })
+}
+
 export const newsletterFormSubmit = (data) => (dispatch) => {
   dispatch({
     type: types.NEWSLETTER_FORM_SUBMIT,

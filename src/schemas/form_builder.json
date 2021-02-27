@@ -1,0 +1,184 @@
+{
+	"Main" : {
+	  "form_name" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+		  "label" : "Form Name"
+		}
+	  },
+	  "form_recipients" : {
+		"type" : "Group",
+		"config" : {
+		  "fields" : {
+			"form_recipient_email_addressx" : {
+			  "type" : "Text",
+			  "config" : {
+				"label" : "Recipient Email Address"
+			  }
+			}
+		  },
+		  "label" : "Form recipients"
+		}
+	  },
+	  "form_subject" : {
+		"type" : "Text",
+		"config" : {
+		  "label" : "Subject"
+		}
+	  },
+	  "form_legal" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+		  "allowTargetBlank" : true,
+		  "label" : "Form Legal"
+		}
+	  },
+	  "checkbox_label" : {
+		"type" : "Text",
+		"config" : {
+		  "label" : "Checkbox label"
+		}
+	  },
+	  "opt_out_body" : {
+		"type" : "StructuredText",
+		"config" : {
+		  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+		  "allowTargetBlank" : true,
+		  "label" : "Opt-out Body"
+		}
+	  },
+	  "body" : {
+		"type" : "Slices",
+		"fieldset" : "Slice zone",
+		"config" : {
+		  "labels" : {
+			"text_field" : [ ],
+			"email" : [ ],
+			"text" : [ ],
+			"phone" : [ ],
+			"text_area" : [ ]
+		  },
+		  "choices" : {
+			"text" : {
+			  "type" : "Slice",
+			  "fieldset" : "Text",
+			  "description" : "A simple form text field",
+			  "icon" : "format_color_text",
+			  "display" : "list",
+			  "non-repeat" : {
+				"label" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Label"
+				  }
+				},
+				"required" : {
+				  "type" : "Boolean",
+				  "config" : {
+					"default_value" : false,
+					"label" : "Required"
+				  }
+				},
+				"validation_text" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Validation text"
+				  }
+				}
+			  },
+			  "repeat" : { }
+			},
+			"email" : {
+			  "type" : "Slice",
+			  "fieldset" : "Email",
+			  "description" : "A form text field with email validationm pattern",
+			  "icon" : "email",
+			  "display" : "list",
+			  "non-repeat" : {
+				"label" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Label"
+				  }
+				},
+				"required" : {
+				  "type" : "Boolean",
+				  "config" : {
+					"default_value" : false,
+					"label" : "Required"
+				  }
+				},
+				"validation_text" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Validation Text"
+				  }
+				}
+			  },
+			  "repeat" : { }
+			},
+			"phone" : {
+			  "type" : "Slice",
+			  "fieldset" : "Phone",
+			  "description" : "A form text field with phone number validation pattern",
+			  "icon" : "local_phone",
+			  "display" : "list",
+			  "non-repeat" : {
+				"label" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Label"
+				  }
+				},
+				"required" : {
+				  "type" : "Boolean",
+				  "config" : {
+					"default_value" : false,
+					"label" : "Required"
+				  }
+				},
+				"validation_text" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Validation Text"
+				  }
+				}
+			  },
+			  "repeat" : { }
+			},
+			"text_area" : {
+			  "type" : "Slice",
+			  "fieldset" : "Text Area",
+			  "description" : "A multi-line text area form field",
+			  "icon" : "dehaze",
+			  "display" : "list",
+			  "non-repeat" : {
+				"label" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Label"
+				  }
+				},
+				"required" : {
+				  "type" : "Boolean",
+				  "config" : {
+					"default_value" : false,
+					"label" : "Required"
+				  }
+				},
+				"validation_text" : {
+				  "type" : "Text",
+				  "config" : {
+					"label" : "Validation Text"
+				  }
+				}
+			  },
+			  "repeat" : { }
+			}
+		  }
+		}
+	  }
+	}
+  }

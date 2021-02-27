@@ -36,12 +36,6 @@
 		  "label" : "Hero Copy"
 		}
 	  },
-	  "partner_number_of_columns" : {
-		"type" : "Number",
-		"config" : {
-		  "label" : "Number of Columns"
-		}
-	  },
 	  "partner_container_hero" : {
 		"type" : "Image",
 		"config" : {
@@ -55,7 +49,8 @@
 		"config" : {
 		  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
 		  "allowTargetBlank" : true,
-		  "label" : "Body"
+		  "label" : "Body",
+		  "labels": "GrayBG"
 		}
 	  },
 	  "partner_cta_copy" : {

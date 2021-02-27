@@ -10,6 +10,7 @@ const initialState = {
   expandedStory: null,
   heroCycle: true,
   heroSlide: 0,
+  losantFormSubmit: false,
   menuState: false,
   mobileCaseState: false,
   newsletterFormSubmit: false,
@@ -38,6 +39,13 @@ export default (state = initialState, action) => {
         ...state, 
         heroCycle: action.payload
       }
+
+    case types.LOSANT_FORM_SUBMIT:
+      return { 
+        ...state, 
+        losantFormSubmit: action.payload
+      }
+  
 
     case types.NEWSLETTER_FORM_SUBMIT:
       return { 
