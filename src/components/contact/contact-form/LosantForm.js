@@ -20,7 +20,10 @@ const screenReaderText = css`
 `
 
 const rows = css`
-	margin: 35px 65px;
+	margin: 35px 0;
+	@media (min-width: 768px) {
+		margin: 35px 65px;
+	}
 
 	.validation-message,
 	.validation-email {
@@ -574,7 +577,7 @@ class LosantForm extends React.Component {
 						className="row submit-container"
 						css={rows}
 					>
-                        <button css={css`border: 0; font-weight: 600; text-transform: uppercase;`} className="cta" type="submit">Submit</button>
+                        <button css={css`border: 0; font-weight: 600; padding: 25px 50px; text-transform: uppercase;`} className="cta" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
