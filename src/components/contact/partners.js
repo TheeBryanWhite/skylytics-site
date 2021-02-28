@@ -207,7 +207,7 @@ const Partner = props => {
 										font-size: 22px; 
 										line-height: 26.4px;
 								`}>
-									Skylytics<sup>®</sup> can help interpret data into actionable insights that support your critical business decisions. Contact us to learn more about how we leverage the Losant IoT Enterprise Platforms.
+									Skylytics<sup>®</sup> can help translate data into actionable insights to support your critical business decisions. Contact us to learn more about how we leverage the Losant IoT Enterprise Platform.
 								</p>
 							</div>
 							<div>
