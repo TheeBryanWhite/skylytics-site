@@ -55,9 +55,9 @@ const heroBody = css`
 const heroCta = css`
 	p {
 		color: #0510A0;
-		font-size: 32px;
+		font-size: 22px;
 		font-weight: 700;
-		line-height: 38.4px;
+		line-height: 26.4px;
 	}
 `
 
@@ -72,9 +72,7 @@ const formBody = css`
 	h2 {
 		color: #0510A0;
 		display: inline-block;
-		font-size: 40px;
 		left: 50%;
-		line-height: 48px;
 		position: relative;
 		text-transform: uppercase;
 		transform: translateX(-50%);
@@ -89,11 +87,6 @@ const formBody = css`
 			transform: translateX(-50%);
 			width: 50%;
 		}
-	}
-
-	p {
-		font-size: 16px;
-		line-height: 20px;
 	}
 `
 
@@ -208,7 +201,14 @@ const Partner = props => {
 						>
 							<div className="form-header">
 								<h2>Request a quote</h2>
-								<p css={css`color: #0510A0;`}>Skylytics<sup>®</sup> can help interpret data into actionable insights that support your critical business decisions. Contact us to learn more about how we leverage the Losant IoT Enterprise Platforms.</p>
+								<p css={
+									css`
+										color: #0510A0; 
+										font-size: 22px; 
+										line-height: 26.4px;
+								`}>
+									Skylytics<sup>®</sup> can help interpret data into actionable insights that support your critical business decisions. Contact us to learn more about how we leverage the Losant IoT Enterprise Platforms.
+								</p>
 							</div>
 							<div>
 								{!props.losantFormSubmit && <LosantForm />}
