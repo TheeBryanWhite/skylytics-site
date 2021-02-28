@@ -144,6 +144,10 @@ const selectList = css`
 	background-color: #fff;
 	padding: 20px 25px;
 
+	&:invalid { 
+		color: #797FCE;
+	}
+
 	&:focus{
 		border: 1px solid #0BD3CD;
 		color: #0BD3CD;
@@ -169,6 +173,7 @@ const selectList = css`
 
 const inputs = css`
 	border: 1px solid #0510A0;
+	color: #0510A0;
 	padding: 20px 25px;
 	width: 100%;
 
@@ -196,18 +201,22 @@ const inputs = css`
 
 	&::-webkit-input-placeholder {
 		color: #0510A0;
+		opacity: 1;
 	}
 
 	&::-moz-placeholder {
 		color: #0510A0;
+		opacity: 1;
 	}
 
 	&:-ms-input-placeholder {
 		color: #0510A0;
+		opacity: 1;
 	}
 
 	&:-moz-placeholder {
 		color: #0510A0;
+		opacity: 1;
 	}
 `
 
@@ -552,7 +561,7 @@ class LosantForm extends React.Component {
 							onChange={this.handleInputChange}
 							value={this.state.country.value}
 						>
-							<option value="">Country*</option>
+							<option value="" disabled selected hidden>Country*</option>
 							<option value="Afganistan">Afghanistan</option>
 							<option value="Albania">Albania</option>
 							<option value="Algeria">Algeria</option>
