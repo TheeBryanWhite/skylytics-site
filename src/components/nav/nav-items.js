@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'preact'
 import PropTypes from 'prop-types'
+import { css } from "@emotion/react"
 import { Link } from 'gatsby'
 import { useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
 import { setActiveSection, setMenu } from '../../redux/actions/actions'
+import L2Nav from './l2Nav'
 import window from 'global/window'
 
 const NavItems = (props) => {
@@ -12,6 +14,11 @@ const NavItems = (props) => {
 			site {
 				siteMetadata {
 					menuLinks {
+						children {
+							class
+							link
+							name
+						}
 						class
 						name
 						link
@@ -72,7 +79,74 @@ const NavItems = (props) => {
 	
 		return theSections
 	  }
-	
+
+	  const subMenuHandler = event => {
+		const clicked = event.currentTarget
+		clicked.parentElement.parentElement.classList.toggle('open')
+	  }
+
+	  const SubNavCondition = props => {
+		  if (props.hasChildren) {
+			  return <div css={css`transition: transform 0.3s linear;`} className="trigger">
+			  <button
+				  css={
+					  css`
+						  background-color: transparent;
+						  border: 0;
+						  height: 20px;
+						  outline: none;
+						  position: absolute;
+						  right: 20px;
+						  top: 0;
+						  transition: transform 0.3s linear;
+						  width: 20px;
+						  z-index: 100;
+  
+						  &:before,
+						  &:after {
+							  background-color: #0510a0;
+							  content: '';
+							  display: block;
+							  height: 4px;
+							  position: absolute;
+							  top: 50%;
+							  width: 20px;
+						  }
+  
+						  &:after {
+							  transform: rotate(90deg);
+						  }
+  
+						  @media (min-width: 1024px) {
+							  display: none;
+						  }
+					  `
+				  }
+				  onClick={subMenuHandler}
+			  >
+				  <span 
+					  css={
+						  css`
+							  clip: rect(0 0 0 0); 
+							  clip-path: inset(50%);
+							  height: 1px;
+							  overflow: hidden;
+							  position: absolute;
+							  right: 0;
+							  white-space: nowrap; 
+							  width: 1px;
+						  `
+					  }
+				  >
+					  Open/Close
+				  </span>
+			  </button>
+		  </div>
+		  }
+		  
+		  return false
+	  }
+
 	  let lastScrollTop = 0
 	  let scrollDirections = null
 	
@@ -117,8 +191,7 @@ const NavItems = (props) => {
 		<ul className={`${props.menuState ? 'active-menu' : ''}`}>
 			{
 			menu.map((navItem)=> (
-			// <li key={navItem.name} className={navItem.class}>
-			<li key={navItem.name} className={ navItem.class }>
+			<li id={navItem.class} key={navItem.name} className={ (navItem.children ? `${navItem.class} has-children` : navItem.class) }>
 				<Link 
 				className={(props.activeSection === navItem.class ? 'active' : '')}
 				onClick={() => clickHandler()}
@@ -126,6 +199,8 @@ const NavItems = (props) => {
 			>
 				<span>{navItem.name}</span>
 				</Link>
+				<L2Nav navData={navItem} />
+				<SubNavCondition hasChildren={navItem.children} />
 			</li>
 			))
 			}

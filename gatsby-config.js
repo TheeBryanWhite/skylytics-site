@@ -29,6 +29,18 @@ module.exports = {
         link: '/leadership'
       },
       {
+        class: 'partners',
+        children: [
+          {
+            class: 'losant',
+            name: 'Losant',
+            link: '/partners/losant'
+          }
+        ],
+        name: 'Partners',
+        link: '/partners/losant'
+      },
+      {
         class: 'news',
         name: 'News',
         link: '/news'

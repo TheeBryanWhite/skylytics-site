@@ -58,7 +58,7 @@ class Nav extends Component {
     
     const linkData = linkArray.map(section => {
       return {
-        'id': section.getAttribute('class'),
+        'id': section.getAttribute('id'),
         'position': section.getBoundingClientRect().left,
         'width': section.offsetWidth
       }
@@ -70,7 +70,7 @@ class Nav extends Component {
   getNavLinks = () => {
     const navMenu = document.querySelectorAll('nav')
     const navLinks = navMenu[0].querySelectorAll('li')
-    
+
     return navLinks
   }
 

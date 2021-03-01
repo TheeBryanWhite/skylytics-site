@@ -1,7 +1,9 @@
-import React from 'preact'
+import React, {useEffect} from 'react'
 import { graphql } from 'gatsby'
 import SEO from '../components/seo'
 import { css } from "@emotion/react"
+import { useDispatch } from 'react-redux'
+import { setActiveSection, setCurrentPage } from "../redux/actions/actions"
 
 import Layout from '../components/layout/layout'
 import Partner from '../components/contact/partners'
@@ -20,6 +22,14 @@ const bgNull = css`
 `
 
 const PartnerPageTemplate = props => {
+
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(setCurrentPage('partners'))
+		dispatch(setActiveSection('partners'))
+	}, [dispatch])
+
 	const liveData = props.data.prismicCampaignTemplate.data
 	return(
 		<Layout>

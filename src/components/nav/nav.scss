@@ -98,6 +98,26 @@ nav {
 				display: inline-block;
 			}
 		}
+
+		&.has-children {
+			position: relative;
+			
+			&.open {
+					
+				ul {
+					max-height: 1000px;
+				}	
+			}
+
+			@include respond-to(large) {
+				&:hover {
+					
+					ul {
+						max-height: 1000px;
+					}	
+				}
+			}
+		}
 	}
 
 	.link-selector {
