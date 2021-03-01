@@ -1,9 +1,9 @@
 import React from 'preact'
 import PropTypes from 'prop-types'
 import { css } from "@emotion/react"
-import { Link } from 'gatsby'
-import { useStaticQuery, graphql } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import { connect } from 'react-redux'
+import scrollToElement from 'scroll-to-element'
 import { setActiveSection, setMenu } from '../../redux/actions/actions'
 import L2Nav from './l2Nav'
 import window from 'global/window'
@@ -30,8 +30,15 @@ const NavItems = (props) => {
 
 	menu = menu.site.siteMetadata.menuLinks
 	  
-	const clickHandler = () => {
+	const clickHandler = (e, target) => {
 		props.setMenu(props.menuState)
+		if (typeof window !== 'undefined') {
+			if (window.location.pathname === '/') {
+				if (e) {
+					scrollToElement(target)
+				}
+			}
+		}
 		return false
 	}
 
@@ -191,12 +198,12 @@ const NavItems = (props) => {
 		<ul className={`${props.menuState ? 'active-menu' : ''}`}>
 			{
 			menu.map((navItem)=> (
-			<li id={navItem.class} key={navItem.name} className={ (navItem.children ? `${navItem.class} has-children` : navItem.class) }>
-				<Link 
-				className={(props.activeSection === navItem.class ? 'active' : '')}
-				onClick={() => clickHandler()}
-				to={navItem.link}
-			>
+			<li key={navItem.name} className={ (navItem.children ? `${navItem.class} has-children` : navItem.class) }>
+				<Link
+					className={(props.activeSection === navItem.class ? 'active' : '')}
+					onClick={e => clickHandler(e, navItem.class)}
+					to={navItem.link}
+				>
 				<span>{navItem.name}</span>
 				</Link>
 				<L2Nav navData={navItem} />

@@ -3,13 +3,6 @@ import { css } from "@emotion/react"
 
 const SubNavTrigger = props => {
 
-	let clickHandler = event => {
-		event.preventDefault();	
-		console.log(props.clickStatus)
-		props.changeHandler(!props.clickStatus)
-		console.log(props.clickStatus)
-	}
-
 	return(
 		<div className="trigger" >
 			<button
@@ -50,7 +43,6 @@ const SubNavTrigger = props => {
 						}
 					`
 				}
-				onClick={clickHandler}
 			>
 				<span 
 					css={

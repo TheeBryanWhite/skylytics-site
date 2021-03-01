@@ -58,7 +58,7 @@ class Nav extends Component {
     
     const linkData = linkArray.map(section => {
       return {
-        'id': section.getAttribute('id'),
+        'id': section.getAttribute('class'),
         'position': section.getBoundingClientRect().left,
         'width': section.offsetWidth
       }
