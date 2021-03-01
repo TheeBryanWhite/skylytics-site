@@ -27,7 +27,7 @@ const PartnerPageTemplate = props => {
 
 	useEffect(() => {
 		dispatch(setCurrentPage('partners has-children'))
-		dispatch(setActiveSection('partners has-children'))
+		dispatch(setActiveSection('partners has-children')) 
 	}, [dispatch])
 
 	const liveData = props.data.prismicCampaignTemplate.data
