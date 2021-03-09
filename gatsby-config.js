@@ -29,7 +29,7 @@ module.exports = {
         link: '/leadership'
       },
       {
-        class: 'partners',
+        class: 'partners noclick',
         children: [
           {
             class: 'losant',
@@ -38,7 +38,7 @@ module.exports = {
           }
         ],
         name: 'Partners',
-        link: '/partners/losant'
+        link: '/partners'
       },
       {
         class: 'news',

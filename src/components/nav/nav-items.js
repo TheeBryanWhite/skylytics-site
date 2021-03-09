@@ -30,11 +30,15 @@ const NavItems = (props) => {
 
 	menu = menu.site.siteMetadata.menuLinks
 	  
-	const clickHandler = (e, target) => {
+	const clickHandler = (event, target) => {
 		props.setMenu(props.menuState)
+		const clicked = event.currentTarget.parentElement
+		if (clicked.classList.contains('noclick')) {
+			event.preventDefault()
+		}
 		if (typeof window !== 'undefined') {
 			if (window.location.pathname === '/') {
-				if (e) {
+				if (event) {
 					scrollToElement(target)
 				}
 			}
