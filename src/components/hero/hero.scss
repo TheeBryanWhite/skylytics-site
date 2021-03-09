@@ -192,7 +192,7 @@
 				.slide {
 					animation: panup 30s linear 1;
 					height: 150vh;
-					transform: translate(-260px, -20%);
+					transform: translate(-260px, -34%);
 					width: 110vw;
 				}
 			}
@@ -210,8 +210,8 @@
 	}
 
 	@keyframes panup {
-		from { transform: translate(-260px, -10%) }
-		to { transform: translate(-260px, -20%) }
+		from { transform: translate(-260px, -24%) }
+		to { transform: translate(-260px, -34%) }
 	}
 
 	.hero-copy {

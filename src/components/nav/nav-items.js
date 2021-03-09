@@ -1,7 +1,7 @@
 import React from 'preact'
 import PropTypes from 'prop-types'
 import { css } from "@emotion/react"
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 import { connect } from 'react-redux'
 import scrollToElement from 'scroll-to-element'
 import { setActiveSection, setMenu } from '../../redux/actions/actions'
@@ -9,26 +9,8 @@ import L2Nav from './l2Nav'
 import window from 'global/window'
 
 const NavItems = (props) => {
-	let menu = useStaticQuery(graphql`
-		query SiteNavQuery {
-			site {
-				siteMetadata {
-					menuLinks {
-						children {
-							class
-							link
-							name
-						}
-						class
-						name
-						link
-					}
-				}
-			}
-		}
-	`);
 
-	menu = menu.site.siteMetadata.menuLinks
+	const menuData = props.navData
 	  
 	const clickHandler = (event, target) => {
 		props.setMenu(props.menuState)
@@ -94,6 +76,15 @@ const NavItems = (props) => {
 	  const subMenuHandler = event => {
 		const clicked = event.currentTarget
 		clicked.parentElement.parentElement.classList.toggle('open')
+	  }
+
+	  const IfHasSubNav = props => {
+
+		  if (props.childMenu) {
+			  return <L2Nav childMenu={props.childMenu} />
+		  }
+
+		  return false
 	  }
 
 	  const SubNavCondition = props => {
@@ -201,17 +192,17 @@ const NavItems = (props) => {
 	return (
 		<ul className={`${props.menuState ? 'active-menu' : ''}`}>
 			{
-			menu.map((navItem)=> (
-			<li key={navItem.name} className={ (navItem.children ? `${navItem.class} has-children` : navItem.class) }>
+			menuData[0].data.menu_items.map((navItem)=> (
+			<li key={navItem.label} className={ (navItem.child_menu.id !== null ? `${navItem.classes} has-children` : navItem.classes) }>
 				<Link
-					className={(props.activeSection === navItem.class ? 'active' : '')}
-					onClick={e => clickHandler(e, navItem.class)}
+					className={(props.activeSection === navItem.classes ? 'active' : '')}
+					onClick={e => clickHandler(e, navItem.classes)}
 					to={navItem.link}
 				>
-				<span>{navItem.name}</span>
+				<span>{navItem.label}</span>
 				</Link>
-				<L2Nav navData={navItem} />
-				<SubNavCondition hasChildren={navItem.children} />
+				<IfHasSubNav childMenu={navItem.child_menu.id} />
+				<SubNavCondition hasChildren={navItem.child_menu.id} />
 			</li>
 			))
 			}

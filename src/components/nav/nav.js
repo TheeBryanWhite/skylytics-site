@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from "react-redux"
+import { useStaticQuery, graphql } from "gatsby"
 import { 
   setSelectorPosition,
   setSelectorWidth
@@ -12,6 +13,26 @@ import './nav.scss'
 class Nav extends Component {
     constructor(props) {
       super(props)
+
+      this.navData = useStaticQuery(graphql`
+        query NavQuery {
+          allPrismicMenu {
+            nodes {
+              data {
+                menu_items {
+                  child_menu {
+                    id
+                  }
+                  classes
+                  label
+                  link
+                }
+              }
+              prismicId
+            }
+          }
+        }
+      `)
   
       this.getActiveLinkPosition = this.getActiveLinkPosition.bind(this)
       this.getActiveLinkWidth = this.getActiveLinkWidth.bind(this)
@@ -85,7 +106,7 @@ class Nav extends Component {
     return (
       <nav>
         <div className="container">
-          <NavItems />
+          <NavItems navData={this.navData.allPrismicMenu.nodes} />
           <div className="link-selector" style={{left: this.props.selectorPosition + 16, width: this.props.selectorWidth - 30}}>&nbsp;</div>
           <Hamburger />
         </div>
